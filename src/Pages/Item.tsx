@@ -1,5 +1,6 @@
 import Footer from "../Components/Footer";
 import Header from "../Components/Header"
+import Main from "../Components/Main";
 
 function Item() {
     document.title = "طابو";
@@ -7,6 +8,7 @@ function Item() {
     return (
         <>
             <Header />
+            <Main />
             <Footer />
         </>
     )

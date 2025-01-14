@@ -21,11 +21,11 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({ options, onSelect, placeHol
     };
 
     return (
-        <div className="relative inline-block text-right">
+        <div className="relative inline-block text-right w-48 font-extrabold text-xl">
             {/* Dropdown Button */}
             <button
                 onClick={toggleMenu}
-                className="flex justify-between w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 gap-4"
+                className="flex justify-between items-center w-full p-2 text-lg font-bold font-medium bg-[#0D5C02] border border-gray-300 rounded-md shadow-sm hover:bg-[#37822c] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 gap-2 text-[#BA9503] font-Amiri"
             >
                 <svg
                     className="w-5 h-5 ml-2 -mr-1 text-gray-400"
@@ -37,6 +37,7 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({ options, onSelect, placeHol
                         fillRule="evenodd"
                         d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                         clipRule="evenodd"
+                        stroke="#BA9503"
                     />
                 </svg>
                 {selectedOption || placeHolder}

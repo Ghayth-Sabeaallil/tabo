@@ -1,7 +1,19 @@
 import { useState } from "react";
 import DropDownMenu from "./DropDownMenu";
+import Button from "./Button";
+import { Link } from "react-router-dom";
 function Filter() {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
+    const [minR, setMinR] = useState<number>(0);
+    const [maxR, setMaxR] = useState<number>(0);
+    const [city, setCity] = useState<string>("allCity");
+    const [itemType, setItemType] = useState<string>("allType");
+    const [minP, setMinP] = useState<number>(0);
+    const [maxP, setMaxP] = useState<number>(0);
+    const [minA, setMinA] = useState<number>(0);
+    const [maxA, setMaxA] = useState<number>(0);
+
+
     const citys: string[] = ["دمشق", "حلب", "حمص", "اللاذقية", "حماة", "دير الزور", "الرقة", "الحسكة", "طرطوس", "السويداء", "درعا", "القامشلي", "إدلب", "ريف دمشق"];
     const minRooms: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     const maxRooms: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -9,22 +21,47 @@ function Filter() {
     const maxPrise: number[] = [400, 450, 500, 550, 600, 700, 800, 900];
     const minArea: number[] = [10, 30, 50, 70, 90, 110];
     const maxArea: number[] = [100, 150, 200, 250, 400];
-    const handleSelect = (option: string | number) => {
-        console.log("Selected option:", option);
-    };
+    const type: string[] = ["شقة سكنية", "أرض", "فلا", "محل تجاري"];
+
+    const print = () => {
+        console.log(minR)
+        console.log(maxR)
+        console.log(minA)
+        console.log(maxA)
+        console.log(minP)
+        console.log(maxP)
+        console.log(city)
+        console.log(itemType)
+
+    }
+
+
     return (
-        <nav className="text-black font-bold shadow-xl bg-[#b5f0ad]">
+        <div className="text-black font-bold shadow-xl bg-[#b5f0ad]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 p-2">
                 <div className="flex justify-center items-center h-10">
                     {/* Desktop Menu */}
                     <div className="hidden md:flex gap-4">
-                        <DropDownMenu options={citys} onSelect={handleSelect} placeHolder={"اختر مدينة"} />
-                        <DropDownMenu options={minRooms} onSelect={handleSelect} placeHolder={"أقل عدد غرف"} />
-                        <DropDownMenu options={maxRooms} onSelect={handleSelect} placeHolder={"أكثر عدد غرف"} />
-                        <DropDownMenu options={minPrise} onSelect={handleSelect} placeHolder={"الحد الأدنى"} />
-                        <DropDownMenu options={maxPrise} onSelect={handleSelect} placeHolder={"الحد الأعلى"} />
-                        <DropDownMenu options={minArea} onSelect={handleSelect} placeHolder={"أدنى مساحة"} />
-                        <DropDownMenu options={maxArea} onSelect={handleSelect} placeHolder={"أعلى مساحة"} />
+                        <Link to={
+                            !city && !minR && !minP && !minA && !itemType
+                                ? "/item" // No filters applied
+                                : `/item?${[
+                                    city ? `city=${city}` : "",
+                                    minR ? `minR=${minR}` : "",
+                                    minP ? `minP=${minP}` : "",
+                                    minA ? `minA=${minA}` : "",
+                                    itemType ? `type=${itemType}` : "",
+                                ]
+                                    .filter(Boolean) // Remove empty query parameters
+                                    .join("&")}` // Join applied filters with "&"
+                        }>
+                            <Button text={"تطبيق"} handleClick={print} />
+                        </Link>
+                        <DropDownMenu options={citys} onSelect={(option) => setCity(String(option))} placeHolder={"المدينة"} />
+                        <DropDownMenu options={minRooms} onSelect={(option) => setMinR(Number(option))} placeHolder={"الحد الأدنى لعدد الغرف"} />
+                        <DropDownMenu options={minPrise} onSelect={(option) => setMinP(Number(option))} placeHolder={"الحد الأقصى للسعر"} />
+                        <DropDownMenu options={minArea} onSelect={(option) => setMinA(Number(option))} placeHolder={"الحد الأدنى للمساحة"} />
+                        <DropDownMenu options={type} onSelect={(option) => setItemType(String(option))} placeHolder={"نوع العقار"} />
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -49,16 +86,29 @@ function Filter() {
             {/* Mobile Menu */}
             {(isMobileMenuOpen && window.innerWidth < 768) && (
                 <div className="w-screen absolute z-50 grid grid-cols-2 gap-4 bg-[#0D5C02] p-4">
-                    <DropDownMenu options={citys} onSelect={handleSelect} placeHolder={"اختر مدينة"} />
-                    <DropDownMenu options={minRooms} onSelect={handleSelect} placeHolder={"أقل عدد غرف"} />
-                    <DropDownMenu options={maxRooms} onSelect={handleSelect} placeHolder={"أكثر عدد غرف"} />
-                    <DropDownMenu options={minPrise} onSelect={handleSelect} placeHolder={"الحد الأدنى"} />
-                    <DropDownMenu options={maxPrise} onSelect={handleSelect} placeHolder={"الحد الأعلى"} />
-                    <DropDownMenu options={minArea} onSelect={handleSelect} placeHolder={"أدنى مساحة"} />
-                    <DropDownMenu options={maxArea} onSelect={handleSelect} placeHolder={"أعلى مساحة"} />
+                    <DropDownMenu options={citys} onSelect={(option) => setCity(String(option))} placeHolder={"المدينة"} />
+                    <DropDownMenu options={minRooms} onSelect={(option) => setMinR(Number(option))} placeHolder={"الحد الأدنى لعدد الغرف"} />
+                    <DropDownMenu options={minPrise} onSelect={(option) => setMinP(Number(option))} placeHolder={"الحد الأقصى للسعر"} />
+                    <DropDownMenu options={minArea} onSelect={(option) => setMinA(Number(option))} placeHolder={"الحد الأدنى للمساحة"} />
+                    <DropDownMenu options={type} onSelect={(option) => setItemType(String(option))} placeHolder={"نوع العقار"} />
+                    <Link to={
+                        !city && !minR && !minP && !minA && !itemType
+                            ? "/item" // No filters applied
+                            : `/item?${[
+                                city ? `city=${city}` : "",
+                                minR ? `minR=${minR}` : "",
+                                minP ? `minP=${minP}` : "",
+                                minA ? `minA=${minA}` : "",
+                                itemType ? `type=${itemType}` : "",
+                            ]
+                                .filter(Boolean) // Remove empty query parameters
+                                .join("&")}` // Join applied filters with "&"
+                    }>
+                        <Button text={"تطبيق"} handleClick={print} />
+                    </Link>
                 </div>
             )}
-        </nav>
+        </div>
     )
 }
 

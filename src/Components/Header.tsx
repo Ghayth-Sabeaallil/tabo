@@ -11,8 +11,7 @@ const Header = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 p-3">
                 <div className="flex justify-between items-center h-16">
                     <div className="flex-shrink-0">
-                        <a className="flex gap-2 justify-between items-center font-Amiri text-[#BA9503] text-6xl" href="/">طابو <img className="w-14 h-14" src="./logo.svg" alt="logo" /></a>
-
+                        <a className="flex gap-2 justify-between items-center font-Amiri text-[#BA9503] text-6xl" href="/">طاپو <img className="w-14 h-14" src="./logo.svg" alt="logo" /></a>
                     </div>
 
                     {/* Desktop Menu */}
