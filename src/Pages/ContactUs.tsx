@@ -1,14 +1,13 @@
 import Header from "../Components/Header"
 
-function Home() {
-    document.title = "طابو - الرئيسية";
+function ContactUs() {
+    document.title = "طابو - اتصل بنا";
 
     return (
         <>
             <Header />
         </>
-
     )
 }
 
-export default Home
+export default ContactUs
