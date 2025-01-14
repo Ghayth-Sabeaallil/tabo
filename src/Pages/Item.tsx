@@ -1,8 +1,8 @@
 import Footer from "../Components/Footer";
 import Header from "../Components/Header"
 
-function ContactUs() {
-    document.title = "طابو - اتصل بنا";
+function Item() {
+    document.title = "طابو";
 
     return (
         <>
@@ -12,4 +12,4 @@ function ContactUs() {
     )
 }
 
-export default ContactUs
+export default Item
