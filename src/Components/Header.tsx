@@ -7,11 +7,12 @@ import { Link } from "react-router-dom";
 const Header = () => {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
     return (
-        <nav className="bg-white text-black font-bold shadow-xl bg-[#0D5C02] relative z-50">
+        <nav className="text-black font-bold shadow-xl bg-[#0D5C02] relative z-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 p-3">
                 <div className="flex justify-between items-center h-16">
                     <div className="flex-shrink-0">
-                        <a className="flex justify-between items-center" href="/"><img className="w-14 h-14" src="./logo.svg" alt="logo" /></a>
+                        <a className="flex gap-2 justify-between items-center font-Amiri text-[#BA9503] text-6xl" href="/">طابو <img className="w-14 h-14" src="./logo.svg" alt="logo" /></a>
+
                     </div>
 
                     {/* Desktop Menu */}
@@ -50,10 +51,10 @@ const Header = () => {
 
             {/* Mobile Menu */}
             {(isMobileMenuOpen && window.innerWidth < 768) && (
-                <div className="w-screen absolute text-right z-50 flex flex-col items-end backdrop-blur-lg bg-transparent text-black pr-4">
-                    <Link to={"/"}><div className="text-xl font-mono cursor-pointer p-3 text-[#BA9503] font-bold duration-500 flex gap-2 text-black hover:scale-125">الرئيسية<GoHome size={30} /> </div></Link>
-                    <Link to={"/contact"}><div className="text-xl font-mono cursor-pointer p-3 text-[#BA9503] font-bold duration-500 flex gap-2 text-black hover:scale-125">تواصل معنا<FaHeadphones size={30} /></div></Link>
-                    <Link to={"/about"}><div className="text-xl font-mono cursor-pointer p-3 text-[#BA9503] font-bold duration-500 flex gap-2 text-black hover:scale-125">حول<IoMdInformationCircleOutline size={30} /></div></Link>
+                <div className="w-screen absolute text-right z-50 flex flex-col items-end bg-[#0D5C02] pr-4">
+                    <Link to={"/"}><div className="text-xl font-mono cursor-pointer p-3 text-[#BA9503] font-bold duration-500 flex gap-2 hover:scale-125">الرئيسية<GoHome size={30} /> </div></Link>
+                    <Link to={"/contact"}><div className="text-xl font-mono cursor-pointer p-3 text-[#BA9503] font-bold duration-500 flex gap-2 hover:scale-125">تواصل معنا<FaHeadphones size={30} /></div></Link>
+                    <Link to={"/about"}><div className="text-xl font-mono cursor-pointer p-3 text-[#BA9503] font-bold duration-500 flex gap-2 hover:scale-125">حول<IoMdInformationCircleOutline size={30} /></div></Link>
 
                 </div>
             )}
