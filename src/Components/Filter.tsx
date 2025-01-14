@@ -5,35 +5,19 @@ import { Link } from "react-router-dom";
 function Filter() {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
     const [minR, setMinR] = useState<number>(0);
-    const [maxR, setMaxR] = useState<number>(0);
-    const [city, setCity] = useState<string>("allCity");
-    const [itemType, setItemType] = useState<string>("allType");
+    const [city, setCity] = useState<string>("");
+    const [itemType, setItemType] = useState<string>("");
     const [minP, setMinP] = useState<number>(0);
-    const [maxP, setMaxP] = useState<number>(0);
     const [minA, setMinA] = useState<number>(0);
-    const [maxA, setMaxA] = useState<number>(0);
 
 
     const citys: string[] = ["دمشق", "حلب", "حمص", "اللاذقية", "حماة", "دير الزور", "الرقة", "الحسكة", "طرطوس", "السويداء", "درعا", "القامشلي", "إدلب", "ريف دمشق"];
     const minRooms: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    const maxRooms: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     const minPrise: number[] = [50, 100, 150, 200, 250, 300, 350, 400, 450, 500];
-    const maxPrise: number[] = [400, 450, 500, 550, 600, 700, 800, 900];
     const minArea: number[] = [10, 30, 50, 70, 90, 110];
-    const maxArea: number[] = [100, 150, 200, 250, 400];
     const type: string[] = ["شقة سكنية", "أرض", "فلا", "محل تجاري"];
 
-    const print = () => {
-        console.log(minR)
-        console.log(maxR)
-        console.log(minA)
-        console.log(maxA)
-        console.log(minP)
-        console.log(maxP)
-        console.log(city)
-        console.log(itemType)
 
-    }
 
 
     return (
