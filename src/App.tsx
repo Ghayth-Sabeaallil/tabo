@@ -1,12 +1,15 @@
-function App() {
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { lazy } from 'react';
+const Home = lazy(() => import('./Pages/Home'))
 
+function App() {
   return (
-    <>
-      <div className="border border-2 border-black">
-        Hello
-      </div>
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" Component={Home} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
