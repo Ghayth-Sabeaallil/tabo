@@ -119,7 +119,7 @@
     {
       "id": "10",
       "description": "منزل ريفي في الفيوم",
-      "images": ["country_house1.jpg", "country_house2.jpg"],
+      "images": ["https://content.avito.ma/classifieds/images/10120652124?t=images", "country_house2.jpg"],
       "address": "مدينة الفيوم، الفيوم",
       "prise": 450000,
       "rooms": 3,
