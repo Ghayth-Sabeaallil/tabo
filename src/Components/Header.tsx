@@ -2,12 +2,13 @@ import { useState } from "react";
 import { FaHeadphones } from "react-icons/fa";
 import { GoHome, } from "react-icons/go";
 import { IoMdInformationCircleOutline } from "react-icons/io";
+import { MdOutlinePolicy } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 const Header = () => {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
     return (
-        <nav className="text-black font-bold shadow-xl bg-[#0D5C02] relative z-50">
+        <nav className="text-black font-bold shadow-xl bg-[#0D5C02] relative z-50 ">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 p-3">
                 <div className="flex justify-between items-center h-16">
                     <div className="flex-shrink-0">
@@ -16,6 +17,7 @@ const Header = () => {
 
                     {/* Desktop Menu */}
                     <div className="hidden md:flex gap-4">
+                        <Link to={"/privacyPolicy"}><div className="text-xl font-mono cursor-pointer p-3 text-[#BA9503] border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">الشروط و الأحكام<MdOutlinePolicy size={30} /></div></Link>
                         <Link to={"/about"}><div className="text-xl font-mono cursor-pointer p-3 text-[#BA9503] border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">حول<IoMdInformationCircleOutline size={30} /></div></Link>
                         <Link to={"/contact"}><div className="text-xl font-mono cursor-pointer p-3 text-[#BA9503] border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">تواصل معنا<FaHeadphones size={30} /></div></Link>
                         <Link to={"/"}>
@@ -54,7 +56,7 @@ const Header = () => {
                     <Link to={"/"}><div className="text-xl font-mono cursor-pointer p-3 text-[#BA9503] font-bold duration-500 flex gap-2 hover:scale-125">الرئيسية<GoHome size={30} /> </div></Link>
                     <Link to={"/contact"}><div className="text-xl font-mono cursor-pointer p-3 text-[#BA9503] font-bold duration-500 flex gap-2 hover:scale-125">تواصل معنا<FaHeadphones size={30} /></div></Link>
                     <Link to={"/about"}><div className="text-xl font-mono cursor-pointer p-3 text-[#BA9503] font-bold duration-500 flex gap-2 hover:scale-125">حول<IoMdInformationCircleOutline size={30} /></div></Link>
-
+                    <Link to={"/privacyPolicy"}><div className="text-xl font-mono cursor-pointer p-3 text-[#BA9503] border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">الشروط و الأحكام<MdOutlinePolicy size={30} /></div></Link>
                 </div>
             )}
         </nav>

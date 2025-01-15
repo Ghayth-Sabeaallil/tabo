@@ -3,7 +3,8 @@ import { lazy } from 'react';
 const Home = lazy(() => import('./Pages/Home'))
 const About = lazy(() => import('./Pages/About'))
 const ContactUs = lazy(() => import('./Pages/ContactUs'))
-const Item = lazy(() => import('./Pages/Item'))
+const Search = lazy(() => import('./Pages/Search'))
+const PrivacyPolicy = lazy(() => import('./Pages/PrivacyPolicy'))
 
 
 
@@ -14,7 +15,8 @@ function App() {
         <Route path="/" Component={Home} />
         <Route path="/about" Component={About} />
         <Route path="/contact" Component={ContactUs} />
-        <Route path="/item" Component={Item} />
+        <Route path="/search" Component={Search} />
+        <Route path="/privacyPolicy" Component={PrivacyPolicy} />
 
       </Routes>
     </Router>

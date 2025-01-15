@@ -21,7 +21,7 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({ options, onSelect, placeHol
     };
 
     return (
-        <div className="relative inline-block text-right w-48 font-extrabold text-xl">
+        <div className="relative inline-block text-right font-extrabold text-xl">
             {/* Dropdown Button */}
             <button
                 onClick={toggleMenu}
