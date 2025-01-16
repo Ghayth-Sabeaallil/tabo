@@ -4,9 +4,10 @@ interface DropDownMenuProps {
     options: string[] | number[];
     onSelect: (option: string | number) => void;
     placeHolder: string,
+    type?: string
 }
 
-const DropDownMenu: React.FC<DropDownMenuProps> = ({ options, onSelect, placeHolder }: DropDownMenuProps) => {
+const DropDownMenu: React.FC<DropDownMenuProps> = ({ options, onSelect, placeHolder, type }: DropDownMenuProps) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [selectedOption, setSelectedOption] = useState<string | number | null>(null);
 
@@ -25,7 +26,7 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({ options, onSelect, placeHol
             {/* Dropdown Button */}
             <button
                 onClick={toggleMenu}
-                className="flex justify-between items-center w-full p-2 text-lg font-bold font-medium bg-[#0D5C02] border border-[#BA9503] rounded-md hover:bg-[#37822c] text-[#BA9503] font-Amiri"
+                className="flex justify-between items-center w-full p-2 text-lg font-bold font-medium bg-[#0D5C02] border border-[#BA9503] rounded-md hover:bg-[#37822c] text-[#BA9503] font-Amiri gap-4"
             >
                 {selectedOption || placeHolder}
                 <svg
@@ -52,7 +53,7 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({ options, onSelect, placeHol
                             onClick={() => handleOptionClick(option)}
                             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
                         >
-                            {option}
+                            {option}{type === "area" ? " م2" : type === "price" ? " مليون" : ""}
                         </li>
                     ))}
                 </ul>

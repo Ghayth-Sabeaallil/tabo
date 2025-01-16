@@ -6,7 +6,7 @@ const Footer = () => {
                 <img src="/whatsapp.svg" className="w-10 h-10 hover:scale-125 cursor-pointer" alt="whatsapp" />
                 <img src="/mail.svg" className="w-10 h-10 hover:scale-125 cursor-pointer" alt="mail" />
             </div>
-            <div className="flex justify-center items-center font-mono text-[#BA9503] font-bold text-lg">{new Date().getFullYear()} &copy; Tabo, Inc.</div>
+            <div className="flex justify-center items-center font-mono text-[#BA9503] font-bold text-lg">Tabo, Inc. &copy; {new Date().getFullYear()}</div>
         </footer>
     );
 };
