@@ -21,14 +21,15 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({ options, onSelect, placeHol
     };
 
     return (
-        <div className="relative inline-block text-right font-extrabold text-xl">
+        <div className="relative inline-block font-extrabold text-xl">
             {/* Dropdown Button */}
             <button
                 onClick={toggleMenu}
-                className="flex justify-between items-center w-full p-2 text-lg font-bold font-medium bg-[#0D5C02] border border-gray-300 rounded-md shadow-sm hover:bg-[#37822c] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 gap-2 text-[#BA9503] font-Amiri"
+                className="flex justify-between items-center w-full p-2 text-lg font-bold font-medium bg-[#0D5C02] border border-[#BA9503] rounded-md hover:bg-[#37822c] text-[#BA9503] font-Amiri"
             >
+                {selectedOption || placeHolder}
                 <svg
-                    className="w-5 h-5 ml-2 -mr-1 text-gray-400"
+                    className="w-5 h-5 ml-2 -mr-1"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -40,12 +41,11 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({ options, onSelect, placeHol
                         stroke="#BA9503"
                     />
                 </svg>
-                {selectedOption || placeHolder}
             </button>
 
             {/* Dropdown Options */}
             {isOpen && (
-                <ul className="absolute z-10 w-full mt-2 bg-white border border-gray-300 rounded-md shadow-lg overflow-y-auto h-40">
+                <ul className="absolute z-10 w-full mt-2 bg-white border border-[#BA9503] rounded-md shadow-lg overflow-y-auto h-40">
                     {options.map((option, index) => (
                         <li
                             key={index}

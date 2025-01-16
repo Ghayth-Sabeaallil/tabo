@@ -23,12 +23,12 @@ function MainFilter() {
         <div className="flex flex-col justify-center items-center h-full bg-[#d2f2ce] gap-4">
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 gap-2">
                 <div className="flex flex-col sm:flex-col md:flex-row gap-2">
-                    <div className="bg-[#0D5C02] p-4 rounded-lg hover:bg-[#37822c] border-2 border-[#BA9503] cursor-pointer"><MdApartment size={40} color="#BA9503" /></div>
-                    <div className="bg-[#0D5C02] p-4 rounded-lg hover:bg-[#37822c] border-2 border-[#BA9503] cursor-pointer"><PiFarm size={40} color="#BA9503" /></div>
+                    <div className="bg-[#0D5C02] p-4 rounded-lg hover:bg-[#37822c] border-2 border-[#BA9503] cursor-pointer flex flex-col justify-center items-center text-[#BA9503] font-semibold"><MdApartment size={40} color="#BA9503" />شقق</div>
+                    <div className="bg-[#0D5C02] p-4 rounded-lg hover:bg-[#37822c] border-2 border-[#BA9503] cursor-pointer flex flex-col justify-center items-center text-[#BA9503] font-semibold"><PiFarm size={40} color="#BA9503" />أراضي</div>
                 </div>
                 <div className="flex flex-col sm:flex-col md:flex-row gap-2">
-                    <div className="bg-[#0D5C02] p-4 rounded-lg hover:bg-[#37822c] border-2 border-[#BA9503] cursor-pointer"><CiShop size={40} color="#BA9503" /></div>
-                    <div className="bg-[#0D5C02] p-4 rounded-lg hover:bg-[#37822c] border-2 border-[#BA9503] cursor-pointer"><MdOutlineVilla size={40} color="#BA9503" /></div></div>
+                    <div className="bg-[#0D5C02] p-4 rounded-lg hover:bg-[#37822c] border-2 border-[#BA9503] cursor-pointer flex flex-col justify-center items-center text-[#BA9503] font-semibold"><CiShop size={40} color="#BA9503" />محال</div>
+                    <div className="bg-[#0D5C02] p-4 rounded-lg hover:bg-[#37822c] border-2 border-[#BA9503] cursor-pointer flex flex-col justify-center items-center text-[#BA9503] font-semibold"><MdOutlineVilla size={40} color="#BA9503" />فلل</div></div>
             </div>
             <div className="flex flex-col gap-10 w-3/5 sm:w-2/5 md:w-2/5">
                 <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4 justify-center items-center">
