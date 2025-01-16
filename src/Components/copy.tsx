@@ -3,19 +3,27 @@ import data from "../Lib/DummyData.json"
 import { Link } from "react-router-dom";
 import Filter from "./Filter";
 import { FaList, FaMapLocation } from "react-icons/fa6";
-import { useEffect, useState } from "react";
-import { APIProvider, Map } from '@vis.gl/react-google-maps';
-import { loadItemDataset, CardDetailsProps } from './items';
-import { ClusteredMarkers } from './clusteredMarkers';
+import { useState } from "react";
+import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps';
+import { CardDetailsProps } from "../Lib/DataType";
+import { MarkerClusterer } from "@googlemaps/markerclusterer";
+
 
 const Main = () => {
     const [show, setShow] = useState<string>("list");
-    const [item, setItems] = useState<CardDetailsProps[]>();
-    useEffect(() => {
-        loadItemDataset().then(data => setItems(data));
-    }, []);
-    // get category information for the filter-dropdown
+    const [selectedMarker, setSelectedMarker] = useState<CardDetailsProps | null>(null);
+    const [id, setId] = useState<string>();
 
+
+
+    const handleMarkerClick = (item: CardDetailsProps) => {
+        setSelectedMarker(item);
+        setId(item.id!);
+    };
+
+    const handleClose = () => {
+        setSelectedMarker(null);
+    };
     return (
         <>
             <Filter />
@@ -31,23 +39,23 @@ const Main = () => {
                 <div className="bg-[#d2f2ce] flex justify-center items-center h-full text-3xl p-1">
                     <APIProvider apiKey={'AIzaSyBNh-K6y7-8uOgzJt1L-D5s0GHbgjksvuI'} onLoad={() => console.log('Maps API has loaded.')}>
                         <Map
-                            mapId={'bf51a910020fa25a'}
-                            defaultZoom={7}
+                            defaultZoom={8}
                             defaultCenter={{ lat: 35.0271824852867, lng: 38.51505715398323 }}
                             gestureHandling={'greedy'}
-                            mapTypeId="roadmap"
-                            disableDefaultUI={false}
+                            disableDefaultUI={true}
                             colorScheme="FOLLOW_SYSTEM"
+                            onClick={handleClose}
                         >
-                            {<ClusteredMarkers items={item!} />}
-                            {/*selectedMarker && (
+
+                            {data.map((item: CardDetailsProps) => <Marker onClick={() => handleMarkerClick(item)} position={item.location} />)}
+                            {selectedMarker && (
                                 <Link to={`/item?id=${id}`}><div className="absolute top-2 right-2 bg-white p-2 shadow-lg rounded-lg z-50 cursor-pointer">
                                     <h4>{selectedMarker.id}</h4>
                                     <p>Latitude: {selectedMarker.location?.lat}</p>
                                     <p>Longitude: {selectedMarker.location?.lng}</p>
                                 </div></Link>
 
-                            )*/}
+                            )}
                         </Map>
                     </APIProvider>
                 </div>}

@@ -27,7 +27,7 @@ function MainFilter() {
                 </div>
                 <div className="flex flex-col sm:flex-col md:flex-row gap-2">
                     <div className={`bg-[#0D5C02] p-4 rounded-lg hover:bg-[#37822c] border-2 border-[#BA9503] cursor-pointer flex flex-col justify-center items-center text-[#BA9503] font-semibold ${type === "محل" && "bg-[#37822c]"}`} onClick={() => setType("محل")}><CiShop size={40} color="#BA9503" />محال</div>
-                    <div className={`bg-[#0D5C02] p-4 rounded-lg hover:bg-[#37822c] border-2 border-[#BA9503] cursor-pointer flex flex-col justify-center items-center text-[#BA9503] font-semibold ${type === "فلا" && "bg-[#37822c]"}`} onClick={() => setType("فلا")}><MdOutlineVilla size={40} color="#BA9503" />فلل</div></div>
+                    <div className={`bg-[#0D5C02] p-4 rounded-lg hover:bg-[#37822c] border-2 border-[#BA9503] cursor-pointer flex flex-col justify-center items-center text-[#BA9503] font-semibold ${type === "فيلا" && "bg-[#37822c]"}`} onClick={() => setType("فيلا")}><MdOutlineVilla size={40} color="#BA9503" />فلل</div></div>
             </div>
             <div className="flex flex-col gap-10 w-3/5 sm:w-2/5 md:w-2/5">
                 <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4 justify-center items-center">

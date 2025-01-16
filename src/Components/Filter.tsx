@@ -5,6 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import { MdApartment, MdOutlineVilla } from "react-icons/md";
 import { PiFarm } from "react-icons/pi";
 import { CiShop } from "react-icons/ci";
+
 function Filter() {
     const url = useLocation();
 
@@ -32,6 +33,7 @@ function Filter() {
         <div className="text-black font-bold shadow-xl bg-[#d2f2ce]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 p-2">
                 <div className="flex justify-center items-center h-fit">
+
                     {/* Desktop Menu */}
                     <div className="hidden md:flex gap-4 justify-center items-center">
                         <DropDownMenu options={citys} onSelect={(option) => setCity(String(option))} placeHolder={paramsObj["city"] ? paramsObj["city"] : "المدينة"} />
@@ -45,7 +47,7 @@ function Filter() {
                             </div>
                             <div className="flex gap-2">
                                 <div className={`bg-[#0D5C02] p-2 rounded-lg hover:bg-[#37822c] border-2 border-[#BA9503] cursor-pointer flex flex-col justify-center items-center text-[#BA9503] font-semibold ${type === "محل" && "bg-[#37822c]"}`} onClick={() => setType("محل")}><CiShop size={30} color="#BA9503" /></div>
-                                <div className={`bg-[#0D5C02] p-2 rounded-lg hover:bg-[#37822c] border-2 border-[#BA9503] cursor-pointer flex flex-col justify-center items-center text-[#BA9503] font-semibold ${type === "فلا" && "bg-[#37822c]"}`} onClick={() => setType("فلا")}><MdOutlineVilla size={30} color="#BA9503" /></div></div>
+                                <div className={`bg-[#0D5C02] p-2 rounded-lg hover:bg-[#37822c] border-2 border-[#BA9503] cursor-pointer flex flex-col justify-center items-center text-[#BA9503] font-semibold ${type === "فيلا" && "bg-[#37822c]"}`} onClick={() => setType("فيلا")}><MdOutlineVilla size={30} color="#BA9503" /></div></div>
                         </div>
                         <Link to={
                             !city && !room && !price && !area && !type
@@ -63,6 +65,7 @@ function Filter() {
                             <Button text={"بحث"} />
                         </Link>
                     </div>
+
 
                     {/* Mobile Menu Button */}
                     <div className="flex md:hidden">
@@ -101,7 +104,7 @@ function Filter() {
                         </div>
                         <div className="flex gap-2">
                             <div className={`bg-[#0D5C02] p-2 rounded-lg hover:bg-[#37822c] border-2 border-[#BA9503] cursor-pointer flex flex-col justify-center items-center text-[#BA9503] font-semibold ${type === "محل" && "bg-[#37822c]"}`} onClick={() => setType("محل")}><CiShop size={30} color="#BA9503" /></div>
-                            <div className={`bg-[#0D5C02] p-2 rounded-lg hover:bg-[#37822c] border-2 border-[#BA9503] cursor-pointer flex flex-col justify-center items-center text-[#BA9503] font-semibold ${type === "فلا" && "bg-[#37822c]"}`} onClick={() => setType("فلا")}><MdOutlineVilla size={30} color="#BA9503" /></div></div>
+                            <div className={`bg-[#0D5C02] p-2 rounded-lg hover:bg-[#37822c] border-2 border-[#BA9503] cursor-pointer flex flex-col justify-center items-center text-[#BA9503] font-semibold ${type === "فيلا" && "bg-[#37822c]"}`} onClick={() => setType("فيلا")}><MdOutlineVilla size={30} color="#BA9503" /></div></div>
                     </div>
                     <Link to={
                         !city && !room && !price && !area && !type
