@@ -1,36 +1,8 @@
 import data from '../Lib/DummyData.json';
+import { CardDetailsProps } from "../Lib/DataType"
+import { CategoryData } from "../Lib/DataType"
 
-export type CardDetailsProps = {
-    id?: string,
-    description?: string,
-    images?: string[],
-    address?: string,
-    prise?: number,
-    rooms?: number,
-    phone?: number,
-    location?: { lat: number, lng: number },
-    city?: string,
-    area?: number,
-    type?: string,
-};
-
-export type CategoryData = {
-    key: string;
-    label: string;
-    count: number;
-};
-
-
-for (let i = 0; i < data.length; i++) {
-    (data[i] as CardDetailsProps).id = `item-${i}`;
-}
-
-/**
- * Simulates async loading of the dataset from an external source.
- * (data is inlined for simplicity in our build process)
- */
 export async function loadItemDataset(): Promise<CardDetailsProps[]> {
-    // simulate loading the trees from an external source
     return new Promise(resolve => {
         setTimeout(() => resolve(data as CardDetailsProps[]), 500);
     });

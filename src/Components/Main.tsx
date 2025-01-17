@@ -5,8 +5,9 @@ import Filter from "./Filter";
 import { FaList, FaMapLocation } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import { APIProvider, Map } from '@vis.gl/react-google-maps';
-import { loadItemDataset, CardDetailsProps } from './items';
+import { loadItemDataset } from './items';
 import { ClusteredMarkers } from './clusteredMarkers';
+import { CardDetailsProps } from "../Lib/DataType";
 
 const Main = () => {
     const [show, setShow] = useState<string>("list");
@@ -14,7 +15,6 @@ const Main = () => {
     useEffect(() => {
         loadItemDataset().then(data => setItems(data));
     }, []);
-    // get category information for the filter-dropdown
 
     return (
         <>
@@ -25,7 +25,7 @@ const Main = () => {
             </div>
             {show === "list" ?
                 <main className="flex flex-col overflow-y-auto h-full p-3 gap-2 sm:grid sm:grid-cols-2 lg:grid-cols-3 bg-[#d2f2ce]">
-                    {data.map((item) => <Link key={item.id} to={`/item?id=${item.id}`}><Card key={item.id} description={item.description} primaryImage={item.images[0]} prise={item.prise} area={item.area} /></Link>)}
+                    {data.map((item) => <Link key={item.id} to={`/item?id=${item.id}`}><Card key={item.id} description={item.description} images={item.images} prise={item.prise} area={item.area} /></Link>)}
                 </main>
                 :
                 <div className="bg-[#d2f2ce] flex justify-center items-center h-full text-3xl p-1">
@@ -40,14 +40,6 @@ const Main = () => {
                             colorScheme="FOLLOW_SYSTEM"
                         >
                             {<ClusteredMarkers items={item!} />}
-                            {/*selectedMarker && (
-                                <Link to={`/item?id=${id}`}><div className="absolute top-2 right-2 bg-white p-2 shadow-lg rounded-lg z-50 cursor-pointer">
-                                    <h4>{selectedMarker.id}</h4>
-                                    <p>Latitude: {selectedMarker.location?.lat}</p>
-                                    <p>Longitude: {selectedMarker.location?.lng}</p>
-                                </div></Link>
-
-                            )*/}
                         </Map>
                     </APIProvider>
                 </div>}

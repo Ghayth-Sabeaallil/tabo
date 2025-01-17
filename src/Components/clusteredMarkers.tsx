@@ -1,28 +1,24 @@
 import { InfoWindow, useMap } from '@vis.gl/react-google-maps';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { type Marker, MarkerClusterer } from '@googlemaps/markerclusterer';
-import { CardDetailsProps } from './items';
-import { ItemMarker } from './Marker';
+import { CardDetailsProps } from '../Lib/DataType';
+import { ItemMarker } from './ItemMarker';
 import { Link } from 'react-router-dom';
 
 export type ClusteredItemMarkersProps = {
     items: CardDetailsProps[];
 };
 
-/**
- * The ClusteredTreeMarkers component is responsible for integrating the
- * markers with the markerclusterer.
- */
 export const ClusteredMarkers = ({ items }: ClusteredItemMarkersProps) => {
     const [markers, setMarkers] = useState<{ [id: string]: Marker }>({});
-    const [selectedTreeKey, setSelectedTreeKey] = useState<string | null>(null);
+    const [selectedItemKey, setSelectedItemKey] = useState<string | null>(null);
 
-    const selectedTree = useMemo(
+    const selectedItem = useMemo(
         () =>
-            items && selectedTreeKey
-                ? items.find(t => t.id === selectedTreeKey)!
+            items && selectedItemKey
+                ? items.find(t => t.id === selectedItemKey)!
                 : null,
-        [items, selectedTreeKey]
+        [items, selectedItemKey]
     );
 
     // create the markerClusterer once the map is available and update it when
@@ -59,11 +55,11 @@ export const ClusteredMarkers = ({ items }: ClusteredItemMarkersProps) => {
     }, []);
 
     const handleInfoWindowClose = useCallback(() => {
-        setSelectedTreeKey(null);
+        setSelectedItemKey(null);
     }, []);
 
-    const handleMarkerClick = useCallback((tree: CardDetailsProps) => {
-        setSelectedTreeKey(tree.id!);
+    const handleMarkerClick = useCallback((item: CardDetailsProps) => {
+        setSelectedItemKey(item.id!);
     }, []);
 
     return (
@@ -77,13 +73,13 @@ export const ClusteredMarkers = ({ items }: ClusteredItemMarkersProps) => {
                 />
             ))}
 
-            {selectedTreeKey && (
+            {selectedItemKey && (
 
                 <InfoWindow
-                    anchor={markers[selectedTreeKey]}
+                    anchor={markers[selectedItemKey]}
                     onCloseClick={handleInfoWindowClose}>
-                    <Link to={`/item?id=${selectedTree?.id}`}>Open Link</Link>
-                    {selectedTree?.description}
+                    <Link to={`/item?id=${selectedItem?.id}`}>Open Link</Link>
+                    {selectedItem?.description}
                 </InfoWindow>
             )}
         </>

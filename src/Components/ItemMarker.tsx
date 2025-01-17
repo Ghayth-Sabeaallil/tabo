@@ -1,4 +1,4 @@
-import { CardDetailsProps } from './items';
+import { CardDetailsProps } from '../Lib/DataType';
 import type { Marker } from '@googlemaps/markerclusterer';
 import { useCallback } from 'react';
 import { AdvancedMarker } from '@vis.gl/react-google-maps';
@@ -10,9 +10,6 @@ export type ItemMarkerProps = {
     setMarkerRef: (marker: Marker | null, id: string) => void;
 };
 
-/**
- * Wrapper Component for an AdvancedMarker for a single tree.
- */
 export const ItemMarker = (props: ItemMarkerProps) => {
     const { item, onClick, setMarkerRef } = props;
 
