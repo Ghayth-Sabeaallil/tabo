@@ -27,9 +27,9 @@ const Main = () => {
                 const area = searchParams.get('area');
                 const price = searchParams.get('price');
                 const type = searchParams.get('type');
-                console.log(Number(room))
-
                 const itemsData = getByFilter(city, type, Number(room), Number(price + "000000"), Number(area));
+                console.log(itemsData)
+
                 setItems(await itemsData);
             }
         };
