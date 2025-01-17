@@ -2,7 +2,7 @@ import Footer from "../Components/Footer";
 import Header from "../Components/Header"
 import Main from "../Components/Main";
 
-function Search() {
+function SearchPage() {
     document.title = "طابو";
 
     return (
@@ -14,4 +14,4 @@ function Search() {
     )
 }
 
-export default Search
+export default SearchPage

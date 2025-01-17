@@ -1,7 +1,7 @@
 import Footer from "../Components/Footer";
 import Header from "../Components/Header"
 
-function PrivacyPolicy() {
+function PrivacyPolicyPage() {
     document.title = "طابو -  سياسة الخصوصية";
 
     return (
@@ -48,4 +48,4 @@ function PrivacyPolicy() {
     )
 }
 
-export default PrivacyPolicy
+export default PrivacyPolicyPage

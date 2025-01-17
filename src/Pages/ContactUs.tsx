@@ -1,7 +1,7 @@
 import Footer from "../Components/Footer";
 import Header from "../Components/Header"
 
-function ContactUs() {
+function ContactUsPage() {
     document.title = "طابو - اتصل بنا";
 
     return (
@@ -23,4 +23,4 @@ function ContactUs() {
     )
 }
 
-export default ContactUs
+export default ContactUsPage

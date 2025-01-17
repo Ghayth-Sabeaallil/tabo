@@ -2,7 +2,7 @@ import MainFilter from "../Components/MainFilter";
 import Footer from "../Components/Footer";
 import Header from "../Components/Header"
 
-function Home() {
+function HomePage() {
     document.title = "طابو - الرئيسية";
 
     return (
@@ -15,4 +15,4 @@ function Home() {
     )
 }
 
-export default Home
+export default HomePage

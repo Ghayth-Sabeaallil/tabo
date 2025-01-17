@@ -11,9 +11,3 @@ export type CardDetailsProps = {
     area?: number,
     type?: string,
 };
-
-export type CategoryData = {
-    key: string;
-    label: string;
-    count: number;
-};
