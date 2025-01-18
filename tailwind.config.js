@@ -7,6 +7,13 @@ export default {
         Amiri: ["Amiri", "serif"],
         Kufi: ["Reem Kufi", "serif"],
       },
+      colors: {
+        header: "#4E342E",
+        footer: "#4E342E",
+        text: "#BA9503",
+        buttom: "#4E342E",
+        bg: "#d1b580",
+      },
     },
   },
   variants: {},

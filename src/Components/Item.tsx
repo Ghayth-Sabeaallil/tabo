@@ -3,6 +3,8 @@ import { useLocation } from "react-router-dom";
 import { CardDetailsProps } from "../Lib/DataType";
 import { getById } from "../Lib/getById";
 import { SyncLoader } from "react-spinners";
+import { Carousel } from "./Carousel"
+import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps';
 
 const Item = () => {
     const [item, setItem] = useState<CardDetailsProps>();
@@ -16,29 +18,67 @@ const Item = () => {
         };
         fetchData();
     }, []);
-    const images = ["https://media.istockphoto.com/id/1350191166/sv/foto/fluffy-silver-colored-cat-looking-grumpy-and-displeased-on-brown-background.webp?s=2048x2048&w=is&k=20&c=9c4FJPa6oQjDbFWsjH29KJuG-IK0K1I2yADxJX1uofM=", "https://media.istockphoto.com/id/1350190494/sv/foto/fluffy-british-shorthair-cat-making-funny-face-with-mouth-open-meowing-on-yellow-background.jpg?s=1024x1024&w=is&k=20&c=u9ZtLSWmhHA1N5eQcPLNurni2mp7aNijDopT3LvC8Ng=", "https://media.istockphoto.com/id/1061222330/sv/foto/portr%C3%A4tt-av-s%C3%B6t-katt-skotska-rak-i-studio-med-gul-bakgrund-n%C3%A4rbild.jpg?s=1024x1024&w=is&k=20&c=4TxzZTpNTZoD00ric_AWvGkpOhvnLfPU26bysCp8tw4="];
+    const images = ["https://scontent-cph2-1.xx.fbcdn.net/v/t39.30808-6/473335188_583727624547034_1253354622655972216_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=wSCigR_TbRYQ7kNvgHhbGG6&_nc_zt=23&_nc_ht=scontent-cph2-1.xx&_nc_gid=AKxpcDoinxB56lqGfqUOLnN&oh=00_AYAWJ7rjU6UBpb2sUrQyJSJY4x4qvj3SR9HMkJ48ujVxqg&oe=6791D6D9", "https://scontent-cph2-1.xx.fbcdn.net/v/t39.30808-6/473547993_583726741213789_7890978986408338988_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=MjSZXHuS8AAQ7kNvgHHrRPQ&_nc_zt=23&_nc_ht=scontent-cph2-1.xx&_nc_gid=AgzjtmapyORDg2LFA-Ky7Sw&oh=00_AYDjteozoNC4VOmWe953-dZWWNUUdBDJB0KZz-2x3dqT0w&oe=6791EF23", "https://scontent-cph2-1.xx.fbcdn.net/v/t39.30808-6/473441332_583726834547113_7342916829017956123_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=lcK6MVcpbjkQ7kNvgGwNXbO&_nc_zt=23&_nc_ht=scontent-cph2-1.xx&_nc_gid=A1CU2HfHrCJIhgNTAnXsS2f&oh=00_AYASXB09usGXElkhe78Nu5LtqI5APsdlhfG7Xm8uTNhADA&oe=6791F1B0"];
     return (
         <>
-            <div className="h-full bg-[#d2f2ce] p-4 flex justify-center items-center">{item ?
-                <div className="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-2">
-                    <div className="flex flex-col justify-center items-center gap-4"><p className="text-[#BA9503] text-2xl font-bold font-Amiri">تواصل مباشرة مع مالك العقار</p>
-                        <a aria-label="تواصل عبر الواتساب" href={`https://wa.me/963${item.phone}`}><img alt="Chat on WhatsApp" src="/WhatsAppButtonGreenLarge.svg" /></a>
-                        <svg viewBox="0 0 24 24" fill="none" width={"15%"} xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="12" cy="17" r="1" fill="#BA9503"></circle> <path d="M12 10L12 14" stroke="#BA9503" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> <path d="M3.44722 18.1056L10.2111 4.57771C10.9482 3.10361 13.0518 3.10362 13.7889 4.57771L20.5528 18.1056C21.2177 19.4354 20.2507 21 18.7639 21H5.23607C3.7493 21 2.78231 19.4354 3.44722 18.1056Z" stroke="#BA9503" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> </g></svg>
-                        <p className="text-[#BA9503] text-3xl font-bold font-Amiri">تحذير هام</p>
-                        <p className="text-[#BA9503] text-2xl font-bold font-Amiri text-center">نحن لسنا مسؤولون عن عمليات الاحتيال</p>
-                        <p className="text-[#BA9503] text-2xl font-bold font-Amiri text-center">يرجى التأكد دائما من صحة المعلومات و تطابقها مع العقود</p>
+            {item &&
+                <div className="flex flex-col gap-4 bg-[#d2f2ce] p-4 h-auto">
+                    <div className="flex gap-2 justify-center items-center">
+                        <div className="grid-cols-1 sm:grid-cols-1 md:grid-cols-5 grid justify-center items-center gap-2">
+                            <div className="col-span-3 md:pl-20"><Carousel images={images} /></div>
+                            <div className="col-span-2 flex flex-col gap-2">
+                                <div className="grid grid-cols-2 border-2 border-[#0D5C02] rounded-xl p-2">
+                                    <div className="flex flex-col gap-3">
+                                        <p className="text-[#BA9503] text-xl font-semibold">المدينة</p>
+                                        <p className="text-[#BA9503] text-xl font-semibold">العنوان</p>
+                                        <p className="text-[#BA9503] text-xl font-semibold">السعر</p>
+                                        <p className="text-[#BA9503] text-xl font-semibold">المساحة</p>
+                                        <p className="text-[#BA9503] text-xl font-semibold">النوع</p>
+                                        <p className="text-[#BA9503] text-xl font-semibold">عدد الغرف</p>
+                                        <p className="text-[#BA9503] text-xl font-semibold">الوصف</p>
+                                    </div>
+                                    <div className="flex flex-col gap-3">
+                                        <p className="text-[#BA9503] text-xl">{item.city}</p>
+                                        <p className="text-[#BA9503] text-xl">{item.address}</p>
+                                        <p className="text-[#BA9503] text-xl">{item.area}</p>
+                                        <p className="text-[#BA9503] text-xl">{item.prise} ل.س</p>
+                                        <p className="text-[#BA9503] text-xl">{item.type}</p>
+                                        <p className="text-[#BA9503] text-xl">{item.rooms}</p>
+                                        <p className="text-[#BA9503] text-xl h-36 overflow-auto">{item.description}</p>
+                                    </div>
+                                </div>
+                                <a aria-label="تواصل عبر الواتساب" href={`https://wa.me/963${item.phone}`}><div className="border-2 border-[#0D5C02] bg-[#25D366] text-white flex justify-center items-center gap-4 font-Amiri text-3xl p-2 rounded-xl"><p>تواصل عبر الواتساب</p><svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6.014 8.00613C6.12827 7.1024 7.30277 5.87414 8.23488 6.01043L8.23339 6.00894C9.14051 6.18132 9.85859 7.74261 10.2635 8.44465C10.5504 8.95402 10.3641 9.4701 10.0965 9.68787C9.7355 9.97883 9.17099 10.3803 9.28943 10.7834C9.5 11.5 12 14 13.2296 14.7107C13.695 14.9797 14.0325 14.2702 14.3207 13.9067C14.5301 13.6271 15.0466 13.46 15.5548 13.736C16.3138 14.178 17.0288 14.6917 17.69 15.27C18.0202 15.546 18.0977 15.9539 17.8689 16.385C17.4659 17.1443 16.3003 18.1456 15.4542 17.9421C13.9764 17.5868 8 15.27 6.08033 8.55801C5.97237 8.24048 5.99955 8.12044 6.014 8.00613Z" fill="#fff"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 23C10.7764 23 10.0994 22.8687 9 22.5L6.89443 23.5528C5.56462 24.2177 4 23.2507 4 21.7639V19.5C1.84655 17.492 1 15.1767 1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23ZM6 18.6303L5.36395 18.0372C3.69087 16.4772 3 14.7331 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C11.0143 21 10.552 20.911 9.63595 20.6038L8.84847 20.3397L6 21.7639V18.6303Z" fill="#fff"></path> </g></svg></div></a>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-
-                    </div>
+                    <div className="flex-grow w-full h-[300px] md:h-[400px]">
+                        <APIProvider apiKey={'AIzaSyBNh-K6y7-8uOgzJt1L-D5s0GHbgjksvuI'} onLoad={() => console.log('Maps API has loaded.')}>
+                            <Map
+                                mapId={'bf51a910020fa25a'}
+                                defaultZoom={17}
+                                defaultCenter={{ lat: item.location?.lat!, lng: item.location?.lng! }}
+                                gestureHandling={'greedy'}
+                                mapTypeId="roadmap"
+                                disableDefaultUI={false}
+                                colorScheme="FOLLOW_SYSTEM"
+                            >
+                                <Marker
+                                    position={{ lat: item.location?.lat!, lng: item.location?.lng! }}
+                                />
+                            </Map>
+                        </APIProvider></div>
                 </div>
-                : <SyncLoader
-                    color={"#0D5C02"}
-                    loading={true}
-                    size={20}
-                    aria-label="Loading Spinner"
-                    data-testid="SyncLoader"
-                />}</div>
+            }
+
+
+
+            {!item && <div className="flex justify-center items-center bg-[#d2f2ce] h-full"><SyncLoader
+                color={"#0D5C02"}
+                loading={true}
+                size={20}
+                aria-label="Loading Spinner"
+                data-testid="SyncLoader"
+            /></div>}
         </>
 
     );

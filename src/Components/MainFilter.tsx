@@ -19,15 +19,15 @@ function MainFilter() {
     const minArea: number[] = [40, 60, 90, 120, 150, 200, 250, 350, 500];
 
     return (
-        <div className="flex flex-col justify-center items-center h-full bg-[#d2f2ce] gap-4">
+        <div className="flex flex-col justify-center items-center h-full bg-bg gap-4">
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 gap-2">
                 <div className="flex flex-col sm:flex-col md:flex-row gap-2">
-                    <div className={`bg-[#0D5C02] p-4 rounded-lg hover:bg-[#37822c] border-2 border-[#BA9503] cursor-pointer flex flex-col justify-center items-center text-[#BA9503] font-semibold ${type === "شقة" && "bg-[#37822c]"}`} onClick={() => setType("شقة")}><MdApartment size={40} color="#BA9503" />شقق</div>
-                    <div className={`bg-[#0D5C02] p-4 rounded-lg hover:bg-[#37822c] border-2 border-[#BA9503] cursor-pointer flex flex-col justify-center items-center text-[#BA9503] font-semibold ${type === "أرض" && "bg-[#37822c]"}`} onClick={() => setType("أرض")}><PiFarm size={40} color="#BA9503" />أراضي</div>
+                    <div className={`bg-buttom p-4 rounded-lg hover:bg-bg border-2 border-text cursor-pointer flex flex-col justify-center items-center text-text font-semibold ${type === "شقة" && "bg-[#d1b580]"}`} onClick={() => setType("شقة")}><MdApartment size={40} color="#BA9503" />شقق</div>
+                    <div className={`bg-buttom p-4 rounded-lg hover:bg-bg border-2 border-text cursor-pointer flex flex-col justify-center items-center text-text font-semibold ${type === "أرض" && "bg-[#d1b580]"}`} onClick={() => setType("أرض")}><PiFarm size={40} color="#BA9503" />أراضي</div>
                 </div>
                 <div className="flex flex-col sm:flex-col md:flex-row gap-2">
-                    <div className={`bg-[#0D5C02] p-4 rounded-lg hover:bg-[#37822c] border-2 border-[#BA9503] cursor-pointer flex flex-col justify-center items-center text-[#BA9503] font-semibold ${type === "محل" && "bg-[#37822c]"}`} onClick={() => setType("محل")}><CiShop size={40} color="#BA9503" />محال</div>
-                    <div className={`bg-[#0D5C02] p-4 rounded-lg hover:bg-[#37822c] border-2 border-[#BA9503] cursor-pointer flex flex-col justify-center items-center text-[#BA9503] font-semibold ${type === "فيلا" && "bg-[#37822c]"}`} onClick={() => setType("فيلا")}><MdOutlineVilla size={40} color="#BA9503" />فلل</div></div>
+                    <div className={`bg-buttom p-4 rounded-lg hover:bg-bg border-2 border-text cursor-pointer flex flex-col justify-center items-center text-text font-semibold ${type === "محل" && "bg-[#d1b580]"}`} onClick={() => setType("محل")}><CiShop size={40} color="#BA9503" />محال</div>
+                    <div className={`bg-buttom p-4 rounded-lg hover:bg-bg border-2 border-text cursor-pointer flex flex-col justify-center items-center text-text font-semibold ${type === "فيلا" && "bg-[#d1b580]"}`} onClick={() => setType("فيلا")}><MdOutlineVilla size={40} color="#BA9503" />فلل</div></div>
             </div>
             <div className="flex flex-col gap-10 w-3/5 sm:w-2/5 md:w-2/5">
                 <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4 justify-center items-center">
