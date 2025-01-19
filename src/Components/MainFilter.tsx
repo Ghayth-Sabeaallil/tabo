@@ -15,7 +15,7 @@ function MainFilter() {
 
     const citys: string[] = ["دمشق", "حلب", "حمص", "اللاذقية", "حماة", "دير الزور", "الرقة", "الحسكة", "طرطوس", "السويداء", "درعا", "القامشلي", "إدلب", "ريف دمشق"];
     const minRooms: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    const minPrise: number[] = [50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 1000];
+    const minPrice: number[] = [50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 1000];
     const minArea: number[] = [40, 60, 90, 120, 150, 200, 250, 350, 500];
 
     return (
@@ -30,7 +30,7 @@ function MainFilter() {
                 <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4 justify-center items-center">
                     <DropDownMenu options={citys} onSelect={(option) => setCity(String(option))} placeHolder={"المدينة"} />
                     <DropDownMenu options={minRooms} onSelect={(option) => setRoom(Number(option))} placeHolder={"الحد الأقصى للغرف"} />
-                    <DropDownMenu options={minPrise} onSelect={(option) => setPrice(Number(option))} placeHolder={"الحد الأقصى للسعر"} type="price" />
+                    <DropDownMenu options={minPrice} onSelect={(option) => setPrice(Number(option))} placeHolder={"الحد الأقصى للسعر"} type="price" />
                     <DropDownMenu options={minArea} onSelect={(option) => setArea(Number(option))} placeHolder={"الحد الأقصى للمساحة"} type="area" />
                 </div>
 

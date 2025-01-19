@@ -3,7 +3,7 @@ export type CardDetailsProps = {
     description?: string,
     images?: string[],
     address?: string,
-    prise?: number,
+    price?: number,
     rooms?: number,
     phone?: number,
     location?: { lat: number, lng: number },

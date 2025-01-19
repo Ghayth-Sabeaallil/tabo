@@ -43,7 +43,7 @@ const Item = () => {
                                         <p className="text-[#BA9503] text-xl">{item.date_created}</p>
                                         <p className="text-[#BA9503] text-xl">{item.city}</p>
                                         <p className="text-[#BA9503] text-xl">{item.address}</p>
-                                        <p className="text-[#BA9503] text-xl">{formatPrice(item.prise!)} ل.س</p>
+                                        <p className="text-[#BA9503] text-xl">{formatPrice(item.price!)} ل.س</p>
                                         <p className="text-[#BA9503] text-xl">{item.area}</p>
                                         <p className="text-[#BA9503] text-xl">{item.type}</p>
                                         <p className="text-[#BA9503] text-xl">{item.rooms}</p>

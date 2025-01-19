@@ -25,7 +25,7 @@ function Filter() {
 
     const citys: string[] = ["دمشق", "حلب", "حمص", "اللاذقية", "حماة", "دير الزور", "الرقة", "الحسكة", "طرطوس", "السويداء", "درعا", "القامشلي", "إدلب", "ريف دمشق"];
     const minRooms: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    const minPrise: number[] = [50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 1000];
+    const minPrice: number[] = [50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 1000];
     const minArea: number[] = [40, 60, 90, 120, 150, 200, 250, 350, 500];
 
 
@@ -38,7 +38,7 @@ function Filter() {
                     <div className="hidden md:flex gap-4 justify-center items-center">
                         <DropDownMenu options={citys} onSelect={(option) => setCity(String(option))} placeHolder={paramsObj["city"] ? paramsObj["city"] : "المدينة"} />
                         <DropDownMenu options={minRooms} onSelect={(option) => setRoom(Number(option))} placeHolder={paramsObj["room"] ? paramsObj["room"] : "الحد الأقصى للغرف"} />
-                        <DropDownMenu options={minPrise} onSelect={(option) => setPrice(Number(option))} placeHolder={paramsObj["price"] ? paramsObj["price"] : "الحد الأقصى للسعر"} type="price" />
+                        <DropDownMenu options={minPrice} onSelect={(option) => setPrice(Number(option))} placeHolder={paramsObj["price"] ? paramsObj["price"] : "الحد الأقصى للسعر"} type="price" />
                         <DropDownMenu options={minArea} onSelect={(option) => setArea(Number(option))} placeHolder={paramsObj["area"] ? paramsObj["area"] : "الحد الأقصى للمساحة"} type="area" />
                         <div className="flex gap-2">
                             <div className="flex gap-2">
@@ -94,7 +94,7 @@ function Filter() {
                         <DropDownMenu options={minRooms} onSelect={(option) => setRoom(Number(option))} placeHolder={paramsObj["room"] ? paramsObj["room"] : "الحد الأقصى للغرف"} />
                     </div>
                     <div className="grid grid-cols-2 w-full">
-                        <DropDownMenu options={minPrise} onSelect={(option) => setPrice(Number(option))} placeHolder={paramsObj["price"] ? paramsObj["price"] : "الحد الأقصى للسعر"} type="price" />
+                        <DropDownMenu options={minPrice} onSelect={(option) => setPrice(Number(option))} placeHolder={paramsObj["price"] ? paramsObj["price"] : "الحد الأقصى للسعر"} type="price" />
                         <DropDownMenu options={minArea} onSelect={(option) => setArea(Number(option))} placeHolder={paramsObj["area"] ? paramsObj["area"] : "الحد الأقصى للمساحة"} type="area" />
                     </div>
                     <div className="flex gap-2">

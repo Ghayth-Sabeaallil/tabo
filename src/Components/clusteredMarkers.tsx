@@ -12,7 +12,7 @@ export type ClusteredItemMarkersProps = {
 };
 
 export const ClusteredMarkers = ({ items }: ClusteredItemMarkersProps) => {
-    const [markers, setMarkers] = useState<{ [id: string]: Marker }>({});
+    const [markers, setMarkers] = useState<{ [id: number]: Marker }>({});
     const [selectedItemKey, setSelectedItemKey] = useState<number | null>(null);
 
     const selectedItem = useMemo(
@@ -41,7 +41,7 @@ export const ClusteredMarkers = ({ items }: ClusteredItemMarkersProps) => {
 
     // this callback will effectively get passsed as ref to the markers to keep
     // tracks of markers currently on the map
-    const setMarkerRef = useCallback((marker: Marker | null, id: string) => {
+    const setMarkerRef = useCallback((marker: Marker | null, id: number) => {
         setMarkers(markers => {
             if ((marker && markers[id]) || (!marker && !markers[id]))
                 return markers;
@@ -85,7 +85,7 @@ export const ClusteredMarkers = ({ items }: ClusteredItemMarkersProps) => {
                         <IoCloseCircle onClick={handleInfoWindowClose} className='absolute top-4 right-4 cursor-pointer' color='white' size={20} />
                         <img className='border-2 border-black rounded' src={selectedItem?.images![0]} alt="" />
                         <p className='text-[#BA9503] text-base font-bold font-Amiri line-clamp-3'>{selectedItem?.description}</p>
-                        <p className='text-[#0D5C02] text-base font-bold font-Amiri'>{formatPrice(selectedItem?.prise!)} ل.س</p>
+                        <p className='text-[#0D5C02] text-base font-bold font-Amiri'>{formatPrice(selectedItem?.price!)} ل.س</p>
                         <Link className='text-blue text-sm font-bold font-Amiri underline-offset-1 text-blue-700' to={`/item?id=${selectedItem?.id}`}>لمزيد من التفاصيل ...</Link>
                     </div>
                 </InfoWindow>
