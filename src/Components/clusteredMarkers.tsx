@@ -86,7 +86,7 @@ export const ClusteredMarkers = ({ items }: ClusteredItemMarkersProps) => {
                         <img className='border-2 border-black rounded' src={selectedItem?.images![0]} alt="" />
                         <p className='text-[#BA9503] text-base font-bold font-Amiri line-clamp-3'>{selectedItem?.description}</p>
                         <p className='text-[#0D5C02] text-base font-bold font-Amiri'>{formatPrice(selectedItem?.prise!)} ل.س</p>
-                        <Link className='text-blue text-sm font-bold font-Amiri underline-offset-1' to={`/item?id=${selectedItem?.id}`}>انقر للتفاصيل</Link>
+                        <Link className='text-blue text-sm font-bold font-Amiri underline-offset-1 text-blue-700' to={`/item?id=${selectedItem?.id}`}>لمزيد من التفاصيل ...</Link>
                     </div>
                 </InfoWindow>
             )}
