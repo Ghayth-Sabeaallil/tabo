@@ -34,7 +34,7 @@ export const Carousel: React.FC<CarouselProps> = ({ images }) => {
     return (
         <div className="flex">
             {/* Carousel */}
-            <div className="relative w-full h-[16rem] sm:h-[20rem] md:h-[24rem] lg:h-[26rem] overflow-hidden rounded-md shadow-lg">
+            <div className="relative w-full h-[16rem] sm:h-[20rem] md:h-[24rem] lg:h-[26rem] overflow-hidden rounded-md shadow-lg border border-4 border-header">
                 <IoIosArrowBack onClick={handleNext}
                     className="absolute left-2 top-1/2 transform -translate-y-1/2 text-white text-3xl font-bold bg-gray-700 bg-opacity-50 rounded-full p-2 hover:bg-opacity-75 z-10" size={35} />
 

@@ -25,8 +25,8 @@ const Item = () => {
                 <div className="flex flex-col gap-4 bg-bg bg-opacity-50 p-4 h-auto">
                     <div className="flex gap-2 justify-center items-center">
                         <div className="grid-cols-1 sm:grid-cols-1 md:grid-cols-5 grid justify-center items-center gap-2">
-                            <div className="col-span-3 md:pl-20"><Carousel images={images} /></div>
-                            <div className="col-span-2 flex flex-col gap-2">
+                            <div className="md:col-span-3 md:pl-20"><Carousel images={images} /></div>
+                            <div className="md:col-span-2 flex flex-col gap-2">
                                 <div className="grid grid-cols-2 border-2 border-bg bg-header rounded-xl p-2">
                                     <div className="flex flex-col gap-3">
                                         <p className="text-[#BA9503] text-xl font-semibold">المدينة</p>
