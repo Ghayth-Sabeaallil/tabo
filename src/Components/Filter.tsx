@@ -30,7 +30,7 @@ function Filter() {
 
 
     return (
-        <div className="text-black font-bold shadow-xl bg-bg">
+        <div className="text-black font-bold shadow-xl bg-bg bg-opacity-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 p-2">
                 <div className="flex justify-center items-center h-fit">
 

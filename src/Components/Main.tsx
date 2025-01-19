@@ -39,12 +39,12 @@ const Main = () => {
     return (
         <>
             <Filter />
-            <div className="flex gap-4 bg-bg p-1 pr-5">
+            <div className="flex gap-4 bg-bg bg-opacity-50 p-1 pr-5">
                 <div className="cursor-pointer" onClick={() => setShow("map")}><FaMapLocation size={20} color="#4E342E" /></div>
                 <div className="cursor-pointer" onClick={() => setShow("list")}><FaList size={20} color="#4E342E" /></div>
             </div>
             {show === "list" && items?.length! > 0 ?
-                <main className="flex flex-col overflow-y-auto h-full p-3 gap-2 sm:grid sm:grid-cols-2 lg:grid-cols-3 bg-bg">
+                <main className="flex flex-col overflow-y-auto h-full p-3 gap-2 sm:grid sm:grid-cols-2 lg:grid-cols-3 bg-bg bg-opacity-50">
                     {items!.map((item) => <Link key={item.id} to={`/item?id=${item.id}`}><Card key={item.id} description={item.description} images={item.images} prise={item.prise} area={item.area} /></Link>)}
                 </main>
                 : show === "map" && items?.length! > 0 ?
@@ -62,7 +62,7 @@ const Main = () => {
                                 {<ClusteredMarkers items={items!} />}
                             </Map>
                         </APIProvider>
-                    </div> : <div className="flex justify-center items-center h-full bg-bg"><SyncLoader
+                    </div> : <div className="flex justify-center items-center h-full bg-bg bg-opacity-50"><SyncLoader
                         color={"#4E342E"}
                         loading={true}
                         size={20}

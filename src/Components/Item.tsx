@@ -22,7 +22,7 @@ const Item = () => {
     return (
         <>
             {item &&
-                <div className="flex flex-col gap-4 bg-bg p-4 h-auto">
+                <div className="flex flex-col gap-4 bg-bg bg-opacity-50 p-4 h-auto">
                     <div className="flex gap-2 justify-center items-center">
                         <div className="grid-cols-1 sm:grid-cols-1 md:grid-cols-5 grid justify-center items-center gap-2">
                             <div className="col-span-3 md:pl-20"><Carousel images={images} /></div>
@@ -72,7 +72,7 @@ const Item = () => {
 
 
 
-            {!item && <div className="flex justify-center items-center bg-bg h-full"><SyncLoader
+            {!item && <div className="flex justify-center items-center bg-bg bg-opacity-50 h-full"><SyncLoader
                 color={"#4E342E"}
                 loading={true}
                 size={20}
