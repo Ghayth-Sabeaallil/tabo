@@ -78,7 +78,7 @@ export const ClusteredMarkers = ({ items }: ClusteredItemMarkersProps) => {
                 <InfoWindow
                     anchor={markers[selectedItemKey]}
                     onCloseClick={handleInfoWindowClose}>
-                    <div className='flex flex-col justify-center w-40 gap-1'>
+                    <div className='flex flex-col justify-center w-40 gap-2 m-2'>
                         <img className='border-2 border-black rounded' src={selectedItem?.images![0]} alt="" />
                         <p className='text-[#BA9503] text-base font-bold font-Amiri'>{selectedItem?.description}</p>
                         <p className='text-[#0D5C02] text-base font-bold font-Amiri'>{selectedItem?.prise} ل.س</p>
