@@ -7,7 +7,7 @@ import { IoMdPin } from 'react-icons/io';
 export type ItemMarkerProps = {
     item: CardDetailsProps;
     onClick: (item: CardDetailsProps) => void;
-    setMarkerRef: (marker: Marker | null, id: string) => void;
+    setMarkerRef: (marker: Marker | null, id: number) => void;
 };
 
 export const ItemMarker = (props: ItemMarkerProps) => {

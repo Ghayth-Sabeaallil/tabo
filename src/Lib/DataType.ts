@@ -1,5 +1,5 @@
 export type CardDetailsProps = {
-    id?: string,
+    id?: number,
     description?: string,
     images?: string[],
     address?: string,

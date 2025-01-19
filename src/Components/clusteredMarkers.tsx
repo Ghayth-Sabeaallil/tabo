@@ -4,7 +4,7 @@ import { type Marker, MarkerClusterer } from '@googlemaps/markerclusterer';
 import { CardDetailsProps } from '../Lib/DataType';
 import { ItemMarker } from './ItemMarker';
 import { Link } from 'react-router-dom';
-import { IoCloseCircle, IoCloseCircleOutline } from 'react-icons/io5';
+import { IoCloseCircle } from 'react-icons/io5';
 import { formatPrice } from '../Lib/formatPrice';
 
 export type ClusteredItemMarkersProps = {
@@ -13,7 +13,7 @@ export type ClusteredItemMarkersProps = {
 
 export const ClusteredMarkers = ({ items }: ClusteredItemMarkersProps) => {
     const [markers, setMarkers] = useState<{ [id: string]: Marker }>({});
-    const [selectedItemKey, setSelectedItemKey] = useState<string | null>(null);
+    const [selectedItemKey, setSelectedItemKey] = useState<number | null>(null);
 
     const selectedItem = useMemo(
         () =>
