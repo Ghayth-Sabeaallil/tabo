@@ -1,7 +1,9 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
+import VitePluginRewriteAll from 'vite-plugin-rewrite-all';
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  base: '/tabo/', // Replace 'my-vite-app' with your repository name
+  plugins: [react(), VitePluginRewriteAll()],
 })

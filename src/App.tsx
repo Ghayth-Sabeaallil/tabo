@@ -20,7 +20,6 @@ function App() {
         <Route path="/search" Component={SearchPage} />
         <Route path="/privacyPolicy" Component={PrivacyPolicyPage} />
         <Route path="/item" Component={ItemPage} />
-
       </Routes>
     </Router>
   );
