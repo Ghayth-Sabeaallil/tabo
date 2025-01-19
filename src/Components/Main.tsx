@@ -39,16 +39,16 @@ const Main = () => {
     return (
         <>
             <Filter />
-            <div className="flex gap-4 bg-[#d2f2ce] p-1 rounded-lg pr-5">
-                <div className="cursor-pointer" onClick={() => setShow("map")}><FaMapLocation size={20} color="#0D5C02" /></div>
-                <div className="cursor-pointer" onClick={() => setShow("list")}><FaList size={20} color="#0D5C02" /></div>
+            <div className="flex gap-4 bg-bg p-1 pr-5">
+                <div className="cursor-pointer" onClick={() => setShow("map")}><FaMapLocation size={20} color="#4E342E" /></div>
+                <div className="cursor-pointer" onClick={() => setShow("list")}><FaList size={20} color="#4E342E" /></div>
             </div>
             {show === "list" && items?.length! > 0 ?
-                <main className="flex flex-col overflow-y-auto h-full p-3 gap-2 sm:grid sm:grid-cols-2 lg:grid-cols-3 bg-[#d2f2ce]">
+                <main className="flex flex-col overflow-y-auto h-full p-3 gap-2 sm:grid sm:grid-cols-2 lg:grid-cols-3 bg-bg">
                     {items!.map((item) => <Link key={item.id} to={`/item?id=${item.id}`}><Card key={item.id} description={item.description} images={item.images} prise={item.prise} area={item.area} /></Link>)}
                 </main>
                 : show === "map" && items?.length! > 0 ?
-                    <div className="bg-[#d2f2ce] flex justify-center items-center h-full text-3xl p-1">
+                    <div className="bg-bg flex justify-center items-center h-full text-3xl p-1">
                         <APIProvider apiKey={'AIzaSyBNh-K6y7-8uOgzJt1L-D5s0GHbgjksvuI'} onLoad={() => console.log('Maps API has loaded.')}>
                             <Map
                                 mapId={'bf51a910020fa25a'}
@@ -62,8 +62,8 @@ const Main = () => {
                                 {<ClusteredMarkers items={items!} />}
                             </Map>
                         </APIProvider>
-                    </div> : <div className="flex justify-center items-center h-full bg-[#d2f2ce]"><SyncLoader
-                        color={"#0D5C02"}
+                    </div> : <div className="flex justify-center items-center h-full bg-bg"><SyncLoader
+                        color={"#4E342E"}
                         loading={true}
                         size={20}
                         aria-label="Loading Spinner"

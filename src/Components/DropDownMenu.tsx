@@ -26,7 +26,7 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({ options, onSelect, placeHol
             {/* Dropdown Button */}
             <button
                 onClick={toggleMenu}
-                className="flex justify-between items-center w-full p-2 text-lg font-bold font-medium bg-[#0D5C02] border border-[#BA9503] rounded-md hover:bg-[#37822c] text-[#BA9503] font-Amiri gap-4"
+                className="flex justify-between items-center w-full p-2 text-lg font-bold font-medium bg-dropDownBg border border-[#BA9503] rounded-md hover:bg-hoverBg text-[#BA9503] font-Amiri gap-4"
             >
                 {selectedOption || placeHolder}
                 <svg

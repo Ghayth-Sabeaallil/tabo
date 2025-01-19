@@ -30,7 +30,7 @@ function Filter() {
 
 
     return (
-        <div className="text-black font-bold shadow-xl bg-[#d2f2ce]">
+        <div className="text-black font-bold shadow-xl bg-bg">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 p-2">
                 <div className="flex justify-center items-center h-fit">
 
@@ -42,12 +42,12 @@ function Filter() {
                         <DropDownMenu options={minArea} onSelect={(option) => setArea(Number(option))} placeHolder={paramsObj["area"] ? paramsObj["area"] : "الحد الأقصى للمساحة"} type="area" />
                         <div className="flex gap-2">
                             <div className="flex gap-2">
-                                <div className={`bg-[#0D5C02] p-2 rounded-lg hover:bg-[#37822c] border-2 border-[#BA9503] cursor-pointer flex flex-col justify-center items-center text-[#BA9503] font-semibold ${type === "شقة" && "bg-[#37822c]"}`} onClick={() => setType("شقة")}><MdApartment size={30} color="#BA9503" /></div>
-                                <div className={`bg-[#0D5C02] p-2 rounded-lg hover:bg-[#37822c] border-2 border-[#BA9503] cursor-pointer flex flex-col justify-center items-center text-[#BA9503] font-semibold ${type === "أرض" && "bg-[#37822c]"}`} onClick={() => setType("أرض")}><PiFarm size={30} color="#BA9503" /></div>
+                                <div className={`bg-dropDownBg p-2 rounded-lg hover:bg-hoverBg border-2 border-text cursor-pointer flex flex-col justify-center items-center text-text font-semibold ${type === "شقة" && "bg-hoverBg"}`} onClick={() => setType("شقة")}><MdApartment size={30} color="#BA9503" /></div>
+                                <div className={`bg-dropDownBg p-2 rounded-lg hover:bg-hoverBg border-2 border-text cursor-pointer flex flex-col justify-center items-center text-text font-semibold ${type === "أرض" && "bg-hoverBg"}`} onClick={() => setType("أرض")}><PiFarm size={30} color="#BA9503" /></div>
                             </div>
                             <div className="flex gap-2">
-                                <div className={`bg-[#0D5C02] p-2 rounded-lg hover:bg-[#37822c] border-2 border-[#BA9503] cursor-pointer flex flex-col justify-center items-center text-[#BA9503] font-semibold ${type === "محل" && "bg-[#37822c]"}`} onClick={() => setType("محل")}><CiShop size={30} color="#BA9503" /></div>
-                                <div className={`bg-[#0D5C02] p-2 rounded-lg hover:bg-[#37822c] border-2 border-[#BA9503] cursor-pointer flex flex-col justify-center items-center text-[#BA9503] font-semibold ${type === "فيلا" && "bg-[#37822c]"}`} onClick={() => setType("فيلا")}><MdOutlineVilla size={30} color="#BA9503" /></div></div>
+                                <div className={`bg-dropDownBg p-2 rounded-lg hover:bg-hoverBg border-2 border-text cursor-pointer flex flex-col justify-center items-center text-text font-semibold ${type === "محل" && "bg-hoverBg"}`} onClick={() => setType("محل")}><CiShop size={30} color="#BA9503" /></div>
+                                <div className={`bg-dropDownBg p-2 rounded-lg hover:bg-hoverBg border-2 border-text cursor-pointer flex flex-col justify-center items-center text-text font-semibold ${type === "فيلا" && "bg-hoverBg"}`} onClick={() => setType("فيلا")}><MdOutlineVilla size={30} color="#BA9503" /></div></div>
                         </div>
                         <Link to={
                             !city && !room && !price && !area && !type
@@ -79,7 +79,7 @@ function Filter() {
                                 viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg"
                             >
-                                <path d="M17.8258 5H6.17422C5.31987 5 4.85896 6.00212 5.41496 6.65079L9.75926 11.7191C9.91461 11.9004 10 12.1312 10 12.3699V17.382C10 17.7607 10.214 18.107 10.5528 18.2764L12.5528 19.2764C13.2177 19.6088 14 19.1253 14 18.382V12.3699C14 12.1312 14.0854 11.9004 14.2407 11.7191L18.585 6.65079C19.141 6.00212 18.6801 5 17.8258 5Z" stroke="#0D5C02" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
+                                <path d="M17.8258 5H6.17422C5.31987 5 4.85896 6.00212 5.41496 6.65079L9.75926 11.7191C9.91461 11.9004 10 12.1312 10 12.3699V17.382C10 17.7607 10.214 18.107 10.5528 18.2764L12.5528 19.2764C13.2177 19.6088 14 19.1253 14 18.382V12.3699C14 12.1312 14.0854 11.9004 14.2407 11.7191L18.585 6.65079C19.141 6.00212 18.6801 5 17.8258 5Z" stroke="#4E342E" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
                             </svg>
                         </button>
                     </div>
@@ -88,7 +88,7 @@ function Filter() {
 
             {/* Mobile Menu */}
             {(isMobileMenuOpen && window.innerWidth < 768) && (
-                <div className="w-screen absolute z-50 flex flex-col justify-center items-center gap-4 bg-[#0D5C02] p-4">
+                <div className="w-screen absolute z-50 flex flex-col justify-center items-center gap-4 bg-dropDownBg p-4">
                     <div className="grid grid-cols-2 w-full">
                         <DropDownMenu options={citys} onSelect={(option) => setCity(String(option))} placeHolder={paramsObj["city"] ? paramsObj["city"] : "المدينة"} />
                         <DropDownMenu options={minRooms} onSelect={(option) => setRoom(Number(option))} placeHolder={paramsObj["room"] ? paramsObj["room"] : "الحد الأقصى للغرف"} />
@@ -99,12 +99,12 @@ function Filter() {
                     </div>
                     <div className="flex gap-2">
                         <div className="flex gap-2">
-                            <div className={`bg-[#0D5C02] p-2 rounded-lg hover:bg-[#37822c] border-2 border-[#BA9503] cursor-pointer flex flex-col justify-center items-center text-[#BA9503] font-semibold ${type === "شقة" && "bg-[#37822c]"}`} onClick={() => setType("شقة")}><MdApartment size={30} color="#BA9503" /></div>
-                            <div className={`bg-[#0D5C02] p-2 rounded-lg hover:bg-[#37822c] border-2 border-[#BA9503] cursor-pointer flex flex-col justify-center items-center text-[#BA9503] font-semibold ${type === "أرض" && "bg-[#37822c]"}`} onClick={() => setType("أرض")}><PiFarm size={30} color="#BA9503" /></div>
+                            <div className={`bg-dropDownBg p-2 rounded-lg hover:bg-hoverBg border-2 border-text cursor-pointer flex flex-col justify-center items-center text-text font-semibold ${type === "شقة" && "bg-hoverBg"}`} onClick={() => setType("شقة")}><MdApartment size={30} color="#BA9503" /></div>
+                            <div className={`bg-dropDownBg p-2 rounded-lg hover:bg-hoverBg border-2 border-text cursor-pointer flex flex-col justify-center items-center text-text font-semibold ${type === "أرض" && "bg-hoverBg"}`} onClick={() => setType("أرض")}><PiFarm size={30} color="#BA9503" /></div>
                         </div>
                         <div className="flex gap-2">
-                            <div className={`bg-[#0D5C02] p-2 rounded-lg hover:bg-[#37822c] border-2 border-[#BA9503] cursor-pointer flex flex-col justify-center items-center text-[#BA9503] font-semibold ${type === "محل" && "bg-[#37822c]"}`} onClick={() => setType("محل")}><CiShop size={30} color="#BA9503" /></div>
-                            <div className={`bg-[#0D5C02] p-2 rounded-lg hover:bg-[#37822c] border-2 border-[#BA9503] cursor-pointer flex flex-col justify-center items-center text-[#BA9503] font-semibold ${type === "فيلا" && "bg-[#37822c]"}`} onClick={() => setType("فيلا")}><MdOutlineVilla size={30} color="#BA9503" /></div></div>
+                            <div className={`bg-dropDownBg p-2 rounded-lg hover:bg-hoverBg border-2 border-text cursor-pointer flex flex-col justify-center items-center text-text font-semibold ${type === "محل" && "bg-hoverBg"}`} onClick={() => setType("محل")}><CiShop size={30} color="#BA9503" /></div>
+                            <div className={`bg-dropDownBg p-2 rounded-lg hover:bg-hoverBg border-2 border-text cursor-pointer flex flex-col justify-center items-center text-text font-semibold ${type === "فيلا" && "bg-hoverBg"}`} onClick={() => setType("فيلا")}><MdOutlineVilla size={30} color="#BA9503" /></div></div>
                     </div>
                     <Link to={
                         !city && !room && !price && !area && !type
