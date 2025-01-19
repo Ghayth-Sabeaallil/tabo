@@ -10,7 +10,9 @@
     "location": { "lat": 35.524, "lng": 35.782 },
     "city": "اللاذقية",
     "area": 120,
-    "type": "شقة"
+    "type": "شقة",
+    "date_created" : "2024-01-14",
+    "is_active": true
   },
   {
     "id": "2",
@@ -23,7 +25,9 @@
     "location": { "lat": 35.531, "lng": 35.781 },
     "city": "اللاذقية",
     "area": 400,
-    "type": "فيلا"
+    "type": "فيلا",
+    "date_created" : "2025-01-20",
+    "is_active": true
   },
   {
     "id": "3",
@@ -36,7 +40,9 @@
     "location": { "lat": 35.532, "lng": 35.780 },
     "city": "اللاذقية",
     "area": 80,
-    "type": "شقة"
+    "type": "شقة",
+    "date_created" : "2024-05-14",
+    "is_active": true
   },
   {
     "id": "4",
@@ -49,7 +55,9 @@
     "location": { "lat": 35.525, "lng": 35.782 },
     "city": "اللاذقية",
     "area": 50,
-    "type": "محل"
+    "type": "محل",
+    "date_created" : "2024-09-28",
+    "is_active": false
   },
   {
     "id": "5",
@@ -62,7 +70,9 @@
     "location": { "lat": 35.535, "lng": 35.770 },
     "city": "اللاذقية",
     "area": 150,
-    "type": "شقة"
+    "type": "شقة",
+    "date_created" : "2024-11-24",
+    "is_active": true
   },
   {
     "id": "6",
@@ -75,7 +85,9 @@
     "location": { "lat": 35.519, "lng": 35.766 },
     "city": "اللاذقية",
     "area": 500,
-    "type": "فيلا"
+    "type": "فيلا",
+    "date_created" : "2024-12-14",
+    "is_active": true
   },
   {
     "id": "7",
@@ -88,7 +100,9 @@
     "location": { "lat": 35.507, "lng": 35.764 },
     "city": "اللاذقية",
     "area": 130,
-    "type": "شقة"
+    "type": "شقة",
+    "date_created" : "2024-05-22",
+    "is_active": false
   },
   {
     "id": "8",
@@ -101,7 +115,9 @@
     "location": { "lat": 35.607, "lng": 35.787 },
     "city": "اللاذقية",
     "area": 10000,
-    "type": "أرض"
+    "type": "أرض",
+    "date_created" : "2024-09-17",
+    "is_active": false
   },
   {
     "id": "9",
@@ -114,7 +130,9 @@
     "location": { "lat": 35.530, "lng": 35.775 },
     "city": "اللاذقية",
     "area": 140,
-    "type": "شقة"
+    "type": "شقة",
+    "date_created" : "2025-01-19",
+    "is_active": true
   },
   {
     "id": "10",
@@ -127,7 +145,9 @@
     "location": { "lat": 35.929, "lng": 35.870 },
     "city": "اللاذقية",
     "area": 250,
-    "type": "فيلا"
+    "type": "فيلا",
+    "date_created" : "2024-02-11",
+    "is_active": true
   },
   {
     "id": "11",
@@ -140,7 +160,9 @@
     "location": { "lat": 35.528, "lng": 35.783 },
     "city": "اللاذقية",
     "area": 110,
-    "type": "شقة"
+    "type": "شقة",
+    "date_created" : "2024-12-12",
+    "is_active": true
   },
   {
     "id": "12",
@@ -153,7 +175,9 @@
     "location": { "lat": 35.524, "lng": 35.778 },
     "city": "اللاذقية",
     "area": 350,
-    "type": "فيلا"
+    "type": "فيلا",
+    "date_created" : "2024-11-13",
+    "is_active": true
   },
   {
     "id": "13",
@@ -166,7 +190,9 @@
     "location": { "lat": 35.529, "lng": 35.785 },
     "city": "اللاذقية",
     "area": 120,
-    "type": "شقة"
+    "type": "شقة",
+    "date_created" : "2024-07-09",
+    "is_active": false
   },
   {
     "id": "14",
@@ -179,7 +205,9 @@
     "location": { "lat": 35.525, "lng": 35.782 },
     "city": "اللاذقية",
     "area": 70,
-    "type": "محل"
+    "type": "محل",
+    "date_created" : "2024-05-14",
+    "is_active": true
   },
   {
     "id": "15",
@@ -192,6 +220,8 @@
     "location": { "lat": 35.646, "lng": 36.018 },
     "city": "اللاذقية",
     "area": 15000,
-    "type": "أرض"
+    "type": "أرض",
+    "date_created" : "2024-01-14",
+    "is_active": true
   }
 ]

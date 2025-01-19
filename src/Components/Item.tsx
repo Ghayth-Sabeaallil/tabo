@@ -5,6 +5,7 @@ import { getById } from "../Lib/getById";
 import { SyncLoader } from "react-spinners";
 import { Carousel } from "./Carousel"
 import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps';
+import { formatPrice } from "../Lib/formatPrice";
 
 const Item = () => {
     const [item, setItem] = useState<CardDetailsProps>();
@@ -27,8 +28,9 @@ const Item = () => {
                         <div className="grid-cols-1 sm:grid-cols-1 md:grid-cols-5 grid justify-center items-center gap-2">
                             <div className="md:col-span-3 md:pl-20"><Carousel images={images} /></div>
                             <div className="md:col-span-2 flex flex-col gap-2">
-                                <div className="grid grid-cols-2 border-2 border-bg bg-header rounded-xl p-2">
+                                <div className="grid grid-cols-4 border-2 border-bg bg-header rounded-xl p-2">
                                     <div className="flex flex-col gap-3">
+                                        <p className="text-[#BA9503] text-xl font-semibold">تاريخ النشر</p>
                                         <p className="text-[#BA9503] text-xl font-semibold">المدينة</p>
                                         <p className="text-[#BA9503] text-xl font-semibold">العنوان</p>
                                         <p className="text-[#BA9503] text-xl font-semibold">السعر</p>
@@ -37,11 +39,12 @@ const Item = () => {
                                         <p className="text-[#BA9503] text-xl font-semibold">عدد الغرف</p>
                                         <p className="text-[#BA9503] text-xl font-semibold">الوصف</p>
                                     </div>
-                                    <div className="flex flex-col gap-3">
+                                    <div className="flex flex-col gap-3 col-span-3">
+                                        <p className="text-[#BA9503] text-xl">{item.date_created}</p>
                                         <p className="text-[#BA9503] text-xl">{item.city}</p>
                                         <p className="text-[#BA9503] text-xl">{item.address}</p>
                                         <p className="text-[#BA9503] text-xl">{item.area}</p>
-                                        <p className="text-[#BA9503] text-xl">{item.prise} ل.س</p>
+                                        <p className="text-[#BA9503] text-xl">{formatPrice(item.prise!)} ل.س</p>
                                         <p className="text-[#BA9503] text-xl">{item.type}</p>
                                         <p className="text-[#BA9503] text-xl">{item.rooms}</p>
                                         <p className="text-[#BA9503] text-xl h-36 overflow-auto">{item.description}</p>

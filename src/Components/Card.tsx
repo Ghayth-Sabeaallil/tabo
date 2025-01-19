@@ -1,4 +1,9 @@
-import { CardDetailsProps } from "../Lib/DataType";
+type CardDetailsProps = {
+    description?: string,
+    images?: string[],
+    prise?: string,
+    area?: number,
+};
 
 const Card = ({ description, images, prise, area }: CardDetailsProps) => {
     return (

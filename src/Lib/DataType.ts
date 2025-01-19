@@ -10,4 +10,6 @@ export type CardDetailsProps = {
     city?: string,
     area?: number,
     type?: string,
+    date_created?: string,
+    is_active?: boolean,
 };

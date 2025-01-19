@@ -17,7 +17,8 @@ export async function getByFilter(
                     (type === null || item.type === type) &&
                     (room === 0 || item.rooms! <= room!) &&
                     (price === 0 || item.prise! <= price!) &&
-                    (area === 0 || item.area! <= area!)
+                    (area === 0 || item.area! <= area!) &&
+                    (item.is_active === true)
                 );
             });
             resolve(filteredItems);
