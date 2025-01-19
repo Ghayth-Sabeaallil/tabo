@@ -22,12 +22,12 @@ const Main = () => {
             if (currentPath === '/search' && !queryParams) {
                 loadItemDataset().then(data => setItems(data));
             } else {
-                const searchParams = new URLSearchParams(location.search);
-                const city = searchParams.get('city');
-                const room = searchParams.get('room');
-                const area = searchParams.get('area');
-                const price = searchParams.get('price');
-                const type = searchParams.get('type');
+                //const searchParams = new URLSearchParams(location.search);
+                //const city = searchParams.get('city');
+                //const room = searchParams.get('room');
+                //const area = searchParams.get('area');
+                //const price = searchParams.get('price');
+                //const type = searchParams.get('type');
                 //const itemsData = getByFilter(city, type, room, price, area);
                 //setItems(await itemsData);
             }
