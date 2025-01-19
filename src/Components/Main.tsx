@@ -8,7 +8,7 @@ import { loadItemDataset } from '../Lib/items';
 import { ClusteredMarkers } from './clusteredMarkers';
 import { CardDetailsProps } from "../Lib/DataType";
 import { SyncLoader } from "react-spinners";
-import { getByFilter } from "../Lib/getByFilter";
+//import { getByFilter } from "../Lib/getByFilter";
 import { formatPrice } from "../Lib/formatPrice";
 
 const Main = () => {
@@ -28,11 +28,8 @@ const Main = () => {
                 const area = searchParams.get('area');
                 const price = searchParams.get('price');
                 const type = searchParams.get('type');
-                const itemsData = getByFilter(city, type, Number(room), Number(price), Number(area));
-                /*                const itemsData = getByFilter("اللاذقية", type, Number(room), Number(price + "000000"), Number(area));
-*/
-
-                setItems(await itemsData);
+                //const itemsData = getByFilter(city, type, room, price, area);
+                //setItems(await itemsData);
             }
         };
         fetchData();
