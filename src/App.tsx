@@ -12,7 +12,7 @@ const ItemPage = lazy(() => import('./Pages/Item'))
 
 function App() {
   return (
-    <Router>
+    <Router basename="/tabo">
       <Routes>
         <Route path="/" Component={HomePage} />
         <Route path="/about" Component={AboutPage} />
