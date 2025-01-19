@@ -28,8 +28,9 @@ const Main = () => {
                 const area = searchParams.get('area');
                 const price = searchParams.get('price');
                 const type = searchParams.get('type');
-                const itemsData = getByFilter(city, type, Number(room), Number(price + "000000"), Number(area));
-                console.log(itemsData)
+                const itemsData = getByFilter(city, type, Number(room), Number(price), Number(area));
+                /*                const itemsData = getByFilter("اللاذقية", type, Number(room), Number(price + "000000"), Number(area));
+*/
 
                 setItems(await itemsData);
             }
