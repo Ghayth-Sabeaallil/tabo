@@ -19,6 +19,9 @@ const Item = () => {
         };
         fetchData();
     }, []);
+
+    const apiKey = import.meta.env.VITE_API_KEY;
+
     const images = ["https://scontent-cph2-1.xx.fbcdn.net/v/t39.30808-6/473335188_583727624547034_1253354622655972216_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=wSCigR_TbRYQ7kNvgHhbGG6&_nc_zt=23&_nc_ht=scontent-cph2-1.xx&_nc_gid=AKxpcDoinxB56lqGfqUOLnN&oh=00_AYAWJ7rjU6UBpb2sUrQyJSJY4x4qvj3SR9HMkJ48ujVxqg&oe=6791D6D9", "https://scontent-cph2-1.xx.fbcdn.net/v/t39.30808-6/473547993_583726741213789_7890978986408338988_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=MjSZXHuS8AAQ7kNvgHHrRPQ&_nc_zt=23&_nc_ht=scontent-cph2-1.xx&_nc_gid=AgzjtmapyORDg2LFA-Ky7Sw&oh=00_AYDjteozoNC4VOmWe953-dZWWNUUdBDJB0KZz-2x3dqT0w&oe=6791EF23", "https://scontent-cph2-1.xx.fbcdn.net/v/t39.30808-6/473441332_583726834547113_7342916829017956123_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=lcK6MVcpbjkQ7kNvgGwNXbO&_nc_zt=23&_nc_ht=scontent-cph2-1.xx&_nc_gid=A1CU2HfHrCJIhgNTAnXsS2f&oh=00_AYASXB09usGXElkhe78Nu5LtqI5APsdlhfG7Xm8uTNhADA&oe=6791F1B0"];
     return (
         <>
@@ -55,7 +58,7 @@ const Item = () => {
                         </div>
                     </div>
                     <div className="flex-grow h-[300px] md:h-[400px]">
-                        <APIProvider apiKey={'AIzaSyBNh-K6y7-8uOgzJt1L-D5s0GHbgjksvuI'} onLoad={() => console.log('Maps API has loaded.')}>
+                        <APIProvider apiKey={apiKey} onLoad={() => console.log('Maps API has loaded.')}>
                             <Map
                                 mapId={'bf51a910020fa25a'}
                                 defaultZoom={17}

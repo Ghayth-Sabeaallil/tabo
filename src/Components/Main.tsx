@@ -34,7 +34,7 @@ const Main = () => {
         };
         fetchData();
     }, [location]);
-
+    const apiKey = import.meta.env.VITE_API_KEY;
     return (
         <>
             <Filter />
@@ -48,7 +48,7 @@ const Main = () => {
                 </main>
                 : show === "map" && items?.length! > 0 ?
                     <div className="bg-bg flex justify-center items-center h-full text-3xl p-1">
-                        <APIProvider apiKey={'AIzaSyBNh-K6y7-8uOgzJt1L-D5s0GHbgjksvuI'} onLoad={() => console.log('Maps API has loaded.')}>
+                        <APIProvider apiKey={apiKey} onLoad={() => console.log('Maps API has loaded.')}>
                             <Map
                                 mapId={'bf51a910020fa25a'}
                                 defaultZoom={7}
