@@ -16,7 +16,7 @@ export async function getByFilter(
                     (city === null || item.city === city) &&
                     (type === null || item.type === type) &&
                     (room === 0 || item.rooms! <= room!) &&
-                    (price === 0 || item.prise! <= price!) &&
+                    (price === 0 || item.price! <= price!) &&
                     (area === 0 || item.area! <= area!) &&
                     (item.is_active === true)
                 );
