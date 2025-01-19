@@ -23,13 +23,13 @@ const Item = () => {
     return (
         <>
             {item &&
-                <div className="flex flex-col gap-4 bg-bg bg-opacity-50 p-4 h-auto">
+                <div className="flex flex-col gap-4 bg-bg bg-opacity-50 p-4">
                     <div className="flex gap-2 justify-center items-center">
-                        <div className="grid-cols-1 sm:grid-cols-1 md:grid-cols-5 grid justify-center items-center gap-2">
+                        <div className="grid-cols-1 sm:grid-cols-1 md:grid-cols-5 grid justify-center items-center gap-2 w-full">
                             <div className="md:col-span-3 md:pl-20"><Carousel images={images} /></div>
-                            <div className="md:col-span-2 flex flex-col gap-2">
+                            <div className="md:col-span-2 flex flex-col gap-2 grow">
                                 <div className="grid grid-cols-4 border-2 border-bg bg-header rounded-xl p-2">
-                                    <div className="flex flex-col gap-3 w-screen">
+                                    <div className="flex flex-col gap-3">
                                         <p className="text-[#BA9503] text-xl font-semibold">تاريخ النشر</p>
                                         <p className="text-[#BA9503] text-xl font-semibold">المدينة</p>
                                         <p className="text-[#BA9503] text-xl font-semibold">العنوان</p>
@@ -54,7 +54,7 @@ const Item = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="flex-grow w-full h-[300px] md:h-[400px]">
+                    <div className="flex-grow h-[300px] md:h-[400px]">
                         <APIProvider apiKey={'AIzaSyBNh-K6y7-8uOgzJt1L-D5s0GHbgjksvuI'} onLoad={() => console.log('Maps API has loaded.')}>
                             <Map
                                 mapId={'bf51a910020fa25a'}
