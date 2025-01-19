@@ -4,6 +4,8 @@ import { type Marker, MarkerClusterer } from '@googlemaps/markerclusterer';
 import { CardDetailsProps } from '../Lib/DataType';
 import { ItemMarker } from './ItemMarker';
 import { Link } from 'react-router-dom';
+import { IoCloseCircle, IoCloseCircleOutline } from 'react-icons/io5';
+import { formatPrice } from '../Lib/formatPrice';
 
 export type ClusteredItemMarkersProps = {
     items: CardDetailsProps[];
@@ -76,12 +78,14 @@ export const ClusteredMarkers = ({ items }: ClusteredItemMarkersProps) => {
             {selectedItemKey && (
 
                 <InfoWindow
+                    headerDisabled={true}
                     anchor={markers[selectedItemKey]}
                     onCloseClick={handleInfoWindowClose}>
-                    <div className='flex flex-col justify-center w-40 gap-2 m-2'>
+                    <div className='flex flex-col justify-center w-40 gap-2'>
+                        <IoCloseCircle onClick={handleInfoWindowClose} className='absolute top-4 right-4 cursor-pointer' color='white' size={20} />
                         <img className='border-2 border-black rounded' src={selectedItem?.images![0]} alt="" />
-                        <p className='text-[#BA9503] text-base font-bold font-Amiri'>{selectedItem?.description}</p>
-                        <p className='text-[#0D5C02] text-base font-bold font-Amiri'>{selectedItem?.prise} ل.س</p>
+                        <p className='text-[#BA9503] text-base font-bold font-Amiri line-clamp-3'>{selectedItem?.description}</p>
+                        <p className='text-[#0D5C02] text-base font-bold font-Amiri'>{formatPrice(selectedItem?.prise!)} ل.س</p>
                         <Link className='text-blue text-sm font-bold font-Amiri underline-offset-1' to={`/item?id=${selectedItem?.id}`}>انقر للتفاصيل</Link>
                     </div>
                 </InfoWindow>
