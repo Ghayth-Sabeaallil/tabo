@@ -16,6 +16,7 @@ export default {
         hoverBg: "#7e544a",
         dropDownBg: "#4E342E",
         card: "#6e4941",
+        icons: "#BA9503",
       },
     },
   },

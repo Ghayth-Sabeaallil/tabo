@@ -46,7 +46,7 @@ const Header = () => {
                             className="focus:outline-none"
                         >
                             <svg
-                                className="w-10 h-10"
+                                className="w-10 h-10 fill-icons"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -62,8 +62,8 @@ const Header = () => {
                         </button>
                     </div>
                     <div className="flex-shrink-0">
-                        <Link className="flex gap-2 justify-between items-center font-Amiri text-[#BA9503] text-6xl" to={"/"}>
-                            طاپو <svg width="800px" height="800px" viewBox="0 0 1024 1024" className="w-14 h-14" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+                        <Link className="flex gap-2 justify-between items-center font-Amiri text-text text-6xl" to={"/"}>
+                            طاپو <svg width="800px" height="800px" viewBox="0 0 1024 1024" className="w-14 h-14 fill-icons" version="1.1" xmlns="http://www.w3.org/2000/svg" >
 
                                 <g id="SVGRepo_bgCarrier" strokeWidth="0" />
 
@@ -71,9 +71,9 @@ const Header = () => {
 
                                 <g id="SVGRepo_iconCarrier">
 
-                                    <path d="M981.4 502.3c-9.1 0-18.3-2.9-26-8.9L539 171.7c-15.3-11.8-36.7-11.8-52 0L70.7 493.4c-18.6 14.4-45.4 10.9-59.7-7.7-14.4-18.6-11-45.4 7.7-59.7L435 104.3c46-35.5 110.2-35.5 156.1 0L1007.5 426c18.6 14.4 22 41.1 7.7 59.7-8.5 10.9-21.1 16.6-33.8 16.6z" fill="#BA9503" />
+                                    <path d="M981.4 502.3c-9.1 0-18.3-2.9-26-8.9L539 171.7c-15.3-11.8-36.7-11.8-52 0L70.7 493.4c-18.6 14.4-45.4 10.9-59.7-7.7-14.4-18.6-11-45.4 7.7-59.7L435 104.3c46-35.5 110.2-35.5 156.1 0L1007.5 426c18.6 14.4 22 41.1 7.7 59.7-8.5 10.9-21.1 16.6-33.8 16.6z" />
 
-                                    <path d="M810.4 981.3H215.7c-70.8 0-128.4-57.6-128.4-128.4V534.2c0-23.5 19.1-42.6 42.6-42.6s42.6 19.1 42.6 42.6v318.7c0 23.8 19.4 43.2 43.2 43.2h594.8c23.8 0 43.2-19.4 43.2-43.2V534.2c0-23.5 19.1-42.6 42.6-42.6s42.6 19.1 42.6 42.6v318.7c-0.1 70.8-57.7 128.4-128.5 128.4z" fill="#BA9503" />
+                                    <path d="M810.4 981.3H215.7c-70.8 0-128.4-57.6-128.4-128.4V534.2c0-23.5 19.1-42.6 42.6-42.6s42.6 19.1 42.6 42.6v318.7c0 23.8 19.4 43.2 43.2 43.2h594.8c23.8 0 43.2-19.4 43.2-43.2V534.2c0-23.5 19.1-42.6 42.6-42.6s42.6 19.1 42.6 42.6v318.7c-0.1 70.8-57.7 128.4-128.5 128.4z" />
 
                                 </g>
 
