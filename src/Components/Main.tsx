@@ -19,8 +19,7 @@ const Main = () => {
         const fetchData = async () => {
             const currentPath = window.location.pathname;
             const queryParams = window.location.search;
-            if (currentPath === '/search' && !queryParams) {
-                console.log("ggggg")
+            if (currentPath === '/tabo/' && !queryParams) {
                 loadItemDataset().then(data => setItems(data));
             } else {
                 //const searchParams = new URLSearchParams(location.search);
