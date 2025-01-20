@@ -48,9 +48,9 @@ const Header = () => {
                     <div className="flex-shrink-0">
                         <a className="flex gap-2 justify-between items-center font-Amiri text-[#BA9503] text-6xl" href="/">طاپو <svg width="800px" height="800px" viewBox="0 0 1024 1024" className="w-14 h-14" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000">
 
-                            <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                            <g id="SVGRepo_bgCarrier" strokeWidth="0" />
 
-                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" />
+                            <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
 
                             <g id="SVGRepo_iconCarrier">
 

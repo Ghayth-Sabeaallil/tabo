@@ -1,25 +1,24 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { lazy } from 'react';
-const HomePage = lazy(() => import('./Pages/Home'))
-const AboutPage = lazy(() => import('./Pages/About'))
-const ContactUsPage = lazy(() => import('./Pages/ContactUs'))
-const SearchPage = lazy(() => import('./Pages/Search'))
-const PrivacyPolicyPage = lazy(() => import('./Pages/PrivacyPolicy'))
-const ItemPage = lazy(() => import('./Pages/Item'))
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './Pages/Home';
+import About from './Pages/About';
+import ContactUs from './Pages/ContactUs';
+import Search from './Pages/Search';
+import PrivacyPolicy from './Pages/PrivacyPolicy';
+import Item from './Pages/Item';
 
 
 
 
 function App() {
   return (
-    <Router basename="/tabo">
+    <Router>
       <Routes>
-        <Route path="/" Component={HomePage} />
-        <Route path="/about" Component={AboutPage} />
-        <Route path="/contact" Component={ContactUsPage} />
-        <Route path="/search" Component={SearchPage} />
-        <Route path="/privacyPolicy" Component={PrivacyPolicyPage} />
-        <Route path="/item" Component={ItemPage} />
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<ContactUs />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
+        <Route path="/item" element={<Item />} />
       </Routes>
     </Router>
   );
