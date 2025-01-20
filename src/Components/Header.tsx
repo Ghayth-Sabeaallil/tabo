@@ -40,7 +40,7 @@ const Header = () => {
 
 
                     {/* Mobile Menu Button */}
-                    <div className="flex md:hidden">
+                    <div ref={dropdownHeader} className="flex md:hidden">
                         <button
                             onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
                             className="focus:outline-none"
@@ -85,7 +85,7 @@ const Header = () => {
 
             {/* Mobile Menu */}
             {(isMobileMenuOpen && window.innerWidth < 768) && (
-                <div ref={dropdownHeader} className="w-screen absolute z-50 flex flex-col items-start bg-header pr-4">
+                <div className="w-screen absolute z-50 flex flex-col items-start bg-header pr-4">
                     <Link to={"/"}><div className="text-xl font-mono cursor-pointer p-3 text-text font-bold duration-500 flex gap-2 hover:scale-125">الرئيسية<GoHome size={30} /> </div></Link>
                     <Link to={"/contact"}><div className="text-xl font-mono cursor-pointer p-3 text-text font-bold duration-500 flex gap-2 hover:scale-125">تواصل معنا<FaHeadphones size={30} /></div></Link>
                     <Link to={"/about"}><div className="text-xl font-mono cursor-pointer p-3 text-text font-bold duration-500 flex gap-2 hover:scale-125">حول<IoMdInformationCircleOutline size={30} /></div></Link>

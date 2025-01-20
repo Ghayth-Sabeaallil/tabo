@@ -1,22 +1,24 @@
 type CardDetailsProps = {
-    description?: string,
+    address?: string,
     images?: string[],
     price?: string,
     area?: number,
 };
 
-const Card = ({ description, images, price, area }: CardDetailsProps) => {
+const Card = ({ address, images, price, area }: CardDetailsProps) => {
     return (
-        <div className="items-center justify-start border-2 border-text grid grid-cols-5 gap-2 p-2 rounded-lg bg-card hover:bg-hoverBg hover:scale-95">
-            <div className="col-span-3 font-Amiri text-xl sm:text-base md:text-2xl p-2">
-                <div className="flex flex-col items-start justify-end text-text">
-                    <p className="line-clamp-2">{description}</p>
+        <>
+            <div className="relative w-full h-full border-2 border-text grid grid-rows-2 p-1 rounded-lg bg-card hover:bg-hoverBg hover:scale-95">
+                {images && <img className="object-cover w-full h-40 rounded-lg border-4 border-text" src={images![0]} alt="primaryImage" />}
+                <div className=" relative font-Amiri text-xl gap-4 sm:text-base md:text-2xl flex flex-col items-start justify-center text-text p-4">
+                    <p className="overflow-y-auto h-15">{address}</p>
                     <p>المساحة: <span className="text-2xl">{area}</span> متر مربع</p>
                     <p>السعر: <span className="text-2xl">{price}</span> ل.س</p>
                 </div>
+
             </div>
-            <div className="flex items-center justify-center col-span-2">{images && <img className="rounded-lg border-4 border-text" src={images![0]} alt="primaryImage" />}</div>
-        </div>
+        </>
+
     );
 };
 
