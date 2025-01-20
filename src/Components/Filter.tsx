@@ -29,7 +29,7 @@ function Filter() {
 
     return (
         <div className="text-black font-bold shadow-xl bg-bg bg-opacity-50">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 p-2">
+            <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8 p-2">
                 <div className="flex justify-center items-center h-fit">
 
                     {/* Desktop Menu */}
@@ -47,6 +47,7 @@ function Filter() {
                                 <div className={`bg-dropDownBg p-2 rounded-lg hover:bg-hoverBg border-2 border-text cursor-pointer flex flex-col justify-center items-center text-text font-semibold ${type === "محل" && "bg-hoverBg"}`} onClick={() => setType("محل")}><CiShop size={30} color="#BA9503" /></div>
                                 <div className={`bg-dropDownBg p-2 rounded-lg hover:bg-hoverBg border-2 border-text cursor-pointer flex flex-col justify-center items-center text-text font-semibold ${type === "فيلا" && "bg-hoverBg"}`} onClick={() => setType("فيلا")}><MdOutlineVilla size={30} color="#BA9503" /></div></div>
                         </div>
+                        <Button handleClick={() => { window.location.href = "/tabo/#/search"; window.location.reload() }} text={"إعادة ضبط"} />
                         <Link to={
                             !city && !room && !price && !area && !type
                                 ? "/search" // No filters applied
@@ -117,7 +118,7 @@ function Filter() {
                                 .filter(Boolean) // Remove empty query parameters
                                 .join("&")}` // Join applied filters with "&"
                     }>
-                        <Button text={"بحث"} />
+                        <Button handleClick={() => setMobileMenuOpen(!isMobileMenuOpen)} text={"بحث"} />
                     </Link>
                 </div>
             )}
