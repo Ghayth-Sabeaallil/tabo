@@ -8,9 +8,7 @@ import { CiShop } from "react-icons/ci";
 
 function Filter() {
     const url = useLocation();
-
     const searchParams = new URLSearchParams(url.search);
-
     const paramsObj: Record<string, string> = {};
     searchParams.forEach((value, key) => {
         paramsObj[key] = value;
@@ -35,11 +33,11 @@ function Filter() {
                 <div className="flex justify-center items-center h-fit">
 
                     {/* Desktop Menu */}
-                    <div className="hidden md:flex gap-4 justify-center items-center">
-                        <DropDownMenu options={citys} onSelect={(option) => setCity(String(option))} placeHolder={paramsObj["city"] ? paramsObj["city"] : "المدينة"} />
-                        <DropDownMenu options={minRooms} onSelect={(option) => setRoom(Number(option))} placeHolder={paramsObj["room"] ? paramsObj["room"] : "الحد الأقصى للغرف"} />
-                        <DropDownMenu options={minPrice} onSelect={(option) => setPrice(Number(option))} placeHolder={paramsObj["price"] ? paramsObj["price"] : "الحد الأقصى للسعر"} type="price" />
-                        <DropDownMenu options={minArea} onSelect={(option) => setArea(Number(option))} placeHolder={paramsObj["area"] ? paramsObj["area"] : "الحد الأقصى للمساحة"} type="area" />
+                    <div className="hidden xl:flex gap-4 justify-center items-center">
+                        <div className="hidden md:grid grid-cols-4 gap-4"> <DropDownMenu options={citys} onSelect={(option) => setCity(String(option))} placeHolder={paramsObj["city"] ? paramsObj["city"] : "المدينة"} />
+                            <DropDownMenu options={minRooms} onSelect={(option) => setRoom(Number(option))} placeHolder={paramsObj["room"] ? paramsObj["room"] : "الحد الأقصى للغرف"} />
+                            <DropDownMenu options={minPrice} onSelect={(option) => setPrice(Number(option))} placeHolder={paramsObj["price"] ? paramsObj["price"] : "الحد الأقصى للسعر"} type="price" />
+                            <DropDownMenu options={minArea} onSelect={(option) => setArea(Number(option))} placeHolder={paramsObj["area"] ? paramsObj["area"] : "الحد الأقصى للمساحة"} type="area" /></div>
                         <div className="flex gap-2">
                             <div className="flex gap-2">
                                 <div className={`bg-dropDownBg p-2 rounded-lg hover:bg-hoverBg border-2 border-text cursor-pointer flex flex-col justify-center items-center text-text font-semibold ${type === "شقة" && "bg-hoverBg"}`} onClick={() => setType("شقة")}><MdApartment size={30} color="#BA9503" /></div>
@@ -68,7 +66,7 @@ function Filter() {
 
 
                     {/* Mobile Menu Button */}
-                    <div className="flex md:hidden">
+                    <div className="flex xl:hidden">
                         <button
                             onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
                             className="focus:outline-none"
@@ -87,7 +85,7 @@ function Filter() {
             </div>
 
             {/* Mobile Menu */}
-            {(isMobileMenuOpen && window.innerWidth < 768) && (
+            {(isMobileMenuOpen && window.innerWidth < 1270) && (
                 <div className="w-screen absolute z-50 flex flex-col justify-center items-center gap-4 bg-dropDownBg p-4">
                     <div className="grid grid-cols-2 w-full">
                         <DropDownMenu options={citys} onSelect={(option) => setCity(String(option))} placeHolder={paramsObj["city"] ? paramsObj["city"] : "المدينة"} />

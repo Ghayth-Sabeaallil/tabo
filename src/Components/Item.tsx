@@ -31,8 +31,8 @@ const Item = () => {
                         <div className="grid-cols-1 sm:grid-cols-1 md:grid-cols-5 grid justify-center items-center gap-2 w-full">
                             <div className="md:col-span-3 md:pl-20"><Carousel images={images} /></div>
                             <div className="md:col-span-2 flex flex-col gap-2 grow">
-                                <div className="grid grid-cols-4 border-2 border-bg bg-header rounded-xl p-2">
-                                    <div className="flex flex-col gap-3">
+                                <div className="grid grid-cols-5 border-2 border-bg bg-header rounded-xl p-2">
+                                    <div className="flex flex-col col-span-2 gap-3">
                                         <p className="text-[#BA9503] text-xl font-semibold">تاريخ النشر</p>
                                         <p className="text-[#BA9503] text-xl font-semibold">المدينة</p>
                                         <p className="text-[#BA9503] text-xl font-semibold">العنوان</p>

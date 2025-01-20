@@ -13,22 +13,22 @@ function MainFilter() {
     const [area, setArea] = useState<number>(0);
 
 
-    const citys: string[] = ["دمشق", "حلب", "حمص", "اللاذقية", "حماة", "دير الزور", "الرقة", "الحسكة", "طرطوس", "السويداء", "درعا", "القامشلي", "إدلب", "ريف دمشق"];
-    const minRooms: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    const minPrice: number[] = [50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 1000];
-    const minArea: number[] = [40, 60, 90, 120, 150, 200, 250, 350, 500];
+    const citys: string[] = ["جميع المحافظات", "دمشق", "حلب", "حمص", "اللاذقية", "حماة", "دير الزور", "الرقة", "الحسكة", "طرطوس", "السويداء", "درعا", "القامشلي", "إدلب", "ريف دمشق"];
+    const minRooms: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const minPrice: number[] = [0, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 1000];
+    const minArea: number[] = [0, 40, 60, 90, 120, 150, 200, 250, 350, 500];
 
     return (
         <div className="flex flex-col justify-center items-center h-full bg-bg bg-opacity-50 gap-4">
             <div className="flex w-3/5 sm:w-2/5 md:w-2/5 gap-2 flex-wrap">
-                <div className={`grow bg-buttom p-4 rounded-lg hover:bg-hoverBg border-2 border-text cursor-pointer flex flex-col justify-center items-center text-text font-semibold ${type === "شقة" && "bg-hoverBg"}`} onClick={() => setType("شقة")}><MdApartment size={40} color="#BA9503" />شقق</div>
-                <div className={`grow bg-buttom p-4 rounded-lg hover:bg-hoverBg border-2 border-text cursor-pointer flex flex-col justify-center items-center text-text font-semibold ${type === "أرض" && "bg-hoverBg"}`} onClick={() => setType("أرض")}><PiFarm size={40} color="#BA9503" />أراضي</div>
-                <div className={`grow bg-buttom p-4 rounded-lg hover:bg-hoverBg border-2 border-text cursor-pointer flex flex-col justify-center items-center text-text font-semibold ${type === "محل" && "bg-hoverBg"}`} onClick={() => setType("محل")}><CiShop size={40} color="#BA9503" />محال</div>
-                <div className={`grow bg-buttom p-4 rounded-lg hover:bg-hoverBg border-2 border-text cursor-pointer flex flex-col justify-center items-center text-text font-semibold ${type === "فيلا" && "bg-hoverBg"}`} onClick={() => setType("فيلا")}><MdOutlineVilla size={40} color="#BA9503" />فلل</div>
+                <div className={`grow bg-buttom p-4 rounded-lg hover:bg-hoverBg border-2 border-text cursor-pointer flex flex-col justify-center items-center text-text font-semibold ${type === "شقة" && "bg-hoverBg"}`} onClick={() => type.length == 0 || type != "شقة" ? setType("شقة") : setType("")}><MdApartment size={40} color="#BA9503" />شقق</div>
+                <div className={`grow bg-buttom p-4 rounded-lg hover:bg-hoverBg border-2 border-text cursor-pointer flex flex-col justify-center items-center text-text font-semibold ${type === "أرض" && "bg-hoverBg"}`} onClick={() => type.length == 0 || type != "أرض" ? setType("أرض") : setType("")}><PiFarm size={40} color="#BA9503" />أراضي</div>
+                <div className={`grow bg-buttom p-4 rounded-lg hover:bg-hoverBg border-2 border-text cursor-pointer flex flex-col justify-center items-center text-text font-semibold ${type === "محل" && "bg-hoverBg"}`} onClick={() => type.length == 0 || type != "محل" ? setType("محل") : setType("")}><CiShop size={40} color="#BA9503" />محال</div>
+                <div className={`grow bg-buttom p-4 rounded-lg hover:bg-hoverBg border-2 border-text cursor-pointer flex flex-col justify-center items-center text-text font-semibold ${type === "فيلا" && "bg-hoverBg"}`} onClick={() => type.length == 0 || type != "فيلا" ? setType("فيلا") : setType("")}><MdOutlineVilla size={40} color="#BA9503" />فلل</div>
             </div>
             <div className="flex flex-col gap-10 w-3/5 sm:w-2/5 md:w-2/5">
                 <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4 justify-center items-center">
-                    <DropDownMenu options={citys} onSelect={(option) => setCity(String(option))} placeHolder={"المدينة"} />
+                    <DropDownMenu options={citys} onSelect={(option) => option != "جميع المحافظات" ? setCity(String(option)) : setCity("")} placeHolder={"المدينة"} />
                     <DropDownMenu options={minRooms} onSelect={(option) => setRoom(Number(option))} placeHolder={"الحد الأقصى للغرف"} />
                     <DropDownMenu options={minPrice} onSelect={(option) => setPrice(Number(option))} placeHolder={"الحد الأقصى للسعر"} type="price" />
                     <DropDownMenu options={minArea} onSelect={(option) => setArea(Number(option))} placeHolder={"الحد الأقصى للمساحة"} type="area" />

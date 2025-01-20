@@ -8,7 +8,7 @@ import { loadItemDataset } from '../Lib/items';
 import { ClusteredMarkers } from './clusteredMarkers';
 import { CardDetailsProps } from "../Lib/DataType";
 import { SyncLoader } from "react-spinners";
-//import { getByFilter } from "../Lib/getByFilter";
+import { getByFilter } from "../Lib/getByFilter";
 import { formatPrice } from "../Lib/formatPrice";
 
 const Main = () => {
@@ -17,19 +17,17 @@ const Main = () => {
     const location = useLocation();
     useEffect(() => {
         const fetchData = async () => {
-            const currentPath = window.location.pathname;
-            const queryParams = window.location.search;
-            if (currentPath === '/tabo/' && !queryParams) {
+            const queryParams = new URLSearchParams(location.search);
+            if ([...queryParams].length == 0) {
                 loadItemDataset().then(data => setItems(data));
             } else {
-                //const searchParams = new URLSearchParams(location.search);
-                //const city = searchParams.get('city');
-                //const room = searchParams.get('room');
-                //const area = searchParams.get('area');
-                //const price = searchParams.get('price');
-                //const type = searchParams.get('type');
-                //const itemsData = getByFilter(city, type, room, price, area);
-                //setItems(await itemsData);
+                const city = queryParams.get('city');
+                const room = queryParams.get('room');
+                const area = queryParams.get('area');
+                const price = queryParams.get('price');
+                const type = queryParams.get('type');
+                const itemsData = getByFilter(city, type, Number(room), Number(price + "000000"), Number(area));
+                setItems(await itemsData);
             }
         };
         fetchData();
@@ -74,3 +72,4 @@ const Main = () => {
 };
 
 export default Main;
+

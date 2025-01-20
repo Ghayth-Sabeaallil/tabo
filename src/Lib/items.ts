@@ -1,39 +1,19 @@
 import { CardDetailsProps } from "./DataType"
 
 export async function loadItemDataset(): Promise<CardDetailsProps[]> {
-    const response = await fetch('https://raw.githubusercontent.com/Ghayth-Sabeaallil/tabo/refs/heads/main/src/Lib/DummyData.json'); // Relative path to the public folder
+    const response = await fetch('/tabo/DummyData.json'); // Relative path to the public folder
     const data = await response.json();
 
     const filteredData: CardDetailsProps[] = (data as CardDetailsProps[]).filter(item => item.is_active === true);
     return filteredData;
 }
 {/*
-import { CardDetailsProps } from "./DataType";
+import { CardDetailsProps } from "./DataType"
 
 export async function loadItemDataset(): Promise<CardDetailsProps[]> {
-    try {
-        const response = await fetch("http://midanghost.pythonanywhere.com/getAllData", {
-            method: "GET", // HTTP method
-            headers: {
-                "Content-Type": "application/json", // Specify content type
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Headers": "Content-Type"
-            },
-        });
+    const response = await fetch('https://raw.githubusercontent.com/Ghayth-Sabeaallil/tabo/refs/heads/main/src/Lib/DummyData.json'); // Relative path to the public folder
+    const data = await response.json();
 
-        if (!response.ok) {
-            throw new Error(`Failed to fetch data: ${response.status} ${response.statusText}`);
-        }
-
-        const data: CardDetailsProps[] = await response.json();
-        const item: CardDetailsProps[] = data.filter(item => item.is_active === true);
-
-        return item;
-    } catch (error) {
-        console.error("Error loading dataset:", error);
-        return []; // Return an empty array in case of an error
-    }
-}
-
-export default loadItemDataset;
+    const filteredData: CardDetailsProps[] = (data as CardDetailsProps[]).filter(item => item.is_active === true);
+    return filteredData;
 */}
