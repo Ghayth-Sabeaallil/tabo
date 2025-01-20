@@ -1,16 +1,12 @@
-import data from './DummyData.json';
 import { CardDetailsProps } from "./DataType"
 
 export async function loadItemDataset(): Promise<CardDetailsProps[]> {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            const item: CardDetailsProps[] = (data as CardDetailsProps[]).filter(item => item.is_active === true);
-            resolve(item);
-        }, 500);
-    });
-}
+    const response = await fetch('/DummyData.json'); // Relative path to the public folder
+    const data = await response.json();
 
-export default data as CardDetailsProps[];
+    const filteredData: CardDetailsProps[] = (data as CardDetailsProps[]).filter(item => item.is_active === true);
+    return filteredData;
+}
 {/*
 import { CardDetailsProps } from "./DataType";
 
