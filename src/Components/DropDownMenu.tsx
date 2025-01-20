@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 interface DropDownMenuProps {
     options: string[] | number[];
@@ -14,19 +14,34 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({ options, onSelect, placeHol
     const toggleMenu = () => {
         setIsOpen((prev) => !prev);
     };
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (
+                dropdownRef.current &&
+                !dropdownRef.current.contains(event.target as Node)
+            ) {
+                setIsOpen(false);
+            }
+        };
 
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
     const handleOptionClick = (option: string | number) => {
         setSelectedOption(option);
         setIsOpen(false);
         onSelect(option);
     };
+    const dropdownRef = useRef<HTMLDivElement>(null);
 
     return (
-        <div className="relative inline-block font-extrabold text-xl">
+        <div ref={dropdownRef} className="relative inline-block font-extrabold text-xl">
             {/* Dropdown Button */}
             <button
                 onClick={toggleMenu}
-                className="flex justify-between items-center w-full p-2 text-lg font-bold font-medium bg-dropDownBg border border-[#BA9503] rounded-md hover:bg-hoverBg text-[#BA9503] font-Amiri gap-4"
+                className="flex justify-between items-center w-full p-2 text-lg font-bold font-medium bg-dropDownBg border border-text rounded-md hover:bg-hoverBg text-text font-Amiri gap-4"
             >
                 {selectedOption || placeHolder}
                 <svg

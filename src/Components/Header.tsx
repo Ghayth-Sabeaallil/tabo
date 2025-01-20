@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaHeadphones } from "react-icons/fa";
 import { GoHome, } from "react-icons/go";
 import { IoMdInformationCircleOutline } from "react-icons/io";
@@ -7,6 +7,22 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
+    const dropdownHeader = useRef<HTMLDivElement>(null);
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (
+                dropdownHeader.current &&
+                !dropdownHeader.current.contains(event.target as Node)
+            ) {
+                setMobileMenuOpen(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
     return (
         <nav className="text-black font-bold shadow-xl bg-header relative z-50 ">
             <div className="mx-auto px-4 sm:px-6 lg:px-8 p-3">
@@ -69,7 +85,7 @@ const Header = () => {
 
             {/* Mobile Menu */}
             {(isMobileMenuOpen && window.innerWidth < 768) && (
-                <div className="w-screen absolute z-50 flex flex-col items-start bg-header pr-4">
+                <div ref={dropdownHeader} className="w-screen absolute z-50 flex flex-col items-start bg-header pr-4">
                     <Link to={"/"}><div className="text-xl font-mono cursor-pointer p-3 text-text font-bold duration-500 flex gap-2 hover:scale-125">الرئيسية<GoHome size={30} /> </div></Link>
                     <Link to={"/contact"}><div className="text-xl font-mono cursor-pointer p-3 text-text font-bold duration-500 flex gap-2 hover:scale-125">تواصل معنا<FaHeadphones size={30} /></div></Link>
                     <Link to={"/about"}><div className="text-xl font-mono cursor-pointer p-3 text-text font-bold duration-500 flex gap-2 hover:scale-125">حول<IoMdInformationCircleOutline size={30} /></div></Link>

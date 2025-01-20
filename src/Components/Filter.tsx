@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import DropDownMenu from "./DropDownMenu";
 import Button from "./Button";
 import { Link, useLocation } from "react-router-dom";
@@ -25,7 +25,22 @@ function Filter() {
     const minRooms: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     const minPrice: number[] = [50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 1000];
     const minArea: number[] = [40, 60, 90, 120, 150, 200, 250, 350, 500];
+    const dropdownMenu = useRef<HTMLDivElement>(null);
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (
+                dropdownMenu.current &&
+                !dropdownMenu.current.contains(event.target as Node)
+            ) {
+                setMobileMenuOpen(false);
+            }
+        };
 
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
 
     return (
         <div className="text-black font-bold shadow-xl bg-bg bg-opacity-50">
@@ -87,7 +102,7 @@ function Filter() {
 
             {/* Mobile Menu */}
             {(isMobileMenuOpen && window.innerWidth < 1270) && (
-                <div className="w-screen absolute z-50 flex flex-col justify-center items-center gap-4 bg-dropDownBg p-4">
+                <div ref={dropdownMenu} className="w-screen absolute z-50 flex flex-col justify-center items-center gap-4 bg-dropDownBg p-4">
                     <div className="grid grid-cols-2 w-full">
                         <DropDownMenu options={citys} onSelect={(option) => setCity(String(option))} placeHolder={paramsObj["city"] ? paramsObj["city"] : "المدينة"} />
                         <DropDownMenu options={minRooms} onSelect={(option) => setRoom(Number(option))} placeHolder={paramsObj["room"] ? paramsObj["room"] : "الحد الأقصى للغرف"} />
