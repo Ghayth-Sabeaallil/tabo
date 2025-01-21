@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { FaHeadphones } from "react-icons/fa";
 import { GoHome, } from "react-icons/go";
-import { IoMdInformationCircleOutline } from "react-icons/io";
 import { MdOutlinePolicy } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { MdApartment, MdOutlineVilla } from "react-icons/md";
+import { PiFarm } from "react-icons/pi";
+import { CiShop } from "react-icons/ci";
 
 const Header = () => {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
@@ -33,8 +35,11 @@ const Header = () => {
                         <Link to={"/"}>
                             <div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">الرئيسية<GoHome size={30} /></div>
                         </Link>
+                        <Link to={"/apartments"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">شقق<MdApartment size={30} /></div></Link>
+                        <Link to={"/farms"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">أرض<PiFarm size={30} /></div></Link>
+                        <Link to={"/shops"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">محل<CiShop size={30} /></div></Link>
+                        <Link to={"/villas"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">فيلا<MdOutlineVilla size={30} /></div></Link>
                         <Link to={"/contact"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">تواصل معنا<FaHeadphones size={30} /></div></Link>
-                        <Link to={"/about"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">حول<IoMdInformationCircleOutline size={30} /></div></Link>
                         <Link to={"/privacyPolicy"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">الشروط و الأحكام<MdOutlinePolicy size={30} /></div></Link>
                     </div>
 
@@ -85,11 +90,16 @@ const Header = () => {
 
             {/* Mobile Menu */}
             {(isMobileMenuOpen && window.innerWidth < 768) && (
-                <div className="w-screen absolute z-50 flex flex-col items-start bg-header pr-4">
-                    <Link to={"/"}><div className="text-xl font-mono cursor-pointer p-3 text-text font-bold duration-500 flex gap-2 hover:scale-125">الرئيسية<GoHome size={30} /> </div></Link>
-                    <Link to={"/contact"}><div className="text-xl font-mono cursor-pointer p-3 text-text font-bold duration-500 flex gap-2 hover:scale-125">تواصل معنا<FaHeadphones size={30} /></div></Link>
-                    <Link to={"/about"}><div className="text-xl font-mono cursor-pointer p-3 text-text font-bold duration-500 flex gap-2 hover:scale-125">حول<IoMdInformationCircleOutline size={30} /></div></Link>
-                    <Link to={"/privacyPolicy"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">الشروط و الأحكام<MdOutlinePolicy size={30} /></div></Link>
+                <div className="w-screen absolute z-50 flex flex-col items-start bg-header p-4">
+                    <Link to={"/"}>
+                        <div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2"><GoHome size={30} />الرئيسية</div>
+                    </Link>
+                    <Link to={"/apartments"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2"><MdApartment size={30} />شقق</div></Link>
+                    <Link to={"/farms"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2"><PiFarm size={30} />أرض</div></Link>
+                    <Link to={"/shops"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">محل<CiShop size={30} /></div></Link>
+                    <Link to={"/villas"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2"><MdOutlineVilla size={30} />فيلا</div></Link>
+                    <Link to={"/contact"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2"><FaHeadphones size={30} />تواصل معنا</div></Link>
+                    <Link to={"/privacyPolicy"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2"><MdOutlinePolicy size={30} />الشروط و الأحكام</div></Link>
                 </div>
             )}
         </nav>
