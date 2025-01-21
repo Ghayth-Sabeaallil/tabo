@@ -10,7 +10,7 @@ import { CiShop } from "react-icons/ci";
 const Header = () => {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
     return (
-        <nav className="text-black font-bold shadow-xl bg-header relative z-50 ">
+        <nav className="text-black font-bold bg-header relative z-50 ">
             <div className="mx-auto px-4 sm:px-6 lg:px-8 p-3">
                 <div className="flex justify-between items-center h-16">
 

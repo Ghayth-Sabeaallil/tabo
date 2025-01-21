@@ -36,7 +36,7 @@ export const Carousel: React.FC<CarouselProps> = ({ images }) => {
             {/* Carousel */}
             <div className="relative w-full h-[16rem] sm:h-[20rem] md:h-[24rem] lg:h-[26rem] overflow-hidden rounded-md shadow-lg border border-4 border-header">
                 <IoIosArrowBack onClick={handleNext}
-                    className="absolute left-2 top-1/2 transform -translate-y-1/2 text-white text-3xl font-bold bg-gray-700 bg-opacity-50 rounded-full p-2 hover:bg-opacity-75 z-10" size={35} />
+                    className="absolute left-2 top-1/2 transform -translate-y-1/2 text-white text-3xl font-bold bg-gray-700  rounded-full p-2 hover:bg-opacity-75 z-10" size={35} />
 
                 <img
                     src={images[currentIndex]}
@@ -46,14 +46,14 @@ export const Carousel: React.FC<CarouselProps> = ({ images }) => {
                 />
                 <div className="absolute bottom-2 text-white text-2xl font-bold bg-gray-700 bg-opacity-90 p-2 z-10 select-none">{currentIndex + 1} / {images.length}</div>
                 <IoIosArrowForward onClick={handlePrevious}
-                    className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white text-3xl font-bold bg-gray-700 bg-opacity-50 rounded-full p-2 hover:bg-opacity-75 z-10" size={35} />
+                    className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white text-3xl font-bold bg-gray-700  rounded-full p-2 hover:bg-opacity-75 z-10" size={35} />
             </div>
 
             {/* Full-Screen Modal */}
             {isModalOpen && (
                 <div className="fixed inset-0 bg-black bg-opacity-1 flex items-center justify-center z-50">
                     <IoIosArrowBack onClick={handlePrevious}
-                        className="absolute left-4 text-white text-3xl font-bold bg-gray-700 bg-opacity-50 rounded-full p-2 hover:bg-opacity-75" size={35} />
+                        className="absolute left-4 text-white text-3xl font-bold bg-gray-700  rounded-full p-2 hover:bg-opacity-75" size={35} />
                     <button
                         className="absolute top-4 right-4 text-white text-2xl font-bold"
                         onClick={closeModal}
@@ -67,7 +67,7 @@ export const Carousel: React.FC<CarouselProps> = ({ images }) => {
                     />
 
                     <IoIosArrowForward onClick={handleNext}
-                        className="absolute right-4 text-white text-3xl font-bold bg-gray-700 bg-opacity-50 rounded-full p-2 hover:bg-opacity-75" size={35} />
+                        className="absolute right-4 text-white text-3xl font-bold bg-gray-700  rounded-full p-2 hover:bg-opacity-75" size={35} />
                 </div>
             )}
         </div>

@@ -19,7 +19,7 @@ function Filter({ path }: FilterProps) {
     const minAreaFarm: number[] = [1, 3, 5, 7, 9, 15, 20, 50, 100];
 
     return (
-        <div className="text-black font-bold shadow-xl bg-bg bg-opacity-50">
+        <div className="text-black font-bold">
             <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8 p-2">
                 <div className="flex justify-center items-center h-fit">
 

@@ -3,6 +3,12 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      keyframes: {
+        animation: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+      },
       fontFamily: {
         Amiri: ["Amiri", "serif"],
         Kufi: ["Reem Kufi", "serif"],

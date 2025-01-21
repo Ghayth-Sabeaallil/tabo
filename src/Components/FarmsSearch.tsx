@@ -38,16 +38,16 @@ const FarmsSearch = () => {
     return (
         <>
             <Filter path={"farms"} />
-            <div className="flex justify-center gap-4 bg-bg bg-opacity-50 p-1 pr-5">
+            <div className="flex justify-center gap-4 p-1 pr-5">
                 <div onClick={() => setShow("map")} className={`${show == "map" ? "bg-hoverBg" : "bg-buttom"} p-4 rounded-lg hover:bg-hoverBg border-2 border-text cursor-pointer flex justify-center items-center text-text font-semibold gap-2`}><FaMapLocation size={20} color="#BA9503" />خريطة</div>
                 <div onClick={() => setShow("list")} className={`${show == "list" ? "bg-hoverBg" : "bg-buttom"} p-4 rounded-lg hover:bg-hoverBg border-2 border-text cursor-pointer flex justify-center items-center text-text font-semibold gap-2`}><FaList size={20} color="#BA9503" />قائمة</div>
             </div>
             {show === "list" && items?.length! > 0 ?
-                <main className="flex flex-col overflow-y-auto h-full p-3 gap-2 sm:grid sm:grid-cols-4 lg:grid-cols-5 sm:grid-rows-2 lg:grid-rows-2 bg-bg bg-opacity-50">
+                <main className="flex flex-col overflow-y-auto h-full p-3 gap-2 sm:grid sm:grid-cols-4 lg:grid-cols-5 sm:grid-rows-2 lg:grid-rows-2">
                     {items!.map((item) => <Link key={item.id} to={`/item?id=${item.id}`}><Card path="farms" key={item.id} city={item.city} images={item.images} price={formatPrice(item.price!)} area={item.area} /></Link>)}
                 </main>
                 : show === "map" && items?.length! > 0 ?
-                    <div className="bg-bg flex justify-center items-center h-full text-3xl p-1">
+                    <div className="flex justify-center items-center h-full text-3xl p-1">
                         <APIProvider apiKey={apiKey} onLoad={() => console.log('Maps API has loaded.')}>
                             <Map
                                 mapId={'bf51a910020fa25a'}
@@ -61,13 +61,13 @@ const FarmsSearch = () => {
                                 {<ClusteredMarkers items={items!} />}
                             </Map>
                         </APIProvider>
-                    </div> : loading ? <div className="flex justify-center items-center h-full bg-bg bg-opacity-50"><SyncLoader
+                    </div> : loading ? <div className="flex justify-center items-center h-full"><SyncLoader
                         color={"#4E342E"}
                         loading={true}
                         size={20}
                         aria-label="Loading Spinner"
                         data-testid="SyncLoader"
-                    /></div> : <div className="flex justify-center text-header font-extrabold text-3xl items-center h-full bg-bg bg-opacity-50">لا يوجد نتائج</div>}
+                    /></div> : <div className="flex justify-center text-header font-extrabold text-3xl items-center h-full">لا يوجد نتائج</div>}
         </>
 
     );

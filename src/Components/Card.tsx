@@ -11,7 +11,7 @@ const Card = ({ city, images, price, area, path }: CardDetailsProps) => {
         <>
             <div className="relative w-full h-full border-2 border-text grid grid-rows-5 p-1 rounded-lg bg-card hover:bg-hoverBg hover:scale-95">
                 {images && <img className="row-span-3 object-cover w-full h-full rounded-lg border-4 border-text" src={images![0]} alt="primaryImage" />}
-                <div className="row-span-2 relative font-Amiri text-xl gap-2 sm:text-sm md:text-base lg:text-xl flex flex-col items-start justify-around text-text p-4">
+                <div className="row-span-2 relative font-Amiri text-base gap-2 sm:text-sm md:text-base lg:text-base flex flex-col items-start justify-around text-text pr-2">
                     <p>{city}</p>
                     <p>{area} {path == "farms" ? " دونم" : " متر مربع"}</p>
                     <p>{price} ل.س</p>

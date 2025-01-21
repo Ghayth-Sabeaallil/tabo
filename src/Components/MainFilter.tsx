@@ -5,7 +5,7 @@ import { CiShop } from "react-icons/ci";
 function MainFilter() {
 
     return (
-        <div className="flex flex-col justify-center items-center h-full bg-bg bg-opacity-50 gap-4">
+        <div className="animate-[animation_1s_ease-in] flex flex-col justify-center items-center h-full gap-4">
             <div className="flex w-3/5 sm:w-2/5 md:w-2/5 gap-2 flex-wrap">
                 <Link className="grow bg-buttom p-4 rounded-lg hover:bg-hoverBg border-2 border-text cursor-pointer flex flex-col justify-center items-center text-text font-semibold" to={"/apartments"}><MdApartment size={40} color="#BA9503" />شقق</Link>
                 <Link to={"/farms"} className="grow bg-buttom p-4 rounded-lg hover:bg-hoverBg border-2 border-text cursor-pointer flex flex-col justify-center items-center text-text font-semibold" ><PiFarm size={40} color="#BA9503" />أراضي</Link>
