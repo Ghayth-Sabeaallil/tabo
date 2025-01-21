@@ -129,7 +129,7 @@
     "phone": 887766554,
     "location": { "lat": 36.501, "lng": 40.744 },
     "city": "الحسكة",
-    "area": 500,
+    "area": 1.5,
     "type": "أرض",
     "date_created": "2024-01-11",
     "is_active": true
@@ -181,7 +181,7 @@
   },
   {
     "id": 13,
-    "description": "شقة للإيجار في الرقة",
+    "description": "شقة للإيجار للإيجار للإيجار للإيجار للإيجار للإيجار للإيجار للإيجار للإيجار للإيجار للإيجار للإيجار للإيجار للإيجار للإيجار للإيجار للإيجار للإيجار للإيجار للإيجار للإيجار للإيجار في الرقة",
     "images": ["https://scontent-cph2-1.xx.fbcdn.net/v/t39.30808-6/473441332_583726834547113_7342916829017956123_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=lcK6MVcpbjkQ7kNvgGwNXbO&_nc_zt=23&_nc_ht=scontent-cph2-1.xx&_nc_gid=A1CU2HfHrCJIhgNTAnXsS2f&oh=00_AYASXB09usGXElkhe78Nu5LtqI5APsdlhfG7Xm8uTNhADA&oe=6791F1B0", "image14.jpg"],
     "address": "وسط المدينة، الرقة",
     "price": 1000000,
@@ -204,7 +204,7 @@
     "phone": 887799001,
     "location": { "lat": 35.181, "lng": 35.948 },
     "city": "بانياس",
-    "area": 1000,
+    "area": 1,
     "type": "أرض",
     "date_created": "2024-01-03",
     "is_active": true
