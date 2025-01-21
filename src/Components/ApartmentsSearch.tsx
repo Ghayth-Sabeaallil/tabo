@@ -39,8 +39,8 @@ const ApartmentsSearch = () => {
         <>
             <Filter path={"apartments"} />
             <div className="flex justify-center gap-4 bg-bg bg-opacity-50 p-1 pr-5">
-                <div className="cursor-pointer" onClick={() => setShow("map")}><FaMapLocation size={35} color="#4E342E" /></div>
-                <div className="cursor-pointer" onClick={() => setShow("list")}><FaList size={35} color="#4E342E" /></div>
+                <div onClick={() => setShow("map")} className={`${show == "map" ? "bg-hoverBg" : "bg-buttom"} p-4 rounded-lg hover:bg-hoverBg border-2 border-text cursor-pointer flex justify-center items-center text-text font-semibold gap-2`}><FaMapLocation size={20} color="#BA9503" />خريطة</div>
+                <div onClick={() => setShow("list")} className={`${show == "list" ? "bg-hoverBg" : "bg-buttom"} p-4 rounded-lg hover:bg-hoverBg border-2 border-text cursor-pointer flex justify-center items-center text-text font-semibold gap-2`}><FaList size={20} color="#BA9503" />قائمة</div>
             </div>
             {show === "list" && items?.length! > 0 ?
                 <main className="flex flex-col overflow-y-auto h-full p-3 gap-2 sm:grid sm:grid-cols-2 lg:grid-cols-5 sm:grid-rows-2 lg:grid-rows-2 bg-bg bg-opacity-50">

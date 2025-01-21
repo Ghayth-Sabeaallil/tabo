@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { FaHeadphones } from "react-icons/fa";
 import { GoHome, } from "react-icons/go";
 import { MdOutlinePolicy } from "react-icons/md";
@@ -9,22 +9,6 @@ import { CiShop } from "react-icons/ci";
 
 const Header = () => {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
-    const dropdownHeader = useRef<HTMLDivElement>(null);
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (
-                dropdownHeader.current &&
-                !dropdownHeader.current.contains(event.target as Node)
-            ) {
-                setMobileMenuOpen(false);
-            }
-        };
-
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, []);
     return (
         <nav className="text-black font-bold shadow-xl bg-header relative z-50 ">
             <div className="mx-auto px-4 sm:px-6 lg:px-8 p-3">
@@ -45,7 +29,7 @@ const Header = () => {
 
 
                     {/* Mobile Menu Button */}
-                    <div ref={dropdownHeader} className="flex md:hidden">
+                    <div className="flex md:hidden">
                         <button
                             onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
                             className="focus:outline-none"

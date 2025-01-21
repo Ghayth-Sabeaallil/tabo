@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import DropDownMenu from "./DropDownMenu";
 import Button from "./Button";
 import { Link } from "react-router-dom";
@@ -17,23 +17,6 @@ function Filter({ path }: FilterProps) {
     const minPrice: number[] = [50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 1000, 2000];
     const minArea: number[] = [40, 60, 90, 120, 150, 200, 250, 350, 500];
     const minAreaFarm: number[] = [1, 3, 5, 7, 9, 15, 20, 50, 100];
-
-    const dropdownMenu = useRef<HTMLDivElement>(null);
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (
-                dropdownMenu.current &&
-                !dropdownMenu.current.contains(event.target as Node)
-            ) {
-                setMobileMenuOpen(false);
-            }
-        };
-
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, []);
 
     return (
         <div className="text-black font-bold shadow-xl bg-bg bg-opacity-50">
@@ -66,7 +49,7 @@ function Filter({ path }: FilterProps) {
 
 
                     {/* Mobile Menu Button */}
-                    <div ref={dropdownMenu} className="flex xl:hidden">
+                    <div className="flex xl:hidden">
                         <button
                             onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
                             className="focus:outline-none"
@@ -79,7 +62,7 @@ function Filter({ path }: FilterProps) {
 
             {/* Mobile Menu */}
             {(isMobileMenuOpen && window.innerWidth < 1270) && (
-                <div ref={dropdownMenu} className="w-screen absolute z-50 flex flex-col justify-center items-center gap-4 bg-dropDownBg p-4">
+                <div className="w-screen absolute z-40 flex flex-col justify-center items-center gap-4 bg-dropDownBg p-4">
                     <div className={`grid ${path == "villas" || path == "apartments" ? "grid-cols-2" : "grid-cols-1"} w-full`}>
                         <DropDownMenu options={citys} onSelect={(option) => setCity(String(option))} placeHolder={"المحافظة"} />
                         {(path == "villas" || path == "apartments") && <DropDownMenu options={minRooms} onSelect={(option) => setRoom(Number(option))} placeHolder={"عدد الغرف"} />}
