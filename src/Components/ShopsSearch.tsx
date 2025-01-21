@@ -14,9 +14,11 @@ import { formatPrice } from "../Lib/formatPrice";
 const ShopsSearch = () => {
     const [show, setShow] = useState<string>("list");
     const [items, setItems] = useState<CardDetailsProps[]>();
+    const [loading, setLoading] = useState<boolean>(true);
     const location = useLocation();
     useEffect(() => {
         const fetchData = async () => {
+            setLoading(true);
             const queryParams = new URLSearchParams(location.search);
             if ([...queryParams].length == 0) {
                 loadItemDataset("محل").then(data => setItems(data));
@@ -28,6 +30,7 @@ const ShopsSearch = () => {
                 const itemsData = getByFilter(city, "محل", Number(room), Number(price + "000000"), Number(area));
                 setItems(await itemsData);
             }
+            if (items?.length! >= 0 || items?.length == undefined) setLoading(false);
         };
         fetchData();
     }, [location]);
@@ -58,13 +61,13 @@ const ShopsSearch = () => {
                                 {<ClusteredMarkers items={items!} />}
                             </Map>
                         </APIProvider>
-                    </div> : <div className="flex justify-center items-center h-full bg-bg bg-opacity-50"><SyncLoader
+                    </div> : loading ? <div className="flex justify-center items-center h-full bg-bg bg-opacity-50"><SyncLoader
                         color={"#4E342E"}
                         loading={true}
                         size={20}
                         aria-label="Loading Spinner"
                         data-testid="SyncLoader"
-                    /></div>}
+                    /></div> : <div className="flex justify-center text-header font-extrabold text-3xl items-center h-full bg-bg bg-opacity-50">لا يوجد نتائج</div>}
         </>
 
     );
