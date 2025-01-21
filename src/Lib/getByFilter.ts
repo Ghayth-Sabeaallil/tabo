@@ -13,7 +13,7 @@ export async function getByFilter(
 
     const item: CardDetailsProps[] = (data as CardDetailsProps[]).filter((item) => {
         return (
-            (city === null || item.city === city) &&
+            (city == "جميع المحافظات" || city === null || item.city === city) &&
             (type === null || item.type === type) &&
             (room === null || room === 0 || item.rooms! <= room!) &&
             (Number.isNaN(price) || price === null || price === 0 || item.price! <= price!) &&

@@ -81,8 +81,8 @@ export const ClusteredMarkers = ({ items }: ClusteredItemMarkersProps) => {
                     headerDisabled={true}
                     anchor={markers[selectedItemKey]}
                     onCloseClick={handleInfoWindowClose}>
-                    <div className='flex flex-col justify-center w-40 gap-2'>
-                        <IoCloseCircle onClick={handleInfoWindowClose} className='absolute top-4 right-4 cursor-pointer' color='white' size={20} />
+                    <div className='flex flex-col justify-center w-40 gap-2 p-2'>
+                        <IoCloseCircle onClick={handleInfoWindowClose} className='absolute top-5 right-6 cursor-pointer' color='white' size={20} />
                         <img className='border-2 border-black rounded' src={selectedItem?.images![0]} alt="" />
                         <p className='text-[#BA9503] text-base font-bold font-Amiri line-clamp-3'>{selectedItem?.description}</p>
                         <p className='text-[#0D5C02] text-base font-bold font-Amiri'>{formatPrice(selectedItem?.price!)} ل.س</p>

@@ -12,7 +12,7 @@ function Filter({ path }: FilterProps) {
     const [price, setPrice] = useState<number>(0);
     const [area, setArea] = useState<number>(0);
 
-    const citys: string[] = ["دمشق", "حلب", "حمص", "اللاذقية", "حماة", "دير الزور", "الرقة", "الحسكة", "طرطوس", "السويداء", "درعا", "القامشلي", "إدلب", "ريف دمشق"];
+    const citys: string[] = ["جميع المحافظات", "دمشق", "حلب", "حمص", "اللاذقية", "حماة", "دير الزور", "الرقة", "الحسكة", "طرطوس", "السويداء", "درعا", "القامشلي", "إدلب", "ريف دمشق"];
     const minRooms: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     const minPrice: number[] = [50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 1000, 2000];
     const minArea: number[] = [40, 60, 90, 120, 150, 200, 250, 350, 500];
@@ -44,12 +44,10 @@ function Filter({ path }: FilterProps) {
                     <div className="hidden xl:flex gap-4 justify-center items-center">
                         <div className={`hidden md:grid ${path == "villas" || path == "apartments" ? "grid-cols-4" : "grid-cols-3"} gap-4`}>
                             <DropDownMenu options={citys} onSelect={(option) => setCity(String(option))} placeHolder={"المحافظة"} />
-                            {(path == "villas" || path == "apartments") && <DropDownMenu options={minRooms} onSelect={(option) => setRoom(Number(option))} placeHolder={"الحد الأقصى للغرف"} />}
-                            <DropDownMenu options={minPrice} onSelect={(option) => setPrice(Number(option))} placeHolder={"الحد الأقصى للسعر"} type="price" />
-                            <DropDownMenu options={path == "farms" ? minAreaFarm : minArea} onSelect={(option) => setArea(Number(option))} placeHolder={"الحد الأقصى للمساحة"} type="area" path={path} />
+                            {(path == "villas" || path == "apartments") && <DropDownMenu options={minRooms} onSelect={(option) => setRoom(Number(option))} placeHolder={"عدد الغرف"} />}
+                            <DropDownMenu options={minPrice} onSelect={(option) => setPrice(Number(option))} placeHolder={"السعر"} type="price" />
+                            <DropDownMenu options={path == "farms" ? minAreaFarm : minArea} onSelect={(option) => setArea(Number(option))} placeHolder={"المساحة"} type="area" path={path} />
                         </div>
-
-                        <Button handleClick={() => { window.location.href = `/tabo/#/${path}`; window.location.reload() }} text={"إعادة ضبط"} />
                         <Link to={
                             !city && !room && !price && !area
                                 ? `/${path}` // No filters applied
@@ -68,7 +66,7 @@ function Filter({ path }: FilterProps) {
 
 
                     {/* Mobile Menu Button */}
-                    <div className="flex xl:hidden">
+                    <div ref={dropdownMenu} className="flex xl:hidden">
                         <button
                             onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
                             className="focus:outline-none"
@@ -84,14 +82,12 @@ function Filter({ path }: FilterProps) {
                 <div ref={dropdownMenu} className="w-screen absolute z-50 flex flex-col justify-center items-center gap-4 bg-dropDownBg p-4">
                     <div className={`grid ${path == "villas" || path == "apartments" ? "grid-cols-2" : "grid-cols-1"} w-full`}>
                         <DropDownMenu options={citys} onSelect={(option) => setCity(String(option))} placeHolder={"المحافظة"} />
-                        {(path == "villas" || path == "apartments") && <DropDownMenu options={minRooms} onSelect={(option) => setRoom(Number(option))} placeHolder={"الحد الأقصى للغرف"} />}
+                        {(path == "villas" || path == "apartments") && <DropDownMenu options={minRooms} onSelect={(option) => setRoom(Number(option))} placeHolder={"عدد الغرف"} />}
                     </div>
                     <div className="grid grid-cols-2 w-full">
-                        <DropDownMenu options={minPrice} onSelect={(option) => setPrice(Number(option))} placeHolder={"الحد الأقصى للسعر"} type="price" />
-                        <DropDownMenu options={path == "farms" ? minAreaFarm : minArea} onSelect={(option) => setArea(Number(option))} placeHolder={"الحد الأقصى للمساحة"} type="area" path="farms" />
+                        <DropDownMenu options={minPrice} onSelect={(option) => setPrice(Number(option))} placeHolder={"السعر"} type="price" />
+                        <DropDownMenu options={path == "farms" ? minAreaFarm : minArea} onSelect={(option) => setArea(Number(option))} placeHolder={"المساحة"} type="area" path="farms" />
                     </div>
-                    <Button handleClick={() => { window.location.href = `/tabo/#/${path}`; window.location.reload() }} text={"إعادة ضبط"} />
-
                     <Link to={
                         !city && !room && !price && !area
                             ? `/${path}` // No filters applied
