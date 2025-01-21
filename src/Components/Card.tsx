@@ -1,20 +1,20 @@
 type CardDetailsProps = {
-    address?: string,
+    city?: string,
     images?: string[],
     price?: string,
     area?: number,
     path?: string
 };
 
-const Card = ({ address, images, price, area, path }: CardDetailsProps) => {
+const Card = ({ city, images, price, area, path }: CardDetailsProps) => {
     return (
         <>
-            <div className="relative w-full h-full border-2 border-text grid grid-rows-2 p-1 rounded-lg bg-card hover:bg-hoverBg hover:scale-95">
-                {images && <img className="object-cover w-full h-40 rounded-lg border-4 border-text" src={images![0]} alt="primaryImage" />}
-                <div className="mt-5 relative font-Amiri text-xl gap-4 sm:text-base md:text-2xl flex flex-col items-start justify-center text-text p-4">
-                    <p>{address}</p>
-                    <p>المساحة: <span className="text-2xl">{area}</span> {path == "farms" ? " دونم" : " متر مربع"}</p>
-                    <p>السعر: <span className="text-2xl">{price}</span> ل.س</p>
+            <div className="relative w-full h-full border-2 border-text grid grid-rows-5 p-1 rounded-lg bg-card hover:bg-hoverBg hover:scale-95">
+                {images && <img className="row-span-3 object-cover w-full h-full rounded-lg border-4 border-text" src={images![0]} alt="primaryImage" />}
+                <div className="row-span-2 relative font-Amiri text-xl gap-2 sm:text-sm md:text-base lg:text-xl flex flex-col items-start justify-around text-text p-4">
+                    <p>{city}</p>
+                    <p>{area} {path == "farms" ? " دونم" : " متر مربع"}</p>
+                    <p>{price} ل.س</p>
                 </div>
 
             </div>

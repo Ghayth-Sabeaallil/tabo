@@ -44,7 +44,7 @@ const FarmsSearch = () => {
             </div>
             {show === "list" && items?.length! > 0 ?
                 <main className="flex flex-col overflow-y-auto h-full p-3 gap-2 sm:grid sm:grid-cols-2 lg:grid-cols-5 sm:grid-rows-2 lg:grid-rows-2 bg-bg bg-opacity-50">
-                    {items!.map((item) => <Link key={item.id} to={`/item?id=${item.id}`}><Card path="farms" key={item.id} address={item.address} images={item.images} price={formatPrice(item.price!)} area={item.area} /></Link>)}
+                    {items!.map((item) => <Link key={item.id} to={`/item?id=${item.id}`}><Card path="farms" key={item.id} city={item.city} images={item.images} price={formatPrice(item.price!)} area={item.area} /></Link>)}
                 </main>
                 : show === "map" && items?.length! > 0 ?
                     <div className="bg-bg flex justify-center items-center h-full text-3xl p-1">

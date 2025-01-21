@@ -3,7 +3,7 @@ import Footer from "../Components/Footer";
 import Header from "../Components/Header"
 
 function Shops() {
-    document.title = "طابو - شقق";
+    document.title = "طابو - محل";
 
     return (
         <>

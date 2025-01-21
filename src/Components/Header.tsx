@@ -15,21 +15,20 @@ const Header = () => {
                 <div className="flex justify-between items-center h-16">
 
                     {/* Desktop Menu */}
-                    <div className="hidden md:flex gap-4">
+                    <div className="hidden lg:flex gap-4">
                         <Link to={"/"}>
-                            <div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">الرئيسية<GoHome size={30} /></div>
+                            <div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">الرئيسية<GoHome size={25} /></div>
                         </Link>
-                        <Link to={"/apartments"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">شقق<MdApartment size={30} /></div></Link>
-                        <Link to={"/farms"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">أرض<PiFarm size={30} /></div></Link>
-                        <Link to={"/shops"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">محل<CiShop size={30} /></div></Link>
-                        <Link to={"/villas"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">فيلا<MdOutlineVilla size={30} /></div></Link>
-                        <Link to={"/contact"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">تواصل معنا<FaHeadphones size={30} /></div></Link>
-                        <Link to={"/privacyPolicy"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">الشروط و الأحكام<MdOutlinePolicy size={30} /></div></Link>
+                        <Link to={"/apartments"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">شقق<MdApartment size={25} /></div></Link>
+                        <Link to={"/farms"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">أرض<PiFarm size={25} /></div></Link>
+                        <Link to={"/shops"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">محل<CiShop size={25} /></div></Link>
+                        <Link to={"/villas"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">فيلا<MdOutlineVilla size={25} /></div></Link>
+                        <Link to={"/contact"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">تواصل<FaHeadphones size={25} /></div></Link>
+                        <Link to={"/privacyPolicy"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">حول<MdOutlinePolicy size={25} /></div></Link>
                     </div>
 
-
                     {/* Mobile Menu Button */}
-                    <div className="flex md:hidden">
+                    <div className="flex lg:hidden">
                         <button
                             onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
                             className="focus:outline-none"
@@ -73,19 +72,17 @@ const Header = () => {
             </div>
 
             {/* Mobile Menu */}
-            {(isMobileMenuOpen && window.innerWidth < 768) && (
-                <div className="w-screen absolute z-50 flex flex-col items-start bg-header p-4">
-                    <Link to={"/"}>
-                        <div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2"><GoHome size={30} />الرئيسية</div>
-                    </Link>
-                    <Link to={"/apartments"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2"><MdApartment size={30} />شقق</div></Link>
-                    <Link to={"/farms"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2"><PiFarm size={30} />أرض</div></Link>
-                    <Link to={"/shops"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2"><CiShop size={30} />محل</div></Link>
-                    <Link to={"/villas"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2"><MdOutlineVilla size={30} />فيلا</div></Link>
-                    <Link to={"/contact"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2"><FaHeadphones size={30} />تواصل معنا</div></Link>
-                    <Link to={"/privacyPolicy"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2"><MdOutlinePolicy size={30} />الشروط و الأحكام</div></Link>
-                </div>
-            )}
+            {isMobileMenuOpen && <div className="w-screen absolute z-50 flex flex-col items-start bg-header p-4">
+                <Link to={"/"}>
+                    <div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2"><GoHome size={25} />الرئيسية</div>
+                </Link>
+                <Link to={"/apartments"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2"><MdApartment size={25} />شقق</div></Link>
+                <Link to={"/farms"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2"><PiFarm size={25} />أرض</div></Link>
+                <Link to={"/shops"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2"><CiShop size={25} />محل</div></Link>
+                <Link to={"/villas"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2"><MdOutlineVilla size={25} />فيلا</div></Link>
+                <Link to={"/contact"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2"><FaHeadphones size={25} />تواصل معنا</div></Link>
+                <Link to={"/privacyPolicy"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2"><MdOutlinePolicy size={25} />الشروط و الأحكام</div></Link>
+            </div>}
         </nav>
     );
 };
