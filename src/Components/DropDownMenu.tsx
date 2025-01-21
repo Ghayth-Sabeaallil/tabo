@@ -4,10 +4,11 @@ interface DropDownMenuProps {
     options: string[] | number[];
     onSelect: (option: string | number) => void;
     placeHolder: string,
-    type?: string
+    type?: string,
+    path?: string
 }
 
-const DropDownMenu: React.FC<DropDownMenuProps> = ({ options, onSelect, placeHolder, type }: DropDownMenuProps) => {
+const DropDownMenu: React.FC<DropDownMenuProps> = ({ options, onSelect, placeHolder, type, path }: DropDownMenuProps) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [selectedOption, setSelectedOption] = useState<string | number | null>(null);
 
@@ -68,7 +69,7 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({ options, onSelect, placeHol
                             onClick={() => handleOptionClick(option)}
                             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
                         >
-                            {option}{type === "area" ? " م2" : type === "price" ? " مليون" : ""}
+                            {option}{(type === "area" && path == "farms") ? " دونم" : type === "area" ? " م2" : type === "price" ? " مليون" : ""}
                         </li>
                     ))}
                 </ul>

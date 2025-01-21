@@ -1,17 +1,18 @@
+import VillasSearch from "../Components/VillasSearch";
 import Footer from "../Components/Footer";
 import Header from "../Components/Header"
-import Main from "../Components/Main";
 
-function SearchPage() {
-    document.title = "طابو";
+function Villas() {
+    document.title = "طابو - شقق";
 
     return (
         <>
             <Header />
-            <Main />
+            <VillasSearch />
             <Footer />
         </>
+
     )
 }
 
-export default SearchPage
+export default Villas

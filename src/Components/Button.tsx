@@ -1,7 +1,7 @@
 import { FaSearch } from "react-icons/fa";
 import { GrClearOption } from "react-icons/gr";
 
-export type ButtonProps = {
+type ButtonProps = {
     text: string;
     handleClick?: React.MouseEventHandler;
 };

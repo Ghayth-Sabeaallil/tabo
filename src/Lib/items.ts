@@ -1,10 +1,13 @@
 import { CardDetailsProps } from "./DataType"
 
-export async function loadItemDataset(): Promise<CardDetailsProps[]> {
+export async function loadItemDataset(type: string): Promise<CardDetailsProps[]> {
     const response = await fetch('/tabo/DummyData.json'); // Relative path to the public folder
     const data = await response.json();
 
-    const filteredData: CardDetailsProps[] = (data as CardDetailsProps[]).filter(item => item.is_active === true);
+    const filteredData: CardDetailsProps[] = (data as CardDetailsProps[]).filter(item =>
+        (item.type === type) &&
+        (item.is_active === true)
+    );
     return filteredData;
 }
 {/*
