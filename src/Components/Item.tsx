@@ -33,27 +33,41 @@ const Item = () => {
                         <div className="grid-cols-1 sm:grid-cols-1 md:grid-cols-5 grid justify-center items-center gap-2 w-full">
                             <div className="md:col-span-3 md:pl-20"><Carousel images={images} /></div>
                             <div className="md:col-span-2 flex flex-col gap-2 grow">
-                                <div className="grid grid-cols-5 border-2 border-bg bg-header rounded-xl p-2">
-                                    <div className="flex flex-col col-span-2 gap-3 text-text">
-                                        <p className="text-xl font-semibold">تاريخ النشر</p>
-                                        <p className=" text-xl font-semibold">المدينة</p>
-                                        <p className=" text-xl font-semibold">العنوان</p>
-                                        <p className=" text-xl font-semibold">السعر</p>
-                                        <p className=" text-xl font-semibold">المساحة</p>
-                                        <p className=" text-xl font-semibold">النوع</p>
-                                        <p className=" text-xl font-semibold">عدد الغرف</p>
-                                        <p className=" text-xl font-semibold">الوصف</p>
+                                <div className="flex flex-col border-2 border-bg bg-header rounded-xl p-2 gap-4 text-text p-4">
+                                    <div className="grid grid-cols-5 gap-4">
+                                        <p className="col-span-2 text-xl font-semibold">تاريخ النشر</p>
+                                        <p className="col-span-3 text-xl">{item.date_created}</p>
                                     </div>
-                                    <div className="flex flex-col gap-3 col-span-3 text-text">
-                                        <p className=" text-xl">{item.date_created}</p>
-                                        <p className=" text-xl">{item.city}</p>
-                                        <p className=" text-xl">{item.address}</p>
-                                        <p className=" text-xl">{formatPrice(item.price!)} ل.س</p>
-                                        <p className=" text-xl">{item.area}</p>
-                                        <p className=" text-xl">{item.type}</p>
-                                        <p className=" text-xl">{item.rooms}</p>
-                                        <p className=" text-xl h-20 overflow-auto">{item.description}</p>
+                                    <div className="grid grid-cols-5 gap-4">
+                                        <p className="col-span-2 text-xl font-semibold">المدينة</p>
+                                        <p className="col-span-3 text-xl">{item.city}</p>
                                     </div>
+                                    <div className="grid grid-cols-5 gap-4">
+                                        <p className="col-span-2 text-xl font-semibold">العنوان</p>
+                                        <p className="col-span-3 text-xl">{item.address}</p>
+                                    </div>
+                                    <div className="grid grid-cols-5 gap-4">
+                                        <p className="col-span-2 text-xl font-semibold">السعر</p>
+                                        <p className="col-span-3 text-xl">{formatPrice(item.price!)} ل.س</p>
+                                    </div>
+                                    <div className="grid grid-cols-5 gap-4">
+                                        <p className="col-span-2 text-xl font-semibold">المساحة</p>
+                                        {item.type === "أرض" ? <p className="col-span-3 text-xl">{item.area} دونم</p> : <p className="col-span-3 text-xl">{item.area} متر مربع</p>}
+                                    </div>
+                                    <div className="grid grid-cols-5 gap-4">
+                                        <p className="col-span-2 text-xl font-semibold">النوع</p>
+                                        <p className="col-span-3 text-xl">{item.type}</p>
+                                    </div>
+                                    <div className="grid grid-cols-5 gap-4">
+                                        {item.type !== "محل" && <p className="col-span-2 text-xl font-semibold">عدد الغرف</p>}
+                                        {item.type !== "محل" && <p className="col-span-3 text-xl">{item.rooms}</p>}
+                                    </div>
+                                    <div className="grid grid-cols-5 gap-4">
+                                        <p className="col-span-2 text-xl font-semibold">الوصف</p>
+                                        <p className="col-span-3 text-xl h-20 overflow-auto">{item.description}</p>
+                                    </div>
+
+
                                 </div>
 
                                 <div className="grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 grid justify-center gap-4">
