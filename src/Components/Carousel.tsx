@@ -40,11 +40,11 @@ export const Carousel: React.FC<CarouselProps> = ({ images }) => {
 
                 <img
                     src={images[currentIndex]}
-                    alt={`Slide ${currentIndex + 1}`}
+                    alt={`صورة رقم  ${currentIndex + 1}`}
                     className="w-full h-full object-cover cursor-pointer"
                     onClick={() => openModal(currentIndex)}
                 />
-                <div className="absolute bottom-2 text-white text-2xl font-bold bg-gray-700 bg-opacity-90 p-2 z-10 select-none">{currentIndex + 1} / {images.length}</div>
+                <div className="absolute bottom-2 text-white text-2xl font-bold bg-gray-700 bg-opacity-90 p-2 z-10 select-none rounded-l-lg">{currentIndex + 1} / {images.length}</div>
                 <IoIosArrowForward onClick={handlePrevious}
                     className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white text-3xl font-bold bg-gray-700  rounded-full p-2 hover:bg-opacity-75 z-10" size={35} />
             </div>
