@@ -43,7 +43,7 @@ const VillasSearch = () => {
                 <div onClick={() => setShow("list")} className={`${show == "list" ? "bg-hoverBg" : "bg-buttom"} p-4 rounded-lg hover:bg-hoverBg border-2 border-text cursor-pointer flex justify-center items-center text-text font-semibold gap-2`}><FaList size={20} color="#BA9503" />قائمة</div>
             </div>
             {show === "list" && items?.length! > 0 ?
-                <main className="flex flex-col overflow-y-auto h-full p-3 gap-2 sm:grid sm:grid-cols-4 lg:grid-cols-5 sm:grid-rows-2 lg:grid-rows-2">
+                <main className="flex flex-col overflow-y-auto h-full p-3 gap-2 sm:grid sm:grid-cols-4 lg:grid-cols-5">
                     {items!.map((item) => <Link key={item.id} to={`/item?id=${item.id}`}><Card key={item.id} city={item.city} images={item.images} price={formatPrice(item.price!)} area={item.area} /></Link>)}
                 </main>
                 : show === "map" && items?.length! > 0 ?
