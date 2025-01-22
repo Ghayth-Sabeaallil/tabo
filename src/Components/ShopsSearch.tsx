@@ -39,16 +39,16 @@ const ShopsSearch = () => {
         <>
             <Filter path={"shops"} />
             <div className="flex justify-center gap-4 p-1 pr-5">
+                <div className="flex justify-center text-2xl text-header p-2">نتائج البحث {items?.length}</div>
                 <div onClick={() => setShow("map")} className={`${show == "map" ? "bg-hoverBg" : "bg-buttom"} p-4 rounded-lg hover:bg-hoverBg border-2 border-text cursor-pointer flex justify-center items-center text-text font-semibold gap-2`}><FaMapLocation size={20} color="#BA9503" />خريطة</div>
                 <div onClick={() => setShow("list")} className={`${show == "list" ? "bg-hoverBg" : "bg-buttom"} p-4 rounded-lg hover:bg-hoverBg border-2 border-text cursor-pointer flex justify-center items-center text-text font-semibold gap-2`}><FaList size={20} color="#BA9503" />قائمة</div>
             </div>
-            <div className="flex justify-center text-2xl text-header p-2">نتائج البحث {items?.length}</div>
             {show === "list" && items?.length! > 0 ?
-                <main className="flex flex-col overflow-y-auto h-full p-3 gap-2 sm:grid sm:grid-cols-4 lg:grid-cols-5">
+                <main className="flex flex-col overflow-y-auto h-full p-3 gap-2 sm:grid sm:grid-cols-4 lg:grid-cols-5  border-2 border-header bg-bg m-2 rounded-lg">
                     {items!.map((item) => <Link key={item.id} to={`/item?id=${item.id}`}><Card key={item.id} city={item.city} images={item.images} price={formatPrice(item.price!)} area={item.area} /></Link>)}
                 </main>
                 : show === "map" && items?.length! > 0 ?
-                    <div className=" flex justify-center items-center h-full text-3xl p-1">
+                    <div className=" flex justify-center items-center h-full text-3xl border-2 border-header bg-bg m-2 rounded-lg">
                         <APIProvider apiKey={apiKey} onLoad={() => console.log('Maps API has loaded.')}>
                             <Map
                                 mapId={'bf51a910020fa25a'}
