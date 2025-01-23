@@ -1,7 +1,7 @@
 import { useState } from "react";
 import DropDownMenu from "./DropDownMenu";
 import Button from "./Button";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 type FilterProps = {
     path: string;
 };
@@ -15,8 +15,12 @@ function Filter({ path }: FilterProps) {
     const citys: string[] = ["جميع المحافظات", "دمشق", "حلب", "حمص", "اللاذقية", "حماة", "دير الزور", "الرقة", "الحسكة", "طرطوس", "السويداء", "درعا", "القامشلي", "إدلب", "ريف دمشق"];
     const minRooms: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     const minPrice: number[] = [50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 1000, 2000];
-    const minArea: number[] = [40, 60, 90, 120, 150, 200, 250, 350, 500];
+    const minArea: number[] = [40, 60, 90, 120, 150, 200, 250, 350, 500, 1000];
     const minAreaFarm: number[] = [1, 3, 5, 7, 9, 15, 20, 50, 100];
+
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+
 
     return (
         <div className="text-black font-bold">
@@ -27,7 +31,9 @@ function Filter({ path }: FilterProps) {
                     <div className="hidden xl:flex gap-4 justify-center items-center">
                         <div className={`hidden md:grid ${path == "villas" || path == "apartments" ? "grid-cols-4" : "grid-cols-3"} gap-4`}>
                             <DropDownMenu options={citys} onSelect={(option) => setCity(String(option))} placeHolder={"المحافظة"} />
+
                             {(path == "villas" || path == "apartments") && <DropDownMenu options={minRooms} onSelect={(option) => setRoom(Number(option))} placeHolder={"عدد الغرف"} />}
+
                             <DropDownMenu options={minPrice} onSelect={(option) => setPrice(Number(option))} placeHolder={"السعر"} type="price" />
                             <DropDownMenu options={path == "farms" ? minAreaFarm : minArea} onSelect={(option) => setArea(Number(option))} placeHolder={"المساحة"} type="area" path={path} />
                         </div>
@@ -64,12 +70,12 @@ function Filter({ path }: FilterProps) {
             {(isMobileMenuOpen && window.innerWidth < 1270) && (
                 <div className="w-screen absolute z-40 flex flex-col justify-center items-center gap-4 bg-dropDownBg p-4">
                     <div className={`grid ${path == "villas" || path == "apartments" ? "grid-cols-2" : "grid-cols-1"} w-full`}>
-                        <DropDownMenu options={citys} onSelect={(option) => setCity(String(option))} placeHolder={"المحافظة"} />
-                        {(path == "villas" || path == "apartments") && <DropDownMenu options={minRooms} onSelect={(option) => setRoom(Number(option))} placeHolder={"عدد الغرف"} />}
+                        <DropDownMenu options={citys} onSelect={(option) => setCity(String(option))} placeHolder={queryParams.get('city') ? queryParams.get('city')! : "المحافظة"} />
+                        {(path == "villas" || path == "apartments") && <DropDownMenu options={minRooms} onSelect={(option) => setRoom(Number(option))} placeHolder={queryParams.get('room') ? queryParams.get('room')! : "عدد الغرف"} />}
                     </div>
                     <div className="grid grid-cols-2 w-full">
-                        <DropDownMenu options={minPrice} onSelect={(option) => setPrice(Number(option))} placeHolder={"السعر"} type="price" />
-                        <DropDownMenu options={path == "farms" ? minAreaFarm : minArea} onSelect={(option) => setArea(Number(option))} placeHolder={"المساحة"} type="area" path="farms" />
+                        <DropDownMenu options={minPrice} onSelect={(option) => setPrice(Number(option))} placeHolder={queryParams.get('price') ? queryParams.get('price')! : "السعر"} type="price" />
+                        <DropDownMenu options={path == "farms" ? minAreaFarm : minArea} onSelect={(option) => setArea(Number(option))} placeHolder={queryParams.get('area') ? queryParams.get('area')! : "المساحة"} type="area" path={path} />
                     </div>
                     <Link to={
                         !city && !room && !price && !area
