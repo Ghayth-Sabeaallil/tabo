@@ -7,7 +7,7 @@ export async function getByFilter(
     price: number | null,
     area: number | null
 ): Promise<CardDetailsProps[]> {
-    const response = await fetch('/DummyData.json'); // Relative path to the public folder
+    const response = await fetch('/Data.json'); // Relative path to the public folder
     const data = await response.json();
 
 
