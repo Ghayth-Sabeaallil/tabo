@@ -8,7 +8,7 @@ function AboutPage() {
         <>
             <Header />
             <main className="p-2 flex justify-center h-full">
-                <div className=" font-bold font-Amiri text-text text-base sm:text-base md:text-2xl flex flex-col overflow-auto p-4 gap-2 bg-header w-5/6 rounded-lg">
+                <div className=" font-bold font-Amiri text-text text-base sm:text-base md:text-2xl flex flex-col overflow-auto p-4 gap-2 bg-header w-full rounded-lg justify-around items-center">
                     <h1 className="text-4xl">حول</h1>
                     <h2 className="text-xl">مرحبًا بك في موقعنا، المنصة المثالية التي تتيح لك عرض والإطلاع على إعلانات الشقق، الفلل، والأراضي بمختلف المناطق. نحن نقدم مساحة مخصصة لعرض العقارات بمواصفاتها المختلفة، مما يسهل على المهتمين الوصول إلى خيارات تناسب احتياجاتهم وميزانياتهم</h2>
                     <h2 className="text-xl">يرجى التنويه إلى أن دورنا يقتصر فقط على توفير هذه المنصة الإعلانية لربط المعلنين بالمشترين المحتملين. نحن لا نتدخل في تفاصيل العمليات التجارية أو العقود، بل نتيح لك كمسؤول عن إعلانك التواصل المباشر مع الأطراف الأخرى لإتمام أي معاملات</h2>

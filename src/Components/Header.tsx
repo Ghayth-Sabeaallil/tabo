@@ -24,7 +24,7 @@ const Header = () => {
                         <Link to={"/shops"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">محل<CiShop size={25} /></div></Link>
                         <Link to={"/villas"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">فيلا<MdOutlineVilla size={25} /></div></Link>
                         <Link to={"/contact"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">تواصل<FaHeadphones size={25} /></div></Link>
-                        <Link to={"/privacyPolicy"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">حول<MdOutlinePolicy size={25} /></div></Link>
+                        <Link to={"/about"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2">حول<MdOutlinePolicy size={25} /></div></Link>
                     </div>
 
                     {/* Mobile Menu Button */}
