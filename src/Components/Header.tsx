@@ -67,7 +67,7 @@ const Header = () => {
                 <Link to={"/shops"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2"><CiShop size={25} />محل</div></Link>
                 <Link to={"/villas"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2"><MdOutlineVilla size={25} />فيلا</div></Link>
                 <Link to={"/contact"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2"><FaHeadphones size={25} />تواصل معنا</div></Link>
-                <Link to={"/privacyPolicy"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2"><MdOutlinePolicy size={25} />الشروط و الأحكام</div></Link>
+                <Link to={"/about"}><div className="text-xl font-mono cursor-pointer p-3 text-text border-black font-bold duration-500 hover:scale-125 hover:font-extrabold flex gap-2"><MdOutlinePolicy size={25} />حول</div></Link>
             </div>}
         </nav>
     );
