@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { getProfile } from "../service/authService";
 import Logout from "./Logout";
 import Login from "./Login";
+import { AddItem } from "./AddItem";
 
-const Dashboard: React.FC = () => {
+const DashboardComponent: React.FC = () => {
     const [user, setUser] = useState<string | null>();
 
 
@@ -27,19 +28,17 @@ const Dashboard: React.FC = () => {
         setUser(null);
     };
     return (
-        <main className="flex h-full justify-center">
-            <div>
-                {user ? (
-                    <div>
-                        <h2>Welcome, {user}</h2>
-                        <Logout onLogout={handleLogout} />
-                    </div>
-                ) : (
-                    <Login onLogin={handleLogin} />
-                )}
-            </div>
+        <main className="flex h-screen w-full justify-center">
+            {user ? (
+                <div className="flex flex-col gap-4">
+                    <AddItem />
+                    <Logout onLogout={handleLogout} />
+                </div>
+            ) : (
+                <Login onLogin={handleLogin} />
+            )}
         </main>
     );
 };
 
-export default Dashboard;
+export default DashboardComponent;

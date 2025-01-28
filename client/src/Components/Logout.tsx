@@ -1,5 +1,7 @@
 import React from 'react';
 import { logout } from '../service/authService';
+import Button from './Button';
+import { CiLogout } from 'react-icons/ci';
 
 interface LogoutProps {
     onLogout: () => void;
@@ -15,7 +17,7 @@ const Logout: React.FC<LogoutProps> = ({ onLogout }) => {
         }
     };
 
-    return <button onClick={handleLogout}>Logout</button>;
+    return <Button text="تسجيل الخروج" handleClick={handleLogout} icon={<CiLogout size={20} />} />;
 };
 
 export default Logout;

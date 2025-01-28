@@ -12,7 +12,7 @@ const Item = () => {
     const [item, setItem] = useState<CardDetailsProps>();
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
-    const id = Number(searchParams.get("id"));
+    const id = searchParams.get("id");
     useEffect(() => {
         const fetchData = async () => {
             const itemData = getById(id!);

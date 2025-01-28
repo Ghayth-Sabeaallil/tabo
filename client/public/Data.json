@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "abcd123",
     "description": "شقة جميلة في وسط اللاذقية",
     "images": ["https://i.imgur.com/CXgNCE2.png", "https://i.imgur.com/OpTjlzp.png", "https://i.imgur.com/wNOMdFX.png"],
     "address": "شارع الجمهورية، اللاذقية",
@@ -15,7 +15,7 @@
     "is_active": true
   },
   {
-    "id": 2,
+    "id": "123abc",
     "description": "منزل واسع مع حديقة في دمشق",
     "images": ["https://i.imgur.com/CXgNCE2.png", "https://i.imgur.com/OpTjlzp.png", "https://i.imgur.com/wNOMdFX.png"],
     "address": "حي المزة، دمشق",
@@ -30,7 +30,7 @@
     "is_active": true
   },
   {
-    "id": 3,
+    "id": "1a2b3c",
     "description": "محل للبيع في حلب",
     "images": ["https://i.imgur.com/CXgNCE2.png", "https://i.imgur.com/OpTjlzp.png", "https://i.imgur.com/wNOMdFX.png"],
     "address": "سيف الدولة، حلب",
@@ -45,7 +45,7 @@
     "is_active": true
   },
   {
-    "id": 4,
+    "id": "a1b2c3",
     "description": "أرض زراعية للبيع في الحسكة",
     "images": ["https://i.imgur.com/CXgNCE2.png", "https://i.imgur.com/OpTjlzp.png", "https://i.imgur.com/wNOMdFX.png"],
     "address": "منطقة الريف الشمالي، الحسكة",

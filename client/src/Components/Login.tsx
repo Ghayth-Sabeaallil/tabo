@@ -1,6 +1,7 @@
 import { FormEvent, useState } from "react";
 import Button from "./Button";
 import { login } from '../service/authService';
+import { IoIosLogIn } from "react-icons/io";
 
 interface LoginProps {
     onLogin: (username: string) => void;
@@ -58,7 +59,7 @@ const LoginForm: React.FC<LoginProps> = ({ onLogin }) => {
                     required
                 />
             </div>
-            <Button type="submit" text={"تسجيل الدخول"} />
+            <Button type="submit" text={"تسجيل الدخول"} icon={<IoIosLogIn size={20} />} />
             {error && <p className="text-xl text-header">{error}</p>}
         </form>
     );

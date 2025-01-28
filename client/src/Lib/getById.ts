@@ -1,6 +1,6 @@
 import { CardDetailsProps } from "./DataType"
 
-export async function getById(id: number): Promise<CardDetailsProps> {
+export async function getById(id: string): Promise<CardDetailsProps> {
     const response = await fetch('/Data.json'); // Relative path to the public folder
     const data = await response.json();
 

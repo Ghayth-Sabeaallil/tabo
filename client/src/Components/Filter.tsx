@@ -2,6 +2,8 @@ import { useState } from "react";
 import DropDownMenu from "./DropDownMenu";
 import Button from "./Button";
 import { Link, useLocation } from "react-router-dom";
+import { FaSearch } from "react-icons/fa";
+
 type FilterProps = {
     path: string;
 };
@@ -49,7 +51,7 @@ function Filter({ path }: FilterProps) {
                                     .filter(Boolean) // Remove empty query parameters
                                     .join("&")}` // Join applied filters with "&"
                         }>
-                            <Button text={"بحث"} />
+                            <Button text={"بحث"} icon={<FaSearch size={20} />} />
                         </Link>
                     </div>
 
@@ -89,7 +91,7 @@ function Filter({ path }: FilterProps) {
                                 .filter(Boolean) // Remove empty query parameters
                                 .join("&")}` // Join applied filters with "&"
                     }>
-                        <Button handleClick={() => setMobileMenuOpen(!isMobileMenuOpen)} text={"بحث"} />
+                        <Button handleClick={() => setMobileMenuOpen(!isMobileMenuOpen)} text={"بحث"} icon={<FaSearch size={20} />} />
                     </Link>
                 </div>
             )}
