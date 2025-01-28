@@ -1,18 +1,35 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import Button from "./Button";
+import { login } from '../service/authService';
 
-const LoginForm: React.FC = () => {
+interface LoginProps {
+    onLogin: (username: string) => void;
+}
+
+const LoginForm: React.FC<LoginProps> = ({ onLogin }) => {
     const [username, setUsername] = useState<string>("");
     const [password, setPassword] = useState<string>("");
+    const [error, setError] = useState<string>('');
 
 
-    const handleLogin = (e: React.FormEvent) => {
+
+    const handleLogin = async (e: FormEvent) => {
         e.preventDefault();
-
+        try {
+            const response = await login(username, password);
+            if (response.msg === 'Login successful') {
+                onLogin(response.username);
+            }
+            else {
+                setError(response.error);
+            }
+        } catch (error: any) {
+            setError(error.response.data.msg);
+        }
     };
 
     return (
-        <form className="flex flex-col items-center justify-center h-screen" onSubmit={handleLogin}>
+        <form className="flex flex-col items-center justify-center h-full" onSubmit={handleLogin}>
             <div className="mb-4">
                 <label htmlFor="username" className="text-header text-2xl font-medium block font-Amir">
                     اسم المستخدم
@@ -28,7 +45,7 @@ const LoginForm: React.FC = () => {
                 />
             </div>
             <div className="mb-4">
-                <label htmlFor="password" className="text-header text-2xl font-medium block font-Amir">
+                <label htmlFor="password" className="text-header text-2xl font-medium block font-Amir text">
                     كلمة المرور
                 </label>
                 <input
@@ -42,6 +59,7 @@ const LoginForm: React.FC = () => {
                 />
             </div>
             <Button type="submit" text={"تسجيل الدخول"} />
+            {error && <p className="text-xl text-header">{error}</p>}
         </form>
     );
 };

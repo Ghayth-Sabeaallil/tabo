@@ -8,18 +8,16 @@ import Farms from './Pages/Farms';
 import Villas from './Pages/Villas';
 import Shops from './Pages/Shops';
 import NoPageFound from './Pages/NoPageFound';
-
-import Dashboard from './Pages/DashboardPage';
-import LoginPage from './Pages/LoginPage';
+import Dashboard from './Pages/Dashboard';
 
 
 
 function App() {
+
   return (
     <HashRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<LoginPage />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/apartments" element={<Apartments />} />
         <Route path="/farms" element={<Farms />} />
