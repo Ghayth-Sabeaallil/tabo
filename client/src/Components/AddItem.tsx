@@ -1,4 +1,13 @@
 import { useState } from 'react';
+import { MdAddHomeWork } from 'react-icons/md';
+import Button from './Button';
+import { IoCloseCircle } from 'react-icons/io5';
+import { Dialog } from '@headlessui/react';
+import { IoIosSend } from 'react-icons/io';
+import { post } from '../service/itemService';
+import { getFormattedDate } from '../utils/dateFormat';
+import { uploadImageToCloudinary } from '../Lib/uploadFile';
+import { SyncLoader } from 'react-spinners';
 
 interface CardDetailsProps {
     description: string;
@@ -11,14 +20,16 @@ interface CardDetailsProps {
     area: number;
     type: string;
 }
-import { MdAddHomeWork } from 'react-icons/md';
-import Button from './Button';
-import { IoCloseCircle } from 'react-icons/io5';
-import { Dialog } from '@headlessui/react';
-import { IoIosSend } from 'react-icons/io';
-import { getFormattedDate, post } from '../service/itemService';
 
-export const AddItem = () => {
+type AddItemProps = {
+    onItemAdded: () => void,
+    user: string
+}
+
+export const AddItem = ({ onItemAdded, user }: AddItemProps) => {
+    const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+    const [imageUrls, setImageUrls] = useState<string[]>([]);
+    const [loading, setLoading] = useState(false);
     const [showAddModal, setShowAddModal] = useState<boolean>(false);
     const [formData, setFormData] = useState<CardDetailsProps>({
         description: "",
@@ -42,7 +53,8 @@ export const AddItem = () => {
         const date = getFormattedDate();
         const username = document.cookie;
         const result = username.split("=")[1];
-        await post(formData.city, formData.address, formData.description, formData.type, formData.area, formData.rooms, formData.price, formData.phone, formData.location, true, date, result);
+        await post(formData.city, formData.address, formData.description, formData.type, formData.area, formData.rooms, formData.price, formData.phone, formData.location, true, date, result, imageUrls);
+        closeModal();
         setFormData({
             description: "",
             address: "",
@@ -53,7 +65,30 @@ export const AddItem = () => {
             city: "",
             area: 0,
             type: "",
-        }); // Reset the form fields 
+        });
+        setImageUrls([]);
+        onItemAdded();
+    };
+
+    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (event.target.files) {
+            setSelectedFiles(Array.from(event.target.files));
+        }
+    };
+
+    const handleUpload = async () => {
+        if (selectedFiles.length === 0) return;
+        setLoading(true);
+        const urls: string[] = [];
+        for (const file of selectedFiles) {
+            const url = await uploadImageToCloudinary(file, user);
+            if (url) {
+                urls.push(url);
+            }
+        }
+        setImageUrls(urls);
+        setLoading(false);
+        onItemAdded();
     };
 
     // Handle input and select changes
@@ -74,14 +109,12 @@ export const AddItem = () => {
         setShowAddModal(false);
     }
     return (
-        <div className="flex justify-center items-center h-screen">
+        <div>
             <Button handleClick={openModal} text={'اضافة عقار'} icon={<MdAddHomeWork size={20} />} />
             <Dialog open={showAddModal} onClose={closeModal} className="relative z-50">
                 <div className="fixed inset-0 bg-black/80" aria-hidden="true" />
-                <div className="fixed inset-0 flex items-center justify-center p-4">
-                    <Dialog.Panel
-                        className="bg-white rounded-xl shadow-xl w-full max-w-lg p-6"
-                    >
+                <div className="fixed inset-0 flex items-center justify-center p-4 bg-bg bg-opacity-10">
+                    <Dialog.Panel className="bg-bg rounded-xl shadow-xl w-full max-w-lg p-6">
                         <div className="flex justify-between items-center mb-4">
                             <Dialog.Title className="text-xl font-semibold">اضافة عقار</Dialog.Title>
                             <Button handleClick={closeModal} text={'اغلاق'} icon={<IoCloseCircle size={20} />} />
@@ -272,7 +305,27 @@ export const AddItem = () => {
                                         ))}
                                     </select>
                                 </div>
-
+                                <div className='flex flex-col justify-center items-center gap-3'>
+                                    <div className='flex justify-center items-center'>
+                                        <input id="file-upload" type="file" onChange={handleFileChange} multiple />
+                                        <button onClick={handleUpload} disabled={loading} className={`text-base sm:text-base md:text-base p-2 text-text border-2 border-text font-Amiri font-bold bg-dropDownBg rounded-lg hover:bg-hoverBg flex gap-2 justify-center items-center`}>
+                                            {loading ? <SyncLoader
+                                                color={"#BA9503"}
+                                                loading={true}
+                                                size={8}
+                                                aria-label="Loading Spinner"
+                                                data-testid="SyncLoader"
+                                            /> : 'رفع الصور'}
+                                        </button>
+                                    </div>
+                                    <div className="flex gap-1 justify-start w-full overflow-x-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 p-2">
+                                        {imageUrls && (
+                                            imageUrls.map((img, index) => (
+                                                <img key={index} src={img} alt="Uploaded" width="100" className="h-24 rounded border border-header border-2" />
+                                            ))
+                                        )}
+                                    </div>
+                                </div>
                                 <Button type="submit" text="تأكيد" icon={<IoIosSend size={20} />} />
                             </form>
 

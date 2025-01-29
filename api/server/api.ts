@@ -1,7 +1,7 @@
 
 import Express from "express";
-import { userRouter } from "./resources/users";
-import { itemRouter } from "./resources/items";
+import userRouter from "./routes/userRoutes";
+import itemRouter from "./routes/itemRoutes";
 
 import cookieParser from "cookie-parser";
 

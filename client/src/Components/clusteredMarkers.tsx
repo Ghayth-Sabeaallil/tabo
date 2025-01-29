@@ -5,15 +5,15 @@ import { CardDetailsProps } from '../Lib/DataType';
 import { ItemMarker } from './ItemMarker';
 import { Link } from 'react-router-dom';
 import { IoCloseCircle } from 'react-icons/io5';
-import { formatPrice } from '../Lib/formatPrice';
+import { formatPrice } from '../utils/formatPrice';
 
 export type ClusteredItemMarkersProps = {
     items: CardDetailsProps[];
 };
 
 export const ClusteredMarkers = ({ items }: ClusteredItemMarkersProps) => {
-    const [markers, setMarkers] = useState<{ [id: number]: Marker }>({});
-    const [selectedItemKey, setSelectedItemKey] = useState<number | null>(null);
+    const [markers, setMarkers] = useState<{ [id: string]: Marker }>({});
+    const [selectedItemKey, setSelectedItemKey] = useState<string | null>(null);
 
     const selectedItem = useMemo(
         () =>
@@ -41,7 +41,7 @@ export const ClusteredMarkers = ({ items }: ClusteredItemMarkersProps) => {
 
     // this callback will effectively get passsed as ref to the markers to keep
     // tracks of markers currently on the map
-    const setMarkerRef = useCallback((marker: Marker | null, id: number) => {
+    const setMarkerRef = useCallback((marker: Marker | null, id: string) => {
         setMarkers(markers => {
             if ((marker && markers[id]) || (!marker && !markers[id]))
                 return markers;

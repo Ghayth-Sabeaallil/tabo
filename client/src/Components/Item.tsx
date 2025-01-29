@@ -4,7 +4,7 @@ import { CardDetailsProps } from "../Lib/DataType";
 import { getById } from "../Lib/getById";
 import { SyncLoader } from "react-spinners";
 import { Carousel } from "./Carousel"
-import { formatPrice } from "../Lib/formatPrice";
+import { formatPrice } from "../utils/formatPrice";
 import { FaShareAlt } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 

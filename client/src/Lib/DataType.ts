@@ -1,4 +1,6 @@
 export type CardDetailsProps = {
+
+    _id?: string,
     id?: string,
     description?: string,
     images?: string[],

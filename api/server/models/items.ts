@@ -1,8 +1,5 @@
 import Express from "express";
 import Mongoose from "mongoose";
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
-import { error } from "console";
 
 interface Item {
     description: string,
@@ -16,7 +13,8 @@ interface Item {
     type: string,
     date_created: string,
     is_active: boolean,
-    creator: string
+    creator: string,
+    images: string[]
 
 }
 
@@ -38,24 +36,9 @@ const schema = new Mongoose.Schema<Item>({
     date_created: { type: String, required: true },
     is_active: { type: Boolean, required: true },
     creator: { type: String, required: true },
-
+    images: { type: [String], required: true },
 });
 
 const ItemModel = Mongoose.model("item", schema);
 
-export const itemRouter = Express.Router();
-
-
-// Register Route
-itemRouter.post("/register", async (req, res) => {
-    try {
-        const newEvent = new ItemModel(req.body);
-        await newEvent.save();
-        res.send(newEvent);
-
-    } catch (error) {
-        console.error(error); // Log the error for debugging
-        res.status(500).json({ msg: 'Server error', error });
-    }
-});
-
+export default ItemModel;

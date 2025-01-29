@@ -9,7 +9,7 @@ import { ClusteredMarkers } from './clusteredMarkers';
 import { CardDetailsProps } from "../Lib/DataType";
 import { SyncLoader } from "react-spinners";
 import { getByFilter } from "../Lib/getByFilter";
-import { formatPrice } from "../Lib/formatPrice";
+import { formatPrice } from "../utils/formatPrice";
 
 const ApartmentsSearch = () => {
     const [show, setShow] = useState<string>("list");
