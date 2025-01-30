@@ -20,7 +20,7 @@ const DashboardComponent: React.FC = () => {
             const response = await getProfile();
             if (response.username) {
                 setUser(response.username);
-                const newItems = await getByCreator(response.username);
+                const newItems = await getByCreator();
                 if (JSON.stringify(items) !== JSON.stringify(newItems)) {
                     setItems(newItems);
                 }

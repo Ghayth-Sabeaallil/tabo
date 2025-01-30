@@ -51,9 +51,7 @@ export const AddItem = ({ onItemAdded, user }: AddItemProps) => {
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const date = getFormattedDate();
-        const username = document.cookie;
-        const result = username.split("=")[1];
-        await post(formData.city, formData.address, formData.description, formData.type, formData.area, formData.rooms, formData.price, formData.phone, formData.location, true, date, result, imageUrls);
+        await post(formData.city, formData.address, formData.description, formData.type, formData.area, formData.rooms, formData.price, formData.phone, formData.location, true, date, imageUrls);
         closeModal();
         setFormData({
             description: "",
