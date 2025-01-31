@@ -1,6 +1,9 @@
 import express from 'express';
 import ItemModel from "../models/items";
 import jwt from "jsonwebtoken";
+import dotenv from 'dotenv';
+dotenv.config();
+
 
 const itemRouter = express.Router();
 import { Request } from "express";
@@ -69,6 +72,33 @@ itemRouter.delete("/delete/:_id", async (req: AuthRequest, res) => {
     } catch (error) {
         console.error(error); // Log the error for debugging
         res.status(500).json({ msg: 'Server error', error });
+    }
+});
+
+itemRouter.delete("/delete-image", async (req, res) => {
+    const cloudinary = require("cloudinary").v2;
+    cloudinary.config({
+        cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+        api_key: process.env.CLOUDINARY_APIKEY,
+        api_secret: process.env.CLOUDINARY_APISECRET,
+    });
+
+
+    try {
+        const { public_ids } = req.body; // Expect an array of public IDs
+
+        if (!public_ids || !Array.isArray(public_ids) || public_ids.length === 0) {
+            res.status(400).json({ error: "Invalid public_ids array" });
+        }
+
+        // Delete multiple images
+        const results = await Promise.all(
+            public_ids.map((publicId) => cloudinary.api.delete_resources(publicId))
+        );
+
+        res.json({ success: true, results });
+    } catch (error) {
+        res.status(500).json({ error: "Error deleting images", details: error });
     }
 });
 

@@ -1,11 +1,10 @@
 export const uploadImageToCloudinary = async (file: File, folder: string): Promise<string | null> => {
     const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
-    const uploadPreset = import.meta.env.VITE_CCLOUDINARY_UPLOAD_PRESET;
+    const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
     if (!cloudName || !uploadPreset) {
         console.error('Missing Cloudinary config!');
         return null;
     }
-
     const formData = new FormData();
     formData.append('file', file);
     formData.append("folder", folder);

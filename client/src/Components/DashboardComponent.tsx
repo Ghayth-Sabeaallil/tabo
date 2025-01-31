@@ -54,8 +54,8 @@ const DashboardComponent: React.FC = () => {
                 <AddItem onItemAdded={handleItemAdded} user={user} />
                 <Logout onLogout={handleLogout} />
             </div>
-            {items?.length! > 0 && <main className="flex flex-col overflow-y-auto h-full p-2 gap-2 sm:grid sm:grid-cols-4 lg:grid-cols-5 border-2 border-header bg-bg m-2 rounded-lg">
-                {items!.map((item) => <div key={item._id}><Dropdown onItemDeleted={handleItemDeleted} _id={item._id!} /><Link to={`/item?id=${item._id}`}><Card city={item.city} images={item.images} price={formatPrice(item.price!)} area={item.area} /></Link></div>)}
+            {items?.length! > 0 && <main className="flex flex-col overflow-y-auto h-full p-2 gap-2 sm:grid sm:grid-cols-4 lg:grid-cols-4 border-2 border-header bg-bg m-2 rounded-lg">
+                {items!.map((item) => <div key={item._id} ><Dropdown onItemDeleted={handleItemDeleted} _id={item._id!} /><Link to={`/item?id=${item._id}`}><Card key={item.id} city={item.city} images={item.images} price={formatPrice(item.price!)} area={item.area} /></Link></div>)}
             </main>}
         </div>
         ) : (

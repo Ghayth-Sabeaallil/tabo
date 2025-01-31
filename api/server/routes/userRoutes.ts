@@ -2,7 +2,6 @@ import express from "express";
 import UserModel from "../models/users";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { error } from "console";
 
 const userRouter = express.Router();
 
@@ -44,7 +43,7 @@ userRouter.get('/profile', async (req, res) => {
             const user = await UserModel.findById(decoded.userId);
             res.json({ username: user!.username });
         } else {
-            res.status(401).json({ msg: 'Token is missing or undefined', error });
+            res.status(401).json({ msg: 'Token is missing or undefined' });
         }
     } catch (error) {
         res.status(500).json({ msg: 'Server error', error });

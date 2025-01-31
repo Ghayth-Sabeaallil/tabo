@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { SlOptions } from "react-icons/sl";
-import { deleteItem } from "../service/itemService";
+import { deleteImages, deleteItem } from "../service/itemService";
+import { CardDetailsProps } from "../Lib/DataType";
 
 type DropdownProps = {
     _id: string;
@@ -25,7 +26,8 @@ export default function Dropdown({ _id, onItemDeleted }: DropdownProps) {
     }, []);
 
     const handelDelete = async () => {
-        await deleteItem(_id)
+        const response: CardDetailsProps = await deleteItem(_id)
+        deleteImages(response.images!);
         setOpen(false);
         onItemDeleted();
     }

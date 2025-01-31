@@ -37,8 +37,36 @@ export const deleteItem = async (_id: string) => {
         const response = await axios.delete(`${API_URL}/api/items/delete/${_id}`, {
             withCredentials: true,
         });
+        console.log(response.data)
         return response.data;
     } catch (error) {
         console.error('Error getByCreator', error);
     }
+};
+
+export const deleteImages = async (images: string[]) => {
+    const publicID = extractPublicIds(images);
+    console.log(publicID);
+    try {
+        const response = await axios.delete(`${API_URL}/api/items/delete-image`, {
+            data: { public_ids: publicID }, // Axios DELETE requests use 'data' for payload
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        console.log(response.data)
+        return response.data;
+    } catch (error) {
+        console.error('Error getByCreator', error);
+    }
+};
+
+const extractPublicIds = (imageUrls: string[]): string[] => {
+    const regex = /\/upload\/v\d+\/(.+)\.\w+$/;
+    return imageUrls
+        .map(imageUrl => {
+            const match = imageUrl.match(regex);
+            return match ? match[1] : null;
+        })
+        .filter((id): id is string => id !== null); // Filter out null values
 };
