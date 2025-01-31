@@ -43,6 +43,7 @@ const DashboardComponent: React.FC = () => {
 
     const handleLogin = (userData: string) => {
         setUser(userData);
+        setTriggerFetch(prev => !prev);
     };
 
     const handleLogout = () => {

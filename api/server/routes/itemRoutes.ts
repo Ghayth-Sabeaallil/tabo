@@ -12,7 +12,7 @@ interface AuthRequest extends Request {
 }
 
 //get all item by creator
-itemRouter.get("/", async (req: AuthRequest, res) => {
+itemRouter.get("/creator", async (req: AuthRequest, res) => {
     try {
         const token = req.cookies["token"];
         if (!token) {
@@ -23,6 +23,90 @@ itemRouter.get("/", async (req: AuthRequest, res) => {
         const id = req.user.userId;
         const items = await ItemModel.find({ creator: id }).exec();
         res.send(items);
+    } catch (error) {
+        console.error(error); // Log the error for debugging
+        res.status(500).json({ msg: 'Server error', error });
+    }
+});
+
+//get all apartment
+itemRouter.get("/apartments", async (req, res) => {
+    try {
+        const items = await ItemModel.find({ type: "شقة", is_active: true }).exec();
+        if (items) {
+            res.send(items);
+        }
+        else {
+            res.status(401).json({ message: 'No item found' });
+        }
+    } catch (error) {
+        console.error(error); // Log the error for debugging
+        res.status(500).json({ msg: 'Server error', error });
+    }
+});
+
+//get all farms
+itemRouter.get("/farms", async (req, res) => {
+    try {
+        const items = await ItemModel.find({ type: "أرض", is_active: true }).exec();
+        if (items) {
+            res.send(items);
+        }
+        else {
+            res.status(401).json({ message: 'No item found' });
+        }
+    } catch (error) {
+        console.error(error); // Log the error for debugging
+        res.status(500).json({ msg: 'Server error', error });
+    }
+});
+
+itemRouter.get("/shops", async (req, res) => {
+    try {
+        const items = await ItemModel.find({ type: "محل", is_active: true }).exec();
+        if (items) {
+            res.send(items);
+        }
+        else {
+            res.status(401).json({ message: 'No item found' });
+        }
+    } catch (error) {
+        console.error(error); // Log the error for debugging
+        res.status(500).json({ msg: 'Server error', error });
+    }
+});
+
+itemRouter.get("/villas", async (req, res) => {
+    try {
+        const items = await ItemModel.find({ type: "فيلا", is_active: true }).exec();
+        if (items) {
+            res.send(items);
+        }
+        else {
+            res.status(401).json({ message: 'No item found' });
+        }
+    } catch (error) {
+        console.error(error); // Log the error for debugging
+        res.status(500).json({ msg: 'Server error', error });
+    }
+});
+
+//get by id
+itemRouter.get("/:_id", async (req, res) => {
+    try {
+        const _id = req.params._id;
+        if (_id.length >= 24) {
+            const item = await ItemModel.findById(_id);
+            if (item) {
+                res.send(item);
+            }
+            else {
+                res.status(401).json({ message: 'No item found' });
+            }
+        } else {
+            res.status(401).json({ message: 'The ID must be at least 24 char' });
+        }
+
     } catch (error) {
         console.error(error); // Log the error for debugging
         res.status(500).json({ msg: 'Server error', error });
@@ -82,20 +166,14 @@ itemRouter.delete("/delete-image", async (req, res) => {
         api_key: process.env.CLOUDINARY_APIKEY,
         api_secret: process.env.CLOUDINARY_APISECRET,
     });
-
-
     try {
         const { public_ids } = req.body; // Expect an array of public IDs
-
         if (!public_ids || !Array.isArray(public_ids) || public_ids.length === 0) {
             res.status(400).json({ error: "Invalid public_ids array" });
         }
-
-        // Delete multiple images
         const results = await Promise.all(
             public_ids.map((publicId) => cloudinary.api.delete_resources(publicId))
         );
-
         res.json({ success: true, results });
     } catch (error) {
         res.status(500).json({ error: "Error deleting images", details: error });

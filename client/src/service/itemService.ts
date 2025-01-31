@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { CardDetailsProps } from '../Lib/DataType';
 
 const API_URL = 'http://localhost:3000';
 
@@ -14,7 +15,7 @@ export const post = async (city: string, address: string, description: string, t
 
 export const getByCreator = async () => {
     try {
-        const response = await axios.get(`${API_URL}/api/items`, {
+        const response = await axios.get(`${API_URL}/api/items/creator`, {
             withCredentials: true,
         });
         return response.data;
@@ -23,12 +24,53 @@ export const getByCreator = async () => {
     }
 };
 
-export const getByID = async (id: string) => {
+export const getByID = async (id: string): Promise<CardDetailsProps | undefined> => {
     try {
         const response = await axios.get(`${API_URL}/api/items/${id}`);
         return response.data;
     } catch (error) {
         console.error('Error getByCreator', error);
+        return undefined;
+    }
+};
+
+export const getApartments = async (): Promise<CardDetailsProps[]> => {
+    try {
+        const response = await axios.get(`${API_URL}/api/items/apartments`);
+        return response.data;
+    } catch (error) {
+        console.error('Error getByCreator', error);
+        return [];
+    }
+};
+
+export const getFarms = async (): Promise<CardDetailsProps[]> => {
+    try {
+        const response = await axios.get(`${API_URL}/api/items/farms`);
+        return response.data;
+    } catch (error) {
+        console.error('Error getByCreator', error);
+        return [];
+    }
+};
+
+export const getShops = async (): Promise<CardDetailsProps[]> => {
+    try {
+        const response = await axios.get(`${API_URL}/api/items/shops`);
+        return response.data;
+    } catch (error) {
+        console.error('Error getByCreator', error);
+        return [];
+    }
+};
+
+export const getVillas = async (): Promise<CardDetailsProps[]> => {
+    try {
+        const response = await axios.get(`${API_URL}/api/items/villas`);
+        return response.data;
+    } catch (error) {
+        console.error('Error getByCreator', error);
+        return [];
     }
 };
 

@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { CardDetailsProps } from "../Lib/DataType";
-import { getById } from "../Lib/getById";
+//import { getById } from "../Lib/getById";
 import { SyncLoader } from "react-spinners";
 import { Carousel } from "./Carousel"
 import { formatPrice } from "../utils/formatPrice";
 import { FaShareAlt } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
+import { getByID } from "../service/itemService";
 
 const Item = () => {
     const [item, setItem] = useState<CardDetailsProps>();
@@ -15,7 +16,8 @@ const Item = () => {
     const id = searchParams.get("id");
     useEffect(() => {
         const fetchData = async () => {
-            const itemData = getById(id!);
+            //const itemData = getById(id!);
+            const itemData = getByID(id!);
             setItem(await itemData);
         };
         fetchData();
