@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { CardDetailsProps } from '../Lib/DataType';
 
-const API_URL = 'https://tabo.onrender.com';
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const post = async (city: string, address: string, description: string, type: string, area: number, rooms: number, price: number, phone: number, location: object, is_active: boolean, date_created: string, images: string[]) => {
     try {
