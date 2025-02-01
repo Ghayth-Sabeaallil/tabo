@@ -2,7 +2,6 @@ import Mongoose from "mongoose";
 import Express from "express";
 import dotenv from 'dotenv';
 import { apiRouter } from "./api";
-const port = 3000;
 dotenv.config();
 const app = Express();
 
@@ -26,6 +25,6 @@ app.use("/api", apiRouter);
 
 console.log("Starting server...");
 
-app.listen(port, () => {
-    console.log("Server is listening on " + port);
+app.listen(process.env.PORT, () => {
+    console.log("Server is listening on " + process.env.PORT);
 });
