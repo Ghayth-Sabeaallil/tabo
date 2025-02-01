@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { CardDetailsProps } from "../Lib/DataType";
 //import { getById } from "../Lib/getById";
-import { SyncLoader } from "react-spinners";
 import { Carousel } from "./Carousel"
 import { formatPrice } from "../utils/formatPrice";
 import { FaShareAlt } from "react-icons/fa";
@@ -56,7 +55,7 @@ const Item = () => {
 
     return (
         <>
-            {item &&
+            {(item && item.is_active) ?
                 <div className="grid grid-rows-1 sm:grid-rows-2 grid-rows-2 p-4 gap-4 items-center">
                     <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 items-center gap-4">
                         <div className="md:col-span-2"><Carousel images={item.images!} /></div>
@@ -104,16 +103,10 @@ const Item = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> : <div className="flex justify-center items-center h-screen text-3xl text-header">هذا العقار مباع</div>
             }
 
-            {!item ? <div className="flex justify-center items-center h-screen text-3xl">العنصر غير متوفر</div> : <div className="flex justify-center items-center h-screen"><SyncLoader
-                color={"#BA9503"}
-                loading={true}
-                size={5}
-                aria-label="Loading Spinner"
-                data-testid="SyncLoader"
-            /></div>}
+            {!item && <div className="flex justify-center items-center h-screen text-3xl text-header">العنصر غير متوفر</div>}
         </>
 
     );

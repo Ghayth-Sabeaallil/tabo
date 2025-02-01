@@ -58,8 +58,8 @@ userRouter.post('/login', async (req, res) => {
             const isMatch = await bcrypt.compare(password, user.password);
             if (isMatch) {
                 const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-                res.cookie('token', token, { httpOnly: true, secure: true, sameSite: "none", partitioned: true });
-                res.cookie('username', username, { secure: true, sameSite: "none", partitioned: true });
+                res.cookie('token', token, { httpOnly: true, secure: true, sameSite: "none" });
+                res.cookie('username', username, { secure: true, sameSite: "none" });
                 res.status(200).json({ msg: 'Login successful', token, username: user.username });
             }
             else {
@@ -75,8 +75,15 @@ userRouter.post('/login', async (req, res) => {
 });
 
 userRouter.post('/logout', ({ res }: any) => {
-    res.clearCookie('token');
-    res.clearCookie('username');
+    res.clearCookie('token', {
+        httpOnly: true,
+        secure: true,
+        sameSite: "none",
+    });
+    res.clearCookie('username', {
+        secure: true,
+        sameSite: "none",
+    });
     res.json({ msg: 'Logged out' });
 });
 

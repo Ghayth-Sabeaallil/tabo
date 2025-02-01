@@ -74,11 +74,46 @@ export const getVillas = async (): Promise<CardDetailsProps[]> => {
     }
 };
 
+export const getAllActive = async (): Promise<CardDetailsProps[]> => {
+    try {
+        const response = await axios.get(`${API_URL}/api/items/allActive`);
+        return response.data;
+    } catch (error) {
+        console.error('Error getVillas', error);
+        return [];
+    }
+};
+
+export const getAllUnActive = async (): Promise<CardDetailsProps[]> => {
+    try {
+        const response = await axios.get(`${API_URL}/api/items/allUnActive`);
+        return response.data;
+    } catch (error) {
+        console.error('Error getVillas', error);
+        return [];
+    }
+};
+
 export const deleteItem = async (_id: string) => {
     try {
         const response = await axios.delete(`${API_URL}/api/items/delete/${_id}`, {
             withCredentials: true,
         });
+        return response.data;
+    } catch (error) {
+        console.error('Error deleteItem', error);
+    }
+};
+
+export const getImages = async (_id: string) => {
+    try {
+        const response = await axios.put(
+            `${API_URL}/api/items/update/${_id}`,
+            { is_active: false },
+            {
+                withCredentials: true,
+            }
+        );
         return response.data;
     } catch (error) {
         console.error('Error deleteItem', error);

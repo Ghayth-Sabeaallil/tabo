@@ -4,13 +4,12 @@ import Filter from "./Filter";
 import { FaList, FaMapLocation } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import { APIProvider, Map } from '@vis.gl/react-google-maps';
-import { loadItemDataset } from '../Lib/items';
 import { ClusteredMarkers } from './clusteredMarkers';
 import { CardDetailsProps } from "../Lib/DataType";
 import { SyncLoader } from "react-spinners";
 import { getByFilter } from "../Lib/getByFilter";
 import { formatPrice } from "../utils/formatPrice";
-//import { getVillas } from "../service/itemService";
+import { getVillas } from "../service/itemService";
 
 const VillasSearch = () => {
     const [show, setShow] = useState<string>("list");
@@ -22,8 +21,7 @@ const VillasSearch = () => {
             setLoading(true);
             const queryParams = new URLSearchParams(location.search);
             if ([...queryParams].length == 0) {
-                loadItemDataset("فيلا").then(data => setItems(data));
-                //getVillas().then(data => setItems(data));
+                getVillas().then(data => setItems(data));
 
             } else {
                 const city = queryParams.get('city');
@@ -48,7 +46,7 @@ const VillasSearch = () => {
             </div>
             {show === "list" && items?.length! > 0 ?
                 <main className="flex flex-col overflow-y-auto h-full p-3 gap-2 sm:grid sm:grid-cols-4 lg:grid-cols-5 border-2 border-header bg-bg m-2 rounded-lg">
-                    {items!.map((item) => <Link key={item._id} to={`/item?id=${item.id}`}><Card city={item.city} images={item.images} price={formatPrice(item.price!)} area={item.area} /></Link>)}
+                    {items!.map((item) => <Link key={item._id} to={`/item?id=${item._id}`}><Card city={item.city} images={item.images} price={formatPrice(item.price!)} area={item.area} /></Link>)}
                 </main>
                 : show === "map" && items?.length! > 0 ?
                     <div className=" flex justify-center items-center h-full text-3xl border-2 border-header bg-bg m-2 rounded-lg">

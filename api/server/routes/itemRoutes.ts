@@ -11,6 +11,31 @@ interface AuthRequest extends Request {
     user?: { userId: string };
 }
 
+itemRouter.put("/update/:_id", async (req: AuthRequest, res) => {
+    try {
+
+        const { is_active } = req.body;
+        const token = req.cookies["token"]; // Ensure correct cookie name
+        if (!token) {
+            res.status(401).json({ message: 'Access denied. No token provided.' });
+        }
+        else {
+            const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as { userId: string };
+            req.user = decoded;
+            const _id = req.params._id;
+            const item = await ItemModel.findById(_id);
+            if (item?.creator.toString() !== req.user.userId) {
+                res.status(403).json({ message: 'Not authorized to get Imges from this item' });
+            }
+            const updatedItem = await ItemModel.findByIdAndUpdate(_id, { is_active }, { new: true });
+            res.send(updatedItem);
+        }
+
+    } catch (err) {
+        res.status(500).json({ message: "Error Edit Event", err });
+    }
+});
+
 //get all item by creator
 itemRouter.get("/creator", async (req: AuthRequest, res) => {
     try {
@@ -21,7 +46,7 @@ itemRouter.get("/creator", async (req: AuthRequest, res) => {
         const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as { userId: string };
         req.user = decoded;
         const id = req.user.userId;
-        const items = await ItemModel.find({ creator: id }).exec();
+        const items = await ItemModel.find({ creator: id, is_active: true }).exec();
         res.send(items);
     } catch (error) {
         console.error(error); // Log the error for debugging
@@ -61,6 +86,7 @@ itemRouter.get("/farms", async (req, res) => {
     }
 });
 
+//get all shops
 itemRouter.get("/shops", async (req, res) => {
     try {
         const items = await ItemModel.find({ type: "محل", is_active: true }).exec();
@@ -76,9 +102,42 @@ itemRouter.get("/shops", async (req, res) => {
     }
 });
 
+//get all villas
 itemRouter.get("/villas", async (req, res) => {
     try {
         const items = await ItemModel.find({ type: "فيلا", is_active: true }).exec();
+        if (items) {
+            res.send(items);
+        }
+        else {
+            res.status(401).json({ message: 'No item found' });
+        }
+    } catch (error) {
+        console.error(error); // Log the error for debugging
+        res.status(500).json({ msg: 'Server error', error });
+    }
+});
+
+//get all active
+itemRouter.get("/allActive", async (req, res) => {
+    try {
+        const items = await ItemModel.find({ is_active: true }).exec();
+        if (items) {
+            res.send(items);
+        }
+        else {
+            res.status(401).json({ message: 'No item found' });
+        }
+    } catch (error) {
+        console.error(error); // Log the error for debugging
+        res.status(500).json({ msg: 'Server error', error });
+    }
+});
+
+//get all unactive
+itemRouter.get("/allUnActive", async (req, res) => {
+    try {
+        const items = await ItemModel.find({ is_active: false }).exec();
         if (items) {
             res.send(items);
         }
@@ -112,6 +171,8 @@ itemRouter.get("/:_id", async (req, res) => {
         res.status(500).json({ msg: 'Server error', error });
     }
 });
+
+
 
 //register an item
 itemRouter.post("/register", async (req: AuthRequest, res) => {
@@ -153,6 +214,7 @@ itemRouter.delete("/delete/:_id", async (req: AuthRequest, res) => {
             await item!.deleteOne();
             res.send(item);
         }
+
     } catch (error) {
         console.error(error); // Log the error for debugging
         res.status(500).json({ msg: 'Server error', error });

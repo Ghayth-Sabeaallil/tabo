@@ -4,15 +4,16 @@ import { PiFarm } from "react-icons/pi";
 import { CiShop } from "react-icons/ci";
 import CountUp from "react-countup";
 import { useEffect, useState } from "react";
-import { getAllActive, getAllUnActive } from "../Lib/getActive";
+import { getAllActive, getAllUnActive } from "../service/itemService";
+//import { getAllActive, getAllUnActive } from "../Lib/getActive";
 function MainFilter() {
     const [active, setActive] = useState<number>(0);
     const [unActive, setUnActive] = useState<number>(0);
 
     useEffect(() => {
         const fetchData = async () => {
-            setUnActive(await getAllUnActive());
-            setActive(await getAllActive());
+            setUnActive((await getAllUnActive()).length);
+            setActive((await getAllActive()).length);
         };
         fetchData();
     }, []);
