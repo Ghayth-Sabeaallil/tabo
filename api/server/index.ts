@@ -2,6 +2,7 @@ import Mongoose from "mongoose";
 import Express from "express";
 import dotenv from 'dotenv';
 import { apiRouter } from "./api";
+import cors from "cors"
 dotenv.config();
 const app = Express();
 
@@ -12,14 +13,15 @@ Mongoose.connect(process.env.MONGO_URI!)
     .then(() => console.log("Connected to MongoDB Atlas"))
     .catch((err) => console.error("MongoDB connection error:", err));
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'https://www.tabo963.com'); // Allow all origins
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    res.header('Access-Control-Allow-Credentials', "true");
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    console.log("Got a request to the url: " + req.url);
-    next();
-});
+app.use(
+    cors({
+        origin: "https://www.tabo963.com", // Your custom domain (no trailing slash)
+        methods: "GET,POST,PUT,DELETE,OPTIONS",
+        credentials: true, // If using cookies or authentication
+        allowedHeaders: ["Content-Type", "Authorization"],
+    })
+);
+
 
 app.use("/api", apiRouter);
 
