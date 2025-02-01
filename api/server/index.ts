@@ -13,12 +13,11 @@ Mongoose.connect(process.env.MONGO_URI!)
     .catch((err) => console.error("MongoDB connection error:", err));
 
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'https://ghayth-sabeaallil.github.io/'); // Allow all origins
+    res.header('Access-Control-Allow-Origin', 'https://ghayth-sabeaallil.github.io'); // Allow all origins
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     res.header('Access-Control-Allow-Credentials', "true");
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     console.log("Got a request to the url: " + req.url);
-
     next();
 });
 
