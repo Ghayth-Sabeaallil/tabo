@@ -36,7 +36,7 @@ export const AddItem = ({ onItemAdded, user }: AddItemProps) => {
         address: "",
         price: 0,
         rooms: 0,
-        phone: 0,
+        phone: 963,
         location: { lat: 0, lng: 0 },
         city: "",
         area: 0,
@@ -305,16 +305,16 @@ export const AddItem = ({ onItemAdded, user }: AddItemProps) => {
                                 </div>
                                 <div className='flex flex-col justify-center items-center gap-3'>
                                     <div className='flex justify-center items-center'>
-                                        <input id="file-upload" type="file" onChange={handleFileChange} multiple />
-                                        <button onClick={handleUpload} disabled={loading} className={`text-base sm:text-base md:text-base p-2 text-text border-2 border-text font-Amiri font-bold bg-dropDownBg rounded-lg hover:bg-hoverBg flex gap-2 justify-center items-center`}>
+                                        <input id="file-upload" type="file" onChange={handleFileChange} multiple className="text-header font-bold py-2 px-4 rounded" />
+                                        <div onClick={handleUpload} className={`text-base sm:text-base md:text-base p-2 text-text border-2 border-text font-Amiri font-bold bg-dropDownBg rounded-lg hover:bg-hoverBg flex gap-2 justify-center items-center cursor-pointer select-none`}>
                                             {loading ? <SyncLoader
                                                 color={"#BA9503"}
                                                 loading={true}
-                                                size={8}
+                                                size={5}
                                                 aria-label="Loading Spinner"
                                                 data-testid="SyncLoader"
                                             /> : 'رفع الصور'}
-                                        </button>
+                                        </div>
                                     </div>
                                     <div className="flex gap-1 justify-start w-full overflow-x-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 p-2">
                                         {imageUrls && (
@@ -324,7 +324,9 @@ export const AddItem = ({ onItemAdded, user }: AddItemProps) => {
                                         )}
                                     </div>
                                 </div>
-                                <Button type="submit" text="تأكيد" icon={<IoIosSend size={20} />} />
+                                <div className='flex justify-center'>
+                                    <Button type="submit" text="تأكيد" icon={<IoIosSend size={20} />} />
+                                </div>
                             </form>
 
                         </div>

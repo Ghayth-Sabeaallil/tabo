@@ -107,10 +107,10 @@ const Item = () => {
                 </div>
             }
 
-            {!item && <div className="flex justify-center items-center h-full"><SyncLoader
-                color={"#4E342E"}
+            {!item ? <div className="flex justify-center items-center h-screen text-3xl">العنصر غير متوفر</div> : <div className="flex justify-center items-center h-screen"><SyncLoader
+                color={"#BA9503"}
                 loading={true}
-                size={20}
+                size={5}
                 aria-label="Loading Spinner"
                 data-testid="SyncLoader"
             /></div>}

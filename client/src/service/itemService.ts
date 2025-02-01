@@ -24,12 +24,12 @@ export const getByCreator = async () => {
     }
 };
 
-export const getByID = async (id: string): Promise<CardDetailsProps | undefined> => {
+export const getByID = async (id: string): Promise<CardDetailsProps | object | undefined> => {
     try {
         const response = await axios.get(`${API_URL}/api/items/${id}`);
         return response.data;
     } catch (error) {
-        console.error('Error getByCreator', error);
+        console.error('Error getByID', error);
         return undefined;
     }
 };
@@ -39,7 +39,7 @@ export const getApartments = async (): Promise<CardDetailsProps[]> => {
         const response = await axios.get(`${API_URL}/api/items/apartments`);
         return response.data;
     } catch (error) {
-        console.error('Error getByCreator', error);
+        console.error('Error getApartments', error);
         return [];
     }
 };
@@ -49,7 +49,7 @@ export const getFarms = async (): Promise<CardDetailsProps[]> => {
         const response = await axios.get(`${API_URL}/api/items/farms`);
         return response.data;
     } catch (error) {
-        console.error('Error getByCreator', error);
+        console.error('Error getFarms', error);
         return [];
     }
 };
@@ -59,7 +59,7 @@ export const getShops = async (): Promise<CardDetailsProps[]> => {
         const response = await axios.get(`${API_URL}/api/items/shops`);
         return response.data;
     } catch (error) {
-        console.error('Error getByCreator', error);
+        console.error('Error getShops', error);
         return [];
     }
 };
@@ -69,7 +69,7 @@ export const getVillas = async (): Promise<CardDetailsProps[]> => {
         const response = await axios.get(`${API_URL}/api/items/villas`);
         return response.data;
     } catch (error) {
-        console.error('Error getByCreator', error);
+        console.error('Error getVillas', error);
         return [];
     }
 };
@@ -79,27 +79,26 @@ export const deleteItem = async (_id: string) => {
         const response = await axios.delete(`${API_URL}/api/items/delete/${_id}`, {
             withCredentials: true,
         });
-        console.log(response.data)
         return response.data;
     } catch (error) {
-        console.error('Error getByCreator', error);
+        console.error('Error deleteItem', error);
     }
 };
 
 export const deleteImages = async (images: string[]) => {
-    const publicID = extractPublicIds(images);
-    console.log(publicID);
-    try {
-        const response = await axios.delete(`${API_URL}/api/items/delete-image`, {
-            data: { public_ids: publicID }, // Axios DELETE requests use 'data' for payload
-            headers: {
-                "Content-Type": "application/json"
-            }
-        });
-        console.log(response.data)
-        return response.data;
-    } catch (error) {
-        console.error('Error getByCreator', error);
+    if (images.length > 0) {
+        const publicID = extractPublicIds(images);
+        try {
+            const response = await axios.delete(`${API_URL}/api/items/delete-image`, {
+                data: { public_ids: publicID }, // Axios DELETE requests use 'data' for payload
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+            return response.data;
+        } catch (error) {
+            console.error('Error deleteImages', error);
+        }
     }
 };
 

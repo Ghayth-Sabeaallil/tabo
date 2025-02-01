@@ -101,7 +101,7 @@ itemRouter.get("/:_id", async (req, res) => {
                 res.send(item);
             }
             else {
-                res.status(401).json({ message: 'No item found' });
+                res.status(204).json({ message: 'No item found' });
             }
         } else {
             res.status(401).json({ message: 'The ID must be at least 24 char' });
