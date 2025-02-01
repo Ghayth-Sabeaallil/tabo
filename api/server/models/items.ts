@@ -1,4 +1,4 @@
-import Mongoose, { Double } from "mongoose";
+import Mongoose from "mongoose";
 
 interface Item {
     description: string,
@@ -18,8 +18,8 @@ interface Item {
 }
 
 interface Location {
-    lat: Double;
-    lng: Double;
+    lat: number;
+    lng: number;
 }
 
 const schema = new Mongoose.Schema<Item>({
