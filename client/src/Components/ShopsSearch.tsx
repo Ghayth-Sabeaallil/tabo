@@ -22,7 +22,7 @@ const ShopsSearch = () => {
             const queryParams = new URLSearchParams(location.search);
             if ([...queryParams].length == 0) {
                 getShops().then(data => setItems(data));
-                if (items?.length! > 0 || items == undefined) {
+                if ((await getShops()).length >= 0) {
                     setLoading(false);
                 }
 
@@ -34,7 +34,7 @@ const ShopsSearch = () => {
                 const itemsData = getByFilter(city, "محل", Number(room), Number(price + "000000"), Number(area));
                 setItems(await itemsData);
             }
-            if (items?.length! >= 0 || items?.length == undefined) setLoading(false);
+            if ((await getShops()).length >= 0) setLoading(false);
         };
         fetchData();
     }, [location]);

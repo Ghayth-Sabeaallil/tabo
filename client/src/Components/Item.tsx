@@ -21,7 +21,9 @@ const Item = () => {
             //const itemData = getById(id!);
             const itemData = getByID(id!);
             setItem(await itemData);
-            setLoading(false);
+            if ((await itemData) || !item) {
+                setLoading(false);
+            }
         };
         fetchData();
     }, []);

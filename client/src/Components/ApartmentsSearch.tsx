@@ -24,7 +24,7 @@ const ApartmentsSearch = () => {
             if ([...queryParams].length == 0) {
                 //loadItemDataset("شقة").then(data => setItems(data));
                 getApartments().then(data => setItems(data));
-                if (items?.length! > 0 || items == undefined) {
+                if ((await getApartments()).length >= 0) {
                     setLoading(false);
                 }
             } else {
@@ -34,8 +34,11 @@ const ApartmentsSearch = () => {
                 const price = queryParams.get('price');
                 const itemsData = getByFilter(city, "شقة", Number(room), Number(price + "000000"), Number(area));
                 setItems(await itemsData);
+                if ((await itemsData).length > 0) {
+                    setLoading(false);
+                }
             }
-            if (items?.length! >= 0 || items?.length == undefined) setLoading(false);
+            if ((await getApartments()).length >= 0) setLoading(false);
         };
         fetchData();
     }, [location]);

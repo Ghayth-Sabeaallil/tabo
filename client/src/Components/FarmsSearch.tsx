@@ -22,7 +22,7 @@ const FarmsSearch = () => {
             const queryParams = new URLSearchParams(location.search);
             if ([...queryParams].length == 0) {
                 getFarms().then(data => setItems(data));
-                if (items?.length! > 0 || items == undefined) {
+                if ((await getFarms()).length >= 0) {
                     setLoading(false);
                 }
 
@@ -34,7 +34,7 @@ const FarmsSearch = () => {
                 const itemsData = getByFilter(city, "أرض", Number(room), Number(price + "000000"), Number(area));
                 setItems(await itemsData);
             }
-            if (items?.length! >= 0 || items?.length == undefined) setLoading(false);
+            if ((await getFarms()).length >= 0) setLoading(false);
         };
         fetchData();
     }, [location]);
