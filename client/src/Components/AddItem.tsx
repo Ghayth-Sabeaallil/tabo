@@ -89,16 +89,30 @@ export const AddItem = ({ onItemAdded, user }: AddItemProps) => {
         onItemAdded();
     };
 
-    // Handle input and select changes
     const handleChange = (
         event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
     ) => {
-        const { name, value } = event.currentTarget as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: (name === "area" || name === "rooms" || name === "price" || name == "phone") ? Number(value) : value,
-        }));
+        const { name, value } = event.currentTarget;
+        setFormData((prevData) => {
+            if (name === "lat" || name === "lng") {
+                return {
+                    ...prevData,
+                    location: {
+                        ...prevData.location,
+                        [name]: Number(value), // Ensure lat/lng are numbers
+                    },
+                };
+            }
+
+            return {
+                ...prevData,
+                [name]: (name === "area" || name === "rooms" || name === "price" || name === "phone")
+                    ? Number(value)
+                    : value,
+            };
+        });
     };
+
 
 
     const openModal = () => setShowAddModal(true);
@@ -217,6 +231,7 @@ export const AddItem = ({ onItemAdded, user }: AddItemProps) => {
                                         id="phone"
                                         name="phone"
                                         type="number"
+                                        step="any"
                                         value={formData.phone}
                                         onChange={handleChange}
                                         placeholder="963"
@@ -234,10 +249,11 @@ export const AddItem = ({ onItemAdded, user }: AddItemProps) => {
                                             id="lng"
                                             name="lng"
                                             type="number"
+                                            step="any"
                                             value={formData.location.lng}
                                             onChange={handleChange}
                                             placeholder="Longitude"
-                                            className="w-full p-2 border-2 border-text rounded-lg mt-1 bg-header text-text placeholder-text text-xl"
+                                            className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none w-full p-2 border-2 border-text rounded-lg mt-1 bg-header text-text placeholder-text text-xl"
                                             required
                                         />
                                     </div>
@@ -252,7 +268,7 @@ export const AddItem = ({ onItemAdded, user }: AddItemProps) => {
                                             value={formData.location.lat}
                                             onChange={handleChange}
                                             placeholder="Latitude"
-                                            className="w-full p-2 border-2 border-text rounded-lg mt-1 bg-header text-text placeholder-text text-xl"
+                                            className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none w-full p-2 border-2 border-text rounded-lg mt-1 bg-header text-text placeholder-text text-xl"
                                             required
                                         />
                                     </div>

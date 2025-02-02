@@ -7,7 +7,7 @@ import { IoMdPin } from 'react-icons/io';
 export type ItemMarkerProps = {
     item: CardDetailsProps;
     onClick: (item: CardDetailsProps) => void;
-    setMarkerRef: (marker: Marker | null, id: string) => void;
+    setMarkerRef: (marker: Marker | null, _id: string) => void;
 };
 
 export const ItemMarker = (props: ItemMarkerProps) => {
@@ -16,8 +16,8 @@ export const ItemMarker = (props: ItemMarkerProps) => {
     const handleClick = useCallback(() => onClick(item), [onClick, item]);
     const ref = useCallback(
         (marker: google.maps.marker.AdvancedMarkerElement) =>
-            setMarkerRef(marker, item.id!),
-        [setMarkerRef, item.id!]
+            setMarkerRef(marker, item._id!),
+        [setMarkerRef, item._id!]
     );
 
     return (

@@ -18,7 +18,7 @@ export const ClusteredMarkers = ({ items }: ClusteredItemMarkersProps) => {
     const selectedItem = useMemo(
         () =>
             items && selectedItemKey
-                ? items.find(t => t.id === selectedItemKey)!
+                ? items.find(t => t._id === selectedItemKey)!
                 : null,
         [items, selectedItemKey]
     );
@@ -41,15 +41,15 @@ export const ClusteredMarkers = ({ items }: ClusteredItemMarkersProps) => {
 
     // this callback will effectively get passsed as ref to the markers to keep
     // tracks of markers currently on the map
-    const setMarkerRef = useCallback((marker: Marker | null, id: string) => {
+    const setMarkerRef = useCallback((marker: Marker | null, _id: string) => {
         setMarkers(markers => {
-            if ((marker && markers[id]) || (!marker && !markers[id]))
+            if ((marker && markers[_id]) || (!marker && !markers[_id]))
                 return markers;
 
             if (marker) {
-                return { ...markers, [id]: marker };
+                return { ...markers, [_id]: marker };
             } else {
-                const { [id]: _, ...newMarkers } = markers;
+                const { [_id]: _, ...newMarkers } = markers;
 
                 return newMarkers;
             }
@@ -61,18 +61,20 @@ export const ClusteredMarkers = ({ items }: ClusteredItemMarkersProps) => {
     }, []);
 
     const handleMarkerClick = useCallback((item: CardDetailsProps) => {
-        setSelectedItemKey(item.id!);
+        setSelectedItemKey(item._id!);
     }, []);
 
     return (
         <>
             {items.map(item => (
-                <ItemMarker
-                    key={item.id}
-                    item={item}
-                    onClick={handleMarkerClick}
-                    setMarkerRef={setMarkerRef}
-                />
+                (item.location?.lat != 0 || item.location?.lng != 0) && (
+                    <ItemMarker
+                        key={item._id}
+                        item={item}
+                        onClick={handleMarkerClick}
+                        setMarkerRef={setMarkerRef}
+                    />
+                )
             ))}
 
             {selectedItemKey && (
@@ -86,7 +88,7 @@ export const ClusteredMarkers = ({ items }: ClusteredItemMarkersProps) => {
                         <img className='border-2 border-black rounded' src={selectedItem?.images![0]} alt="" />
                         <p className='text-[#BA9503] text-base font-bold font-Amiri line-clamp-3'>{selectedItem?.description}</p>
                         <p className='text-[#0D5C02] text-base font-bold font-Amiri'>{formatPrice(selectedItem?.price!)} ل.س</p>
-                        <Link className='text-blue text-sm font-bold font-Amiri underline-offset-1 text-blue-700' to={`/item?id=${selectedItem?.id}`}>لمزيد من التفاصيل ...</Link>
+                        <Link className='text-blue text-sm font-bold font-Amiri underline-offset-1 text-blue-700' to={`/item?id=${selectedItem?._id}`}>لمزيد من التفاصيل ...</Link>
                     </div>
                 </InfoWindow>
             )}
