@@ -40,4 +40,4 @@ const schema = new Mongoose.Schema<Item>({
 
 const ItemModel = Mongoose.model("item", schema);
 
-export default ItemModel;
+export { ItemModel, Item };

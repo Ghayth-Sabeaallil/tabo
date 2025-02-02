@@ -7,17 +7,21 @@ import { formatPrice } from "../utils/formatPrice";
 import { FaShareAlt } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { getByID } from "../service/itemService";
+import { SyncLoader } from "react-spinners";
 
 const Item = () => {
-    const [item, setItem] = useState<CardDetailsProps>();
+    const [item, setItem] = useState<CardDetailsProps | null>();
+    const [loading, setLoading] = useState<boolean>(true);
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     const id = searchParams.get("id");
     useEffect(() => {
         const fetchData = async () => {
+            setLoading(true);
             //const itemData = getById(id!);
             const itemData = getByID(id!);
             setItem(await itemData);
+            setLoading(false);
         };
         fetchData();
     }, []);
@@ -103,10 +107,16 @@ const Item = () => {
                             </div>
                         </div>
                     </div>
-                </div> : <div className="flex justify-center items-center h-screen text-3xl text-header">هذا العقار مباع</div>
+                </div> : loading ? <div className="flex justify-center items-center h-full "><SyncLoader
+                    color={"#4E342E"}
+                    loading={true}
+                    size={20}
+                    aria-label="Loading Spinner"
+                    data-testid="SyncLoader"
+                /></div> : <div className="flex flex-col gap-4 justify-center items-center h-screen text-3xl text-header"><p>هذا العنصر مباع أو غير متوفر</p><a href="/"><div className="text-4xl font-bold font-Amiri text-text bg-header p-2 rounded">العودة الى الرئيسية</div></a>
+                </div>
             }
 
-            {!item && <div className="flex justify-center items-center h-screen text-3xl text-header">العنصر غير متوفر</div>}
         </>
 
     );

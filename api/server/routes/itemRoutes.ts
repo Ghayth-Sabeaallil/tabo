@@ -1,12 +1,12 @@
 import express from 'express';
-import ItemModel from "../models/items";
+import { Request, Response, NextFunction } from 'express';
 import jwt from "jsonwebtoken";
 import dotenv from 'dotenv';
+import { ItemModel, Item } from "../models/items";
 dotenv.config();
 
 
 const itemRouter = express.Router();
-import { Request } from "express";
 interface AuthRequest extends Request {
     user?: { userId: string };
 }
@@ -33,6 +33,49 @@ itemRouter.put("/update/:_id", async (req: AuthRequest, res) => {
 
     } catch (err) {
         res.status(500).json({ message: "Error Edit Event", err });
+    }
+});
+
+interface FilterQuery {
+    city?: string;
+    type?: string;
+    room?: string;
+    price?: string;
+    area?: string;
+}
+
+
+itemRouter.get("/filter", async (req, res) => {
+    const { city, type, room, price, area } = req.query;
+    try {
+        let filterQuery: { is_active: boolean, city?: string, type?: string, rooms?: { $lte: number }, price?: { $lte: number }, area?: { $lte: number } } = { is_active: true };
+        if (city && city !== "جميع المحافظات") {
+            filterQuery.city = city as string;
+        }
+        if (type) {
+            filterQuery.type = type as string;
+        }
+        if (room && !isNaN(Number(room))) {
+            filterQuery.rooms = { $lte: Number(room) };
+        }
+        if (price && !isNaN(Number(price))) {
+            filterQuery.price = { $lte: Number(price) };
+        }
+        if (area && !isNaN(Number(area))) {
+            filterQuery.area = { $lte: Number(area) };
+        }
+        console.log("Constructed Filter Query:", filterQuery);
+        /*
+        const items: Item[] = await ItemModel.find(filterQuery);
+        if (items.length === 0) {
+            res.status(404).json({ message: "No items found matching the filter criteria." });
+        }
+
+        res.json(items);
+        */
+    } catch (err) {
+        console.error("Error during filtering:", err);
+        res.status(500).send("Error retrieving data from the database.");
     }
 });
 

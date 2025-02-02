@@ -22,6 +22,9 @@ const ShopsSearch = () => {
             const queryParams = new URLSearchParams(location.search);
             if ([...queryParams].length == 0) {
                 getShops().then(data => setItems(data));
+                if (items?.length! > 0 || items == undefined) {
+                    setLoading(false);
+                }
 
             } else {
                 const city = queryParams.get('city');

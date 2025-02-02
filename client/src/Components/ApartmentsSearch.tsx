@@ -24,6 +24,9 @@ const ApartmentsSearch = () => {
             if ([...queryParams].length == 0) {
                 //loadItemDataset("شقة").then(data => setItems(data));
                 getApartments().then(data => setItems(data));
+                if (items?.length! > 0 || items == undefined) {
+                    setLoading(false);
+                }
             } else {
                 const city = queryParams.get('city');
                 const room = queryParams.get('room');

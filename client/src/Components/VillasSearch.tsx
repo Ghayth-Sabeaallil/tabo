@@ -22,6 +22,9 @@ const VillasSearch = () => {
             const queryParams = new URLSearchParams(location.search);
             if ([...queryParams].length == 0) {
                 getVillas().then(data => setItems(data));
+                if (items?.length! > 0 || items == undefined) {
+                    setLoading(false);
+                }
 
             } else {
                 const city = queryParams.get('city');

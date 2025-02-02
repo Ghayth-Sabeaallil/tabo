@@ -8,6 +8,7 @@ import { post } from '../service/itemService';
 import { getFormattedDate } from '../utils/dateFormat';
 import { uploadImageToCloudinary } from '../Lib/uploadFile';
 import { SyncLoader } from 'react-spinners';
+import { getLatLngFromUrl } from '../utils/getLanLngFromUrl';
 
 interface CardDetailsProps {
     description: string;
@@ -28,20 +29,21 @@ type AddItemProps = {
 
 export const AddItem = ({ onItemAdded, user }: AddItemProps) => {
     const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+    const [location, setLocation] = useState<string>("");
+    const [description, setDes] = useState<string>("");
+    const [address, setAddress] = useState<string>("");
+    const [type, setType] = useState<string>("");
+    const [city, setCity] = useState<string>("");
+
+    const [price, setPrice] = useState<number | null>(null);
+    const [area, setArea] = useState<number | null>(null);
+    const [phone, setPhone] = useState<number | null>(null);
+    const [rooms, setRooms] = useState<number | null>(null);
+
+
     const [imageUrls, setImageUrls] = useState<string[]>([]);
     const [loading, setLoading] = useState(false);
     const [showAddModal, setShowAddModal] = useState<boolean>(false);
-    const [formData, setFormData] = useState<CardDetailsProps>({
-        description: "",
-        address: "",
-        price: 0,
-        rooms: 0,
-        phone: 963,
-        location: { lat: 0, lng: 0 },
-        city: "",
-        area: 0,
-        type: "",
-    });
 
     const citys: string[] = ["دمشق", "حلب", "حمص", "اللاذقية", "حماة", "دير الزور", "الرقة", "الحسكة", "طرطوس", "السويداء", "درعا", "القامشلي", "إدلب", "ريف دمشق"];
     const minRooms: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -50,22 +52,23 @@ export const AddItem = ({ onItemAdded, user }: AddItemProps) => {
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        const latAndLng = getLatLngFromUrl(location);
         const date = getFormattedDate();
-        await post(formData.city, formData.address, formData.description, formData.type, formData.area, formData.rooms, formData.price, formData.phone, formData.location, true, date, imageUrls);
+        await post(city, address, description, type, Number(area), Number(rooms), Number(price), Number(phone), latAndLng!, true, date, imageUrls);
         closeModal();
-        setFormData({
-            description: "",
-            address: "",
-            price: 0,
-            rooms: 0,
-            phone: 0,
-            location: { lat: 0, lng: 0 },
-            city: "",
-            area: 0,
-            type: "",
-        });
+        setAddress("");
+        setCity("");
+        setDes("");
+        setType("");
+        setLocation("");
+        setPhone(null);
+        setArea(null);
+        setRooms(null);
+        setPrice(null);
+
         setImageUrls([]);
         onItemAdded();
+
     };
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -88,31 +91,6 @@ export const AddItem = ({ onItemAdded, user }: AddItemProps) => {
         setLoading(false);
         onItemAdded();
     };
-
-    const handleChange = (
-        event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
-    ) => {
-        const { name, value } = event.currentTarget;
-        setFormData((prevData) => {
-            if (name === "lat" || name === "lng") {
-                return {
-                    ...prevData,
-                    location: {
-                        ...prevData.location,
-                        [name]: Number(value), // Ensure lat/lng are numbers
-                    },
-                };
-            }
-
-            return {
-                ...prevData,
-                [name]: (name === "area" || name === "rooms" || name === "price" || name === "phone")
-                    ? Number(value)
-                    : value,
-            };
-        });
-    };
-
 
 
     const openModal = () => setShowAddModal(true);
@@ -142,12 +120,12 @@ export const AddItem = ({ onItemAdded, user }: AddItemProps) => {
                                     <select
                                         id="city"
                                         name="city"
-                                        value={formData.city}
-                                        onChange={handleChange}
+                                        value={city}
+                                        onChange={(e) => setCity(e.currentTarget.value)}
                                         className="w-full p-2 border-2 border-text rounded-lg mt-1 bg-header text-text placeholder-text text-xl"
                                         required
                                     >
-                                        <option value="" disabled>
+                                        <option value="" disabled className=''>
                                             المدينة
                                         </option>
                                         {citys.map((option, index) => (
@@ -166,10 +144,10 @@ export const AddItem = ({ onItemAdded, user }: AddItemProps) => {
                                         id="address"
                                         name="address"
                                         type="text"
-                                        value={formData.address}
-                                        onChange={handleChange}
+                                        value={address}
+                                        onChange={(e) => setAddress(e.currentTarget.value)}
                                         placeholder="العنوان"
-                                        className="w-full p-2 border-2 border-text rounded-lg mt-1 bg-header text-text placeholder-text text-xl"
+                                        className="w-full p-2 border-2 border-text rounded-lg mt-1 bg-header text-text placeholder-text text-xl placeholder:opacity-50"
                                         required
                                     />
                                 </div>
@@ -182,10 +160,10 @@ export const AddItem = ({ onItemAdded, user }: AddItemProps) => {
                                         id="price"
                                         name="price"
                                         type="number"
-                                        value={formData.price}
-                                        onChange={handleChange}
+                                        value={price ?? ""}
+                                        onChange={(e) => setPrice(Number(e.currentTarget.value))}
                                         placeholder="السعر"
-                                        className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none w-full p-2 border-2 border-text rounded-lg mt-1 bg-header text-text placeholder-text text-xl"
+                                        className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none w-full p-2 border-2 border-text rounded-lg mt-1 bg-header text-text placeholder-text text-xl placeholder:opacity-50"
                                         min={1}
                                         required
                                     />
@@ -199,10 +177,10 @@ export const AddItem = ({ onItemAdded, user }: AddItemProps) => {
                                         id="description"
                                         name="description"
                                         rows={4}
-                                        value={formData.description}
-                                        onChange={handleChange}
+                                        value={description}
+                                        onChange={(e) => setDes(e.currentTarget.value)}
                                         placeholder="الوصف"
-                                        className="w-full p-2 border-2 border-text rounded-lg mt-1 bg-header text-text placeholder-text text-xl"
+                                        className="w-full p-2 border-2 border-text rounded-lg mt-1 bg-header text-text placeholder-text text-xl placeholder:opacity-50"
                                         required
                                     />
                                 </div>
@@ -215,10 +193,10 @@ export const AddItem = ({ onItemAdded, user }: AddItemProps) => {
                                         id="area"
                                         name="area"
                                         type="number"
-                                        value={formData.area}
-                                        onChange={handleChange}
+                                        value={area ?? ""}
+                                        onChange={(e) => setArea(Number(e.currentTarget.value))}
                                         placeholder="المساحة"
-                                        className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none w-full p-2 border-2 border-text rounded-lg mt-1 bg-header text-text placeholder-text text-xl"
+                                        className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none w-full p-2 border-2 border-text rounded-lg mt-1 bg-header text-text placeholder-text text-xl placeholder:opacity-50"
                                         required
                                     />
                                 </div>
@@ -232,46 +210,28 @@ export const AddItem = ({ onItemAdded, user }: AddItemProps) => {
                                         name="phone"
                                         type="number"
                                         step="any"
-                                        value={formData.phone}
-                                        onChange={handleChange}
-                                        placeholder="963"
-                                        className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none w-full p-2 border-2 border-text rounded-lg mt-1 bg-header text-text placeholder-text text-xl"
+                                        value={phone ?? ""}
+                                        onChange={(e) => setPhone(Number(e.currentTarget.value))}
+                                        placeholder="...963"
+                                        className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none w-full p-2 border-2 border-text rounded-lg mt-1 bg-header text-text placeholder-text text-xl placeholder:opacity-50"
                                         required
                                     />
                                 </div>
 
-                                <div className="flex gap-2">
-                                    <div>
-                                        <label htmlFor="lng" className="text-header text-xl font-medium block font-Amir">
-                                            lng
-                                        </label>
-                                        <input
-                                            id="lng"
-                                            name="lng"
-                                            type="number"
-                                            step="any"
-                                            value={formData.location.lng}
-                                            onChange={handleChange}
-                                            placeholder="Longitude"
-                                            className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none w-full p-2 border-2 border-text rounded-lg mt-1 bg-header text-text placeholder-text text-xl"
-                                            required
-                                        />
-                                    </div>
-                                    <div>
-                                        <label htmlFor="lat" className="text-header text-xl font-medium block font-Amir">
-                                            lat
-                                        </label>
-                                        <input
-                                            id="lat"
-                                            name="lat"
-                                            type="number"
-                                            value={formData.location.lat}
-                                            onChange={handleChange}
-                                            placeholder="Latitude"
-                                            className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none w-full p-2 border-2 border-text rounded-lg mt-1 bg-header text-text placeholder-text text-xl"
-                                            required
-                                        />
-                                    </div>
+                                <div>
+                                    <label htmlFor="location" className="text-header text-xl font-medium block font-Amir">
+                                        الموقع
+                                    </label>
+                                    <input
+                                        id="location"
+                                        name="location"
+                                        type="text"
+                                        value={location}
+                                        onChange={(event) => setLocation(event.currentTarget.value)}
+                                        placeholder="الموقع"
+                                        className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none w-full p-2 border-2 border-text rounded-lg mt-1 bg-header text-text placeholder-text text-xl placeholder:opacity-50"
+                                        required
+                                    />
                                 </div>
 
                                 <div>
@@ -281,8 +241,8 @@ export const AddItem = ({ onItemAdded, user }: AddItemProps) => {
                                     <select
                                         id="rooms"
                                         name="rooms"
-                                        value={formData.rooms}
-                                        onChange={handleChange}
+                                        value={rooms ?? ""}
+                                        onChange={(e) => setRooms(Number(e.currentTarget.value))}
                                         className="w-full p-2 border-2 border-text rounded-lg mt-1 bg-header text-text placeholder-text text-xl"
                                         required
                                     >
@@ -304,8 +264,8 @@ export const AddItem = ({ onItemAdded, user }: AddItemProps) => {
                                     <select
                                         id="type"
                                         name="type"
-                                        value={formData.type}
-                                        onChange={handleChange}
+                                        value={type}
+                                        onChange={(e) => setType(e.currentTarget.value)}
                                         className="w-full p-2 border-2 border-text rounded-lg mt-1 bg-header text-text placeholder-text text-xl"
                                         required
                                     >
