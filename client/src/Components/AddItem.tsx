@@ -10,18 +10,6 @@ import { uploadImageToCloudinary } from '../Lib/uploadFile';
 import { SyncLoader } from 'react-spinners';
 import { getLatLngFromUrl } from '../utils/getLanLngFromUrl';
 
-interface CardDetailsProps {
-    description: string;
-    address: string;
-    price: number;
-    rooms: number;
-    phone: number;
-    location: { lat: number; lng: number };
-    city: string;
-    area: number;
-    type: string;
-}
-
 type AddItemProps = {
     onItemAdded: () => void,
     user: string
@@ -280,8 +268,8 @@ export const AddItem = ({ onItemAdded, user }: AddItemProps) => {
                                     </select>
                                 </div>
                                 <div className='flex flex-col justify-center items-center gap-3'>
-                                    <div className='flex justify-center items-center'>
-                                        <input id="file-upload" type="file" onChange={handleFileChange} multiple className="text-header font-bold py-2 px-4 rounded" />
+                                    <div className='flex justify-around items-center'>
+                                        <input id="file-upload" type="file" onChange={handleFileChange} multiple className="text-header font-bold rounded w-[75%]" />
                                         <div onClick={handleUpload} className={`text-base sm:text-base md:text-base p-2 text-text border-2 border-text font-Amiri font-bold bg-dropDownBg rounded-lg hover:bg-hoverBg flex gap-2 justify-center items-center cursor-pointer select-none`}>
                                             {loading ? <SyncLoader
                                                 color={"#BA9503"}
