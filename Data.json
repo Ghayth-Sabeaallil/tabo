@@ -1,174 +1,191 @@
 [
   {
-    "id": "abcd123",
-    "description": "شقة جميلة في وسط اللاذقية",
-    "images": ["https://i.imgur.com/CXgNCE2.png", "https://i.imgur.com/OpTjlzp.png", "https://i.imgur.com/wNOMdFX.png"],
-    "address": "شارع الجمهورية، اللاذقية",
-    "price": 60000000,
-    "rooms": 3,
-    "phone": 123456789,
-    "location": { "lat": 35.524, "lng": 35.782 },
-    "city": "اللاذقية",
-    "area": 120,
+    "description": "شقة راقية",
+    "address": "شارع الحضارة",
+    "city": "حمص",
     "type": "شقة",
-    "date_created": "2024-01-26",
-    "is_active": true
-  }, {
-    "id": "abcd123",
-    "description": "شقة جميلة في وسط اللاذقية",
-    "images": ["https://i.imgur.com/CXgNCE2.png", "https://i.imgur.com/OpTjlzp.png", "https://i.imgur.com/wNOMdFX.png"],
-    "address": "شارع الجمهورية، اللاذقية",
-    "price": 60000000,
+    "price": 110000000,
+    "phone": 963988888888,
     "rooms": 3,
-    "phone": 123456789,
-    "location": { "lat": 35.524, "lng": 35.782 },
-    "city": "اللاذقية",
-    "area": 120,
-    "type": "شقة",
-    "date_created": "2024-01-26",
-    "is_active": true
-  }, {
-    "id": "abcd123",
-    "description": "شقة جميلة في وسط اللاذقية",
-    "images": ["https://i.imgur.com/CXgNCE2.png", "https://i.imgur.com/OpTjlzp.png", "https://i.imgur.com/wNOMdFX.png"],
-    "address": "شارع الجمهورية، اللاذقية",
-    "price": 60000000,
-    "rooms": 3,
-    "phone": 123456789,
-    "location": { "lat": 35.524, "lng": 35.782 },
-    "city": "اللاذقية",
-    "area": 120,
-    "type": "شقة",
-    "date_created": "2024-01-26",
-    "is_active": true
-  }, {
-    "id": "abcd123",
-    "description": "شقة جميلة في وسط اللاذقية",
-    "images": ["https://i.imgur.com/CXgNCE2.png", "https://i.imgur.com/OpTjlzp.png", "https://i.imgur.com/wNOMdFX.png"],
-    "address": "شارع الجمهورية، اللاذقية",
-    "price": 60000000,
-    "rooms": 3,
-    "phone": 123456789,
-    "location": { "lat": 35.524, "lng": 35.782 },
-    "city": "اللاذقية",
-    "area": 120,
-    "type": "شقة",
-    "date_created": "2024-01-26",
-    "is_active": true
-  }, {
-    "id": "abcd123",
-    "description": "شقة جميلة في وسط اللاذقية",
-    "images": ["https://i.imgur.com/CXgNCE2.png", "https://i.imgur.com/OpTjlzp.png", "https://i.imgur.com/wNOMdFX.png"],
-    "address": "شارع الجمهورية، اللاذقية",
-    "price": 60000000,
-    "rooms": 3,
-    "phone": 123456789,
-    "location": { "lat": 35.524, "lng": 35.782 },
-    "city": "اللاذقية",
-    "area": 120,
-    "type": "شقة",
-    "date_created": "2024-01-26",
-    "is_active": true
-  }, {
-    "id": "abcd123",
-    "description": "شقة جميلة في وسط اللاذقية",
-    "images": ["https://i.imgur.com/CXgNCE2.png", "https://i.imgur.com/OpTjlzp.png", "https://i.imgur.com/wNOMdFX.png"],
-    "address": "شارع الجمهورية، اللاذقية",
-    "price": 60000000,
-    "rooms": 3,
-    "phone": 123456789,
-    "location": { "lat": 35.524, "lng": 35.782 },
-    "city": "اللاذقية",
-    "area": 120,
-    "type": "شقة",
-    "date_created": "2024-01-26",
-    "is_active": true
-  }, {
-    "id": "abcd123",
-    "description": "شقة جميلة في وسط اللاذقية",
-    "images": ["https://i.imgur.com/CXgNCE2.png", "https://i.imgur.com/OpTjlzp.png", "https://i.imgur.com/wNOMdFX.png"],
-    "address": "شارع الجمهورية، اللاذقية",
-    "price": 60000000,
-    "rooms": 3,
-    "phone": 123456789,
-    "location": { "lat": 35.524, "lng": 35.782 },
-    "city": "اللاذقية",
-    "area": 120,
-    "type": "شقة",
-    "date_created": "2024-01-26",
-    "is_active": true
-  }, {
-    "id": "abcd123",
-    "description": "شقة جميلة في وسط اللاذقية",
-    "images": ["https://i.imgur.com/CXgNCE2.png", "https://i.imgur.com/OpTjlzp.png", "https://i.imgur.com/wNOMdFX.png"],
-    "address": "شارع الجمهورية، اللاذقية",
-    "price": 60000000,
-    "rooms": 3,
-    "phone": 123456789,
-    "location": { "lat": 35.524, "lng": 35.782 },
-    "city": "اللاذقية",
-    "area": 120,
-    "type": "شقة",
-    "date_created": "2024-01-26",
-    "is_active": true
-  }, {
-    "id": "abcd123",
-    "description": "شقة جميلة في وسط اللاذقية",
-    "images": ["https://i.imgur.com/CXgNCE2.png", "https://i.imgur.com/OpTjlzp.png", "https://i.imgur.com/wNOMdFX.png"],
-    "address": "شارع الجمهورية، اللاذقية",
-    "price": 60000000,
-    "rooms": 3,
-    "phone": 123456789,
-    "location": { "lat": 35.524, "lng": 35.782 },
-    "city": "اللاذقية",
-    "area": 120,
-    "type": "شقة",
-    "date_created": "2024-01-26",
-    "is_active": true
-  },
-  {
-    "id": "123abc",
-    "description": "منزل واسع مع حديقة في دمشق",
-    "images": ["https://i.imgur.com/CXgNCE2.png", "https://i.imgur.com/OpTjlzp.png", "https://i.imgur.com/wNOMdFX.png"],
-    "address": "حي المزة، دمشق",
-    "price": 95000000,
-    "rooms": 4,
-    "phone": 123456789,
-    "location": { "lat": 33.510, "lng": 36.291 },
-    "city": "دمشق",
-    "area": 200,
-    "type": "فيلا",
-    "date_created": "2024-01-26",
-    "is_active": true
-  },
-  {
-    "id": "1a2b3c",
-    "description": "محل للبيع في حلب",
-    "images": ["https://i.imgur.com/CXgNCE2.png", "https://i.imgur.com/OpTjlzp.png", "https://i.imgur.com/wNOMdFX.png"],
-    "address": "سيف الدولة، حلب",
-    "price": 45000000,
-    "rooms": 0,
-    "phone": 123456789,
-    "location": { "lat": 36.202, "lng": 37.134 },
-    "city": "حلب",
     "area": 60,
-    "type": "محل",
-    "date_created": "2024-01-26",
-    "is_active": true
+    "location": {
+      "lat": 34.7324,
+      "lng": 36.7138
+    },
+    "date_created": "2025-02-02",
+    "is_active": true,
+    "creator": "6797d0129504ea575743c82f",
+    "images": [
+      "https://res.cloudinary.com/dornqibbw/image/upload/v1738456788/Ghayth/1_svv3fo.png"
+    ],
+    "__v": 0
   },
   {
-    "id": "a1b2c3",
-    "description": "أرض زراعية للبيع في الحسكة",
-    "images": ["https://i.imgur.com/CXgNCE2.png", "https://i.imgur.com/OpTjlzp.png", "https://i.imgur.com/wNOMdFX.png"],
-    "address": "منطقة الريف الشمالي، الحسكة",
-    "price": 15000000,
-    "rooms": 0,
-    "phone": 123456789,
-    "location": { "lat": 36.501, "lng": 40.744 },
-    "city": "الحسكة",
-    "area": 1.5,
-    "type": "أرض",
-    "date_created": "2024-01-26",
-    "is_active": true
+    "description": "شقة فاخرة",
+    "address": "حي القصور",
+    "city": "حماة",
+    "type": "شقة",
+    "price": 125000000,
+    "phone": 963977777777,
+    "rooms": 4,
+    "area": 75,
+    "location": {
+      "lat": 35.1366,
+      "lng": 36.7519
+    },
+    "date_created": "2025-02-02",
+    "is_active": true,
+    "creator": "6797d0129504ea575743c82f",
+    "images": [
+      "https://res.cloudinary.com/dornqibbw/image/upload/v1738456788/Ghayth/1_svv3fo.png"
+    ],
+    "__v": 0
+  },
+  {
+    "description": "شقة بإطلالة رائعة",
+    "address": "شارع النيل",
+    "city": "حلب",
+    "type": "شقة",
+    "price": 130000000,
+    "phone": 963966666666,
+    "rooms": 3,
+    "area": 65,
+    "location": {
+      "lat": 36.2061,
+      "lng": 37.1453
+    },
+    "date_created": "2025-02-02",
+    "is_active": true,
+    "creator": "6797d0129504ea575743c82f",
+    "images": [
+      "https://res.cloudinary.com/dornqibbw/image/upload/v1738456788/Ghayth/1_svv3fo.png"
+    ],
+    "__v": 0
+  },
+  {
+    "description": "شقة حديثة",
+    "address": "شارع المزة",
+    "city": "دمشق",
+    "type": "شقة",
+    "price": 140000000,
+    "phone": 963955555555,
+    "rooms": 3,
+    "area": 70,
+    "location": {
+      "lat": 33.5138,
+      "lng": 36.2765
+    },
+    "date_created": "2025-02-02",
+    "is_active": true,
+    "creator": "6797d0129504ea575743c82f",
+    "images": [
+      "https://res.cloudinary.com/dornqibbw/image/upload/v1738456788/Ghayth/1_svv3fo.png"
+    ],
+    "__v": 0
+  },
+  {
+    "description": "شقة واسعة",
+    "address": "شارع الثورة",
+    "city": "طرطوس",
+    "type": "شقة",
+    "price": 115000000,
+    "phone": 963944444444,
+    "rooms": 4,
+    "area": 80,
+    "location": {
+      "lat": 34.8895,
+      "lng": 35.8865
+    },
+    "date_created": "2025-02-02",
+    "is_active": true,
+    "creator": "6797d0129504ea575743c82f",
+    "images": [
+      "https://res.cloudinary.com/dornqibbw/image/upload/v1738456789/Ghayth/2_nv2rzi.png"
+    ],
+    "__v": 0
+  },
+  {
+    "description": "شقة في موقع مركزي",
+    "address": "حي السبيل",
+    "city": "درعا",
+    "type": "شقة",
+    "price": 95000000,
+    "phone": 963933333333,
+    "rooms": 2,
+    "area": 50,
+    "location": {
+      "lat": 32.6189,
+      "lng": 36.1021
+    },
+    "date_created": "2025-02-02",
+    "is_active": true,
+    "creator": "6797d0129504ea575743c82f",
+    "images": [
+      "https://res.cloudinary.com/dornqibbw/image/upload/v1738456789/Ghayth/2_nv2rzi.png"
+    ],
+    "__v": 0
+  },
+  {
+    "description": "شقة بإطلالة بحرية",
+    "address": "حي الرمل الجنوبي",
+    "city": "اللاذقية",
+    "type": "شقة",
+    "price": 135000000,
+    "phone": 963922222222,
+    "rooms": 3,
+    "area": 70,
+    "location": {
+      "lat": 35.523,
+      "lng": 35.78
+    },
+    "date_created": "2025-02-02",
+    "is_active": true,
+    "creator": "6797d0129504ea575743c82f",
+    "images": [
+      "https://res.cloudinary.com/dornqibbw/image/upload/v1738456789/Ghayth/2_nv2rzi.png"
+    ],
+    "__v": 0
+  },
+  {
+    "description": "شقة في حي حديث",
+    "address": "حي الفرقان",
+    "city": "حلب",
+    "type": "شقة",
+    "price": 150000000,
+    "phone": 963911111111,
+    "rooms": 5,
+    "area": 90,
+    "location": {
+      "lat": 36.2062,
+      "lng": 37.1535
+    },
+    "date_created": "2025-02-02",
+    "is_active": true,
+    "creator": "6797d0129504ea575743c82f",
+    "images": [
+      "https://res.cloudinary.com/dornqibbw/image/upload/v1738456789/Ghayth/2_nv2rzi.png"
+    ],
+    "__v": 0
+  },
+  {
+    "description": "شقة مميزة",
+    "address": "شارع ابن عساكر",
+    "city": "دمشق",
+    "type": "شقة",
+    "price": 160000000,
+    "phone": 963955121212,
+    "rooms": 4,
+    "area": 85,
+    "location": {
+      "lat": 33.5144,
+      "lng": 36.2821
+    },
+    "date_created": "2025-02-02",
+    "is_active": true,
+    "creator": "6797d0129504ea575743c82f",
+    "images": [
+      "https://res.cloudinary.com/dornqibbw/image/upload/v1738456799/Ghayth/20_tqp8wt.png"
+    ],
+    "__v": 0
   }
 ]
