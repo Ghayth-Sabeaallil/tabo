@@ -237,7 +237,7 @@ export const AddItem = ({ onItemAdded, user }: AddItemProps) => {
                                             value={formData.location.lng}
                                             onChange={handleChange}
                                             placeholder="Longitude"
-                                            className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none w-full p-2 border-2 border-text rounded-lg mt-1 bg-header text-text placeholder-text text-xl"
+                                            className="w-full p-2 border-2 border-text rounded-lg mt-1 bg-header text-text placeholder-text text-xl"
                                             required
                                         />
                                     </div>
@@ -252,7 +252,7 @@ export const AddItem = ({ onItemAdded, user }: AddItemProps) => {
                                             value={formData.location.lat}
                                             onChange={handleChange}
                                             placeholder="Latitude"
-                                            className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none w-full p-2 border-2 border-text rounded-lg mt-1 bg-header text-text placeholder-text text-xl"
+                                            className="w-full p-2 border-2 border-text rounded-lg mt-1 bg-header text-text placeholder-text text-xl"
                                             required
                                         />
                                     </div>
