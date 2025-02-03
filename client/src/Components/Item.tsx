@@ -40,54 +40,10 @@ const Item = () => {
         }
     }
 
-    const resizeImage = (blob: Blob, maxWidth: number, maxHeight: number): Promise<Blob> => {
-        return new Promise((resolve) => {
-            const img = new Image();
-            img.src = URL.createObjectURL(blob);
-            img.onload = () => {
-                const canvas = document.createElement("canvas");
-                const ctx = canvas.getContext("2d");
-
-                if (!ctx) {
-                    console.error("Canvas context is not supported.");
-                    return resolve(blob);
-                }
-
-                let { width, height } = img;
-
-                // Scale proportionally
-                if (width > height) {
-                    if (width > maxWidth) {
-                        height *= maxWidth / width;
-                        width = maxWidth;
-                    }
-                } else {
-                    if (height > maxHeight) {
-                        width *= maxHeight / height;
-                        height = maxHeight;
-                    }
-                }
-
-                canvas.width = width;
-                canvas.height = height;
-                ctx.drawImage(img, 0, 0, width, height);
-
-                canvas.toBlob((resizedBlob) => {
-                    if (resizedBlob) {
-                        resolve(resizedBlob);
-                    } else {
-                        resolve(blob); // If resizing fails, return the original blob
-                    }
-                }, "image/jpeg", 0.8); // Adjust quality if needed
-            };
-        });
-    };
-
     const handleShare = async () => {
         const response = await fetch(item?.images![0]!);
         const blob = await response.blob();
-        const resizedBlob = await resizeImage(blob, 300, 300);
-        const file = new File([resizedBlob], "image.jpg", { type: blob.type });
+        const file = new File([blob], "image.jpg", { type: blob.type });
         const shareData = {
             title: "طابو للعقارات",
             text: item?.description,
