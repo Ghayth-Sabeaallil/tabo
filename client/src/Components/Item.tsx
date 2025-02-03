@@ -41,12 +41,15 @@ const Item = () => {
     }
 
     const handleShare = async () => {
-
+        const response = await fetch(item?.images![0]!);
+        const blob = await response.blob();
+        const file = new File([blob], "image.jpg", { type: blob.type });
         const shareData = {
             title: "طابو للعقارات",
             text: item?.description,
             img: item?.images![0],
             url: window.location.href,
+            files: [file],
         };
 
         if (navigator.share) {
