@@ -33,22 +33,12 @@ const Item = () => {
         alert("تم نسخ الرابط بنجاح. بامكانك مشاركته الان عبر لصق الرابط وارساله");
     };
 
-    function isValidPhoneNumber(phone: number) {
-        // Ensure the phone number is not empty and contains only digits
-        return phone && /^\d{9,15}$/.test(phone.toString()); // Adjust length as needed
-    }
 
     function confirmation() {
+        navigator.clipboard.writeText(item?.phone?.toString() || '');
         const userConfirmed = confirm("الرجاء التأكد من صحة المعلومات قبل توقيع أي عقد. طابو مجرد منصة لعرض الاعلانات لقد تم نسخ رقم الهاتف اذا لم تتمكن من الوصول للمالك عبرالواتساب!!!");
         if (userConfirmed) {
-
-            if (isValidPhoneNumber(item?.phone!)) {
-                window.location.href = `https://wa.me/963${item?.phone}`;
-            }
-            else {
-                // Open phone dialer
-                window.location.href = `tel:+963${item?.phone}`;
-            }
+            window.location.href = `https://wa.me/963${item?.phone}`;
         }
     }
 
