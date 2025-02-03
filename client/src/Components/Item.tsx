@@ -38,7 +38,7 @@ const Item = () => {
         navigator.clipboard.writeText(item?.phone?.toString() || '');
         const userConfirmed = confirm("الرجاء التأكد من صحة المعلومات قبل توقيع أي عقد. طابو مجرد منصة لعرض الاعلانات لقد تم نسخ رقم الهاتف اذا لم تتمكن من الوصول للمالك عبرالواتساب!!!");
         if (userConfirmed) {
-            window.location.href = `https://wa.me/963${item?.phone}`;
+            window.location.href = `https://wa.me/${item?.phone}`;
         }
     }
 
