@@ -1,6 +1,6 @@
 export function getLatLngFromUrl(url: string): { lat: number, lng: number } | null {
     if (url.length < 40) {
-        const [lat, lng] = url.split(", ").map(num => parseFloat(parseFloat(num).toFixed(4)));
+        const [lat, lng] = url.split(", ").map(num => parseFloat(parseFloat(num).toFixed(6)));
         return { lat, lng };
     } else {
         const regex = /@?(-?\d+\.\d+),(-?\d+\.\d+)/;
