@@ -38,7 +38,7 @@ export const getByID = async (id: string): Promise<CardDetailsProps | object | u
 export const getApartments = async (): Promise<CardDetailsProps[]> => {
     try {
         const response = await axios.get(`${API_URL}/api/items/apartments`);
-        return response.data;
+        return Array.isArray(response.data) ? (response.data as CardDetailsProps[]).reverse() : [];
     } catch (error) {
         console.error('Error getApartments', error);
         return [];
@@ -48,7 +48,7 @@ export const getApartments = async (): Promise<CardDetailsProps[]> => {
 export const getFarms = async (): Promise<CardDetailsProps[]> => {
     try {
         const response = await axios.get(`${API_URL}/api/items/farms`);
-        return response.data;
+        return Array.isArray(response.data) ? (response.data as CardDetailsProps[]).reverse() : [];
     } catch (error) {
         console.error('Error getFarms', error);
         return [];
@@ -58,7 +58,7 @@ export const getFarms = async (): Promise<CardDetailsProps[]> => {
 export const getShops = async (): Promise<CardDetailsProps[]> => {
     try {
         const response = await axios.get(`${API_URL}/api/items/shops`);
-        return response.data;
+        return Array.isArray(response.data) ? (response.data as CardDetailsProps[]).reverse() : [];
     } catch (error) {
         console.error('Error getShops', error);
         return [];
@@ -68,7 +68,7 @@ export const getShops = async (): Promise<CardDetailsProps[]> => {
 export const getVillas = async (): Promise<CardDetailsProps[]> => {
     try {
         const response = await axios.get(`${API_URL}/api/items/villas`);
-        return response.data;
+        return Array.isArray(response.data) ? (response.data as CardDetailsProps[]).reverse() : [];
     } catch (error) {
         console.error('Error getVillas', error);
         return [];
