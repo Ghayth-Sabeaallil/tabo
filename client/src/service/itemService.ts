@@ -13,12 +13,13 @@ export const post = async (city: string, address: string, description: string, t
     }
 };
 
-export const getByCreator = async () => {
+export const getByCreator = async (): Promise<CardDetailsProps[] | undefined> => {
     try {
         const response = await axios.get(`${API_URL}/api/items/creator`, {
             withCredentials: true,
         });
-        return response.data;
+
+        return Array.isArray(response.data) ? (response.data as CardDetailsProps[]).reverse() : [];
     } catch (error) {
         console.error('Error getByCreator', error);
     }
