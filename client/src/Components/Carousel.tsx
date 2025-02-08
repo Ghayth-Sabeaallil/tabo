@@ -11,13 +11,17 @@ export const Carousel: React.FC<CarouselProps> = ({ images }) => {
 
     // Handlers for navigation
     const handleNext = () => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+        if (images.length > 0)
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
     };
 
     const handlePrevious = () => {
-        setCurrentIndex((prevIndex) =>
-            prevIndex === 0 ? images.length - 1 : prevIndex - 1
-        );
+        if (images.length > 0) {
+            setCurrentIndex((prevIndex) =>
+                prevIndex === 0 ? images.length - 1 : prevIndex - 1
+            );
+        }
+
     };
 
     // Open modal with the selected image

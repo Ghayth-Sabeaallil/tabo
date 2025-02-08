@@ -40,12 +40,14 @@ export const AddItem = ({ onItemAdded, user }: AddItemProps) => {
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        let latAndLng;
-        if (location?.length > 0) {
-            latAndLng = getLatLngFromUrl(location);
-        }
         const date = getFormattedDate();
-        await post(city, address, description, type, Number(area), Number(rooms), Number(price), Number(phone), latAndLng!, true, date, imageUrls);
+        if (location?.length > 0) {
+            const latAndLng = getLatLngFromUrl(location);
+            await post(city, address, description, type, Number(area), Number(rooms), Number(price), Number(phone), latAndLng!, true, date, imageUrls);
+        }
+        else {
+            await post(city, address, description, type, Number(area), Number(rooms), Number(price), Number(phone), {}, true, date, imageUrls);
+        }
         closeModal();
         setAddress("");
         setCity("");
