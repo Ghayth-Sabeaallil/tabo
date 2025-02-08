@@ -40,7 +40,10 @@ export const AddItem = ({ onItemAdded, user }: AddItemProps) => {
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const latAndLng = getLatLngFromUrl(location);
+        let latAndLng;
+        if (location?.length > 0) {
+            latAndLng = getLatLngFromUrl(location);
+        }
         const date = getFormattedDate();
         await post(city, address, description, type, Number(area), Number(rooms), Number(price), Number(phone), latAndLng!, true, date, imageUrls);
         closeModal();
@@ -152,8 +155,7 @@ export const AddItem = ({ onItemAdded, user }: AddItemProps) => {
                                         onChange={(e) => setPrice(Number(e.currentTarget.value))}
                                         placeholder="السعر"
                                         className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none w-full p-2 border-2 border-text rounded-lg mt-1 bg-header text-text placeholder-text text-xl placeholder:opacity-50"
-                                        min={1}
-                                        required
+                                        min={0}
                                     />
                                 </div>
 
@@ -218,7 +220,6 @@ export const AddItem = ({ onItemAdded, user }: AddItemProps) => {
                                         onChange={(event) => setLocation(event.currentTarget.value)}
                                         placeholder="الموقع"
                                         className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none w-full p-2 border-2 border-text rounded-lg mt-1 bg-header text-text placeholder-text text-xl placeholder:opacity-50"
-                                        required
                                     />
                                 </div>
 

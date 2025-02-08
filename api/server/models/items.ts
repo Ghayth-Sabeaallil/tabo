@@ -31,7 +31,7 @@ const schema = new Mongoose.Schema<Item>({
     phone: { type: Number, required: true },
     rooms: { type: Number, required: true },
     area: { type: Number, required: true },
-    location: { type: Object, required: true },
+    location: { type: Object, required: false },
     date_created: { type: String, required: true },
     is_active: { type: Boolean, required: true },
     creator: { type: String, required: true },
