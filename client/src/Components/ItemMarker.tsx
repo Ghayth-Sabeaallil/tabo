@@ -22,10 +22,10 @@ export const ItemMarker = (props: ItemMarkerProps) => {
 
     return (
         <AdvancedMarker position={item.location} ref={ref} onClick={handleClick}>
-            {item.type === "شقة" && <IoMdPin color='orange' size={30} />}
-            {item.type === "أرض" && <IoMdPin color='green' size={30} />}
-            {item.type === "فيلا" && <IoMdPin color='red' size={30} />}
-            {item.type === "محل" && <IoMdPin color='blue' size={30} />}
+            {item.type === "شقة" && <IoMdPin color='orange' size={25} />}
+            {item.type === "أرض" && <IoMdPin color='green' size={25} />}
+            {item.type === "فيلا" && <IoMdPin color='red' size={25} />}
+            {item.type === "محل" && <IoMdPin color='blue' size={25} />}
         </AdvancedMarker>
     );
 };
